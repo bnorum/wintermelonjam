@@ -12,8 +12,12 @@ public class TriangleGunController : WeaponController
     {
         Debug.Log("Shooting from Triangle");
         base.Shoot();
-        GameObject spawnedKnife = Instantiate(prefab);
-        spawnedKnife.transform.position = transform.position;
+        Vector3 playerPosition = transform.position;
+        Vector3 direction = (pm.mouseposition - playerPosition).normalized;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; //Sets angle of projectile spawning aiming towards player's current mouse position.
+        GameObject spawnedKnife = Instantiate(prefab, playerPosition, Quaternion.Euler(0, 0, angle));
+
+        spawnedKnife.GetComponent<TriangleGunBehaviour>().SetDirection(direction);
 
     }
 }

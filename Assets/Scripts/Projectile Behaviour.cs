@@ -14,8 +14,11 @@ public class ProjectileBehaviour : MonoBehaviour
         Destroy(gameObject, destroyAfterSeconds);
     }
 
-    public void DirectionChecker(Vector3 dir)
+    public void SetDirection(Vector3 dir)
     {
-        direction = dir;
+        direction = dir.normalized;
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg -90f;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 }

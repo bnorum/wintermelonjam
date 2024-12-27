@@ -11,10 +11,12 @@ public class WeaponController : MonoBehaviour
     public float speed;
     public float cooldownDuration;
     float cooldown;
+    protected PlayerMovement pm;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
+        pm = FindFirstObjectByType<PlayerMovement>();
         cooldown = cooldownDuration;
     }
 
