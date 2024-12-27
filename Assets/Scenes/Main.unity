@@ -383,7 +383,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 625528821231669651, guid: bdfe55e13c7b8a94f8fe5212eca27141, type: 3}
   player: {fileID: 774104707}
   spawnInterval: 0.5
-  spawnDistance: 10
+  spawnDistance: 2
 --- !u!1 &658893107
 GameObject:
   m_ObjectHideFlags: 0
