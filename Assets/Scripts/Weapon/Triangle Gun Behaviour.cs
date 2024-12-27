@@ -14,9 +14,7 @@ public class TriangleGunBehaviour : ProjectileBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 newPosition = direction * tc.speed * Time.deltaTime;
-        newPosition.z = 0;
-        transform.position = newPosition;
+        transform.position += direction * tc.speed * Time.deltaTime;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
