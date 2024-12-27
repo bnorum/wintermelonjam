@@ -8,13 +8,13 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 movement; //probably shouldnt be public, need it for now
 
     public Vector3 mouseposition;
-    private Camera myCamera;
+    private Camera mainCamera;
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        myCamera = FindFirstObjectByType<Camera>();
+        mainCamera = Camera.main;
     }
 
     void Update()
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     void InputMouse()
     {
         Vector3 screenMousePosition = Input.mousePosition;
-        mouseposition = myCamera.ScreenToWorldPoint(new Vector3(screenMousePosition.x, screenMousePosition.y, myCamera.nearClipPlane));
+        mouseposition = mainCamera.ScreenToWorldPoint(new Vector3(screenMousePosition.x, screenMousePosition.y, mainCamera.nearClipPlane));
     }
 
     void Move()
