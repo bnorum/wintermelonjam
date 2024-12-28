@@ -5,8 +5,8 @@ public class EnemyRangedAttack : MonoBehaviour
 
     public GameObject projectilePrefab;
     public float projectileSpeed;
-    private GameObject player;
-    private float cooldown;
+    protected GameObject player;
+    protected float cooldown;
     public float maxCooldown;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()

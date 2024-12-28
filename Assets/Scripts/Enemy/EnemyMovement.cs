@@ -14,6 +14,7 @@ public class EnemyMovement : MonoBehaviour
     private bool pulled = false;
     Vector2 tempDirection;
     float tempSpeed;
+    public bool isBoss = false;
 
     //dirty hack to get displaced off cooldown
     float displacedtimer = .2f;
@@ -56,9 +57,19 @@ public class EnemyMovement : MonoBehaviour
                 {
                     Vector2 direction = (player.position - transform.position).normalized;
                     rb.linearVelocity = direction * moveSpeed;
-                } else {
+                } else if (!isBoss) {
                     rb.linearVelocity = Vector2.zero;
                     GetComponent<EnemyRangedAttack>().AttemptRangedAttack();
+                } else {
+                    rb.linearVelocity = Vector2.zero;
+                    int choice = UnityEngine.Random.Range(0, 2);
+                    if (choice == 0)
+                    {
+                        GetComponent<BossAttacks>().AttemptRangedAttack();
+                    } else {
+                        GetComponent<BossAttacks>().SuperAttack();
+                    }
+
                 }
             }
         }

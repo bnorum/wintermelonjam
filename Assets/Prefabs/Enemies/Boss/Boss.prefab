@@ -188,7 +188,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1
   weight: 10
-  range: 0
+  range: 7
+  isBoss: 1
 --- !u!114 &3396406948750350080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dac4dd090bfa8974aa2a94aa4f3c96a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 452421932226455420, guid: d860bf41df468014fb1114891189fcd0, type: 3}
+  projectilePrefab: {fileID: 452421932226455420, guid: 20c18eed701f0cd47b07e4be7a8ed639, type: 3}
   projectileSpeed: 7
   maxCooldown: 0.5
 --- !u!1 &1601728035692833458
