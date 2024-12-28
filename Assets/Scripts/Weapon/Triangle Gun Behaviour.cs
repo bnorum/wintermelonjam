@@ -15,4 +15,13 @@ public class TriangleGunBehaviour : ProjectileBehaviour
     {
         transform.position += direction * tc.speed * Time.deltaTime;
     }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            var eh = collision.gameObject.GetComponent<EnemyHealth>();
+            eh.currentHealth -= tc.damage;
+        }
+    }
 }

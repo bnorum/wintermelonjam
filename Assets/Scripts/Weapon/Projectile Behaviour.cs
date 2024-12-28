@@ -11,7 +11,9 @@ public class ProjectileBehaviour : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
-        Destroy(gameObject, destroyAfterSeconds);
+        if (destroyAfterSeconds > 0) {
+            Destroy(gameObject, destroyAfterSeconds);
+        }
     }
 
     public void SetDirection(Vector3 dir)
