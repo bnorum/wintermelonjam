@@ -11,6 +11,9 @@ public class EnemyMovement : MonoBehaviour
     public float range;
     Rigidbody2D rb;
     private bool displaced = false;
+    private bool pulled = false;
+    Vector2 tempDirection;
+    float tempSpeed;
 
     //dirty hack to get displaced off cooldown
     float displacedtimer = .2f;
@@ -31,8 +34,16 @@ public class EnemyMovement : MonoBehaviour
             if (displacedtimer <= 0)
             {
                 displaced = false;
+                pulled = false;
                 displacedtimer = .2f;
+                tempDirection = Vector2.zero;
+                tempSpeed = 0;
+
             }
+        }
+        if(displaced && pulled)
+        {
+            rb.linearVelocity = tempDirection * tempSpeed;
         }
 
         if (player != null && !displaced)
@@ -42,7 +53,7 @@ public class EnemyMovement : MonoBehaviour
             if (range <= 0)
             {
                 Vector2 direction = (player.position - transform.position).normalized;
-                rb.linearVelocity = direction * moveSpeed;
+                rb.linearVelocity = (direction+tempDirection) * (moveSpeed+tempSpeed);
             } else {
                 if (Vector2.Distance(player.position, transform.position) > range)
                 {
@@ -56,13 +67,32 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    public IEnumerator Knockback(Vector2 direction, float strength) {
-        displaced = true;
+    public IEnumerator Knockback(Vector2 direction, float strength, float duration, bool isDisplaced) {
+        displaced = isDisplaced;
         rb.linearVelocity = Vector2.zero;
         rb.AddForce(direction * strength / weight, ForceMode2D.Impulse);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(duration);
         displaced = false;
 
     }
+
+    public void AddMovement(Vector2 direction, float strength)
+    {
+        displaced = true;
+        tempDirection = direction;
+        tempSpeed = strength;
+        tempDirection = Vector2.zero;
+        tempSpeed = 0;
+    }
+    
+    public void PullEnemy(Transform point, float strength)
+    {
+        displaced = true;
+        pulled = true;
+        tempDirection = (point.position - transform.position).normalized;
+        tempSpeed = strength;
+    }
+
+
     
 }

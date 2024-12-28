@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats Singleton {get; set;}
-
+    public List<PlayerUpgrade> collectedUpgrades = new List<PlayerUpgrade>();
     [Header("Player Movement Related Stats")]
     public float speed;
     public float dashTime;

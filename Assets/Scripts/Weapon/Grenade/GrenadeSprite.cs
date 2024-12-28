@@ -1,46 +1,55 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class GrenadeSprite : MonoBehaviour
 {
-    private Collider2D collider;
-    public float destroyAfterSeconds = 1f;
+    public CircleCollider2D myCollider;
+    public float destroyAfterSeconds = 1.5f;
     private float damage;
     private float magnitude;
     [Tooltip("True if Push, false for pull")]
     public bool impulseType;
-    public void Init(float inputDamage, float inputMagnitude)
+    private List<GameObject> damagedEnemies = new List<GameObject>();
+    public void Init(float inputDamage, float inputMagnitude, bool inputImpulseType)
     {
         damage = inputDamage;
         magnitude = inputMagnitude;
         Destroy(gameObject, destroyAfterSeconds);
-        collider = GetComponent<Collider2D>();
-        StartCoroutine(Damage());
+        impulseType = inputImpulseType;
     }
 
-    IEnumerator Damage()
+    void Update()
     {
-        Collider2D[] affectedObjects = Physics2D.OverlapCircleAll(transform.position, collider.GetComponent<CircleCollider2D>().radius);
+        ContactFilter2D filter = new ContactFilter2D().NoFilter();
+        List<Collider2D> affectedObjects = new List<Collider2D>();
+        Physics2D.OverlapCollider(myCollider, affectedObjects);
         foreach (Collider2D obj in affectedObjects)
         {
             if (obj.gameObject.tag == "Enemy")
             {
                 // Apply damage
-                EnemyHealth enemyHealth = obj.GetComponent<EnemyHealth>();
-                enemyHealth.currentHealth -= damage;
+                if(damagedEnemies.Contains(obj.gameObject))
+                {
+                    Debug.Log("Dealing Damage");
+                    EnemyHealth enemyHealth = obj.GetComponent<EnemyHealth>();
+                    enemyHealth.currentHealth -= damage;
+                    damagedEnemies.Add(obj.gameObject);
+                }
 
                 Vector2 direction = (obj.transform.position - transform.position).normalized;
-                int impulseDirection;
                 if(impulseType == true)
-                    impulseDirection = 1;
+                {
+                    Debug.LogWarning("pushing");
+                    obj.GetComponent<EnemyMovement>().AddMovement(direction, magnitude);
+                }
                 else
-                    impulseDirection = -1;
-                float force = magnitude * impulseDirection;
-                StartCoroutine(obj.GetComponent<EnemyMovement>().Knockback(direction, force));
+                {
+                    Debug.LogWarning("pulling");
+                    obj.GetComponent<EnemyMovement>().PullEnemy(gameObject.transform, magnitude);
+                }
             }
-        }
-        yield return null;
+        } 
     }
-    
 }

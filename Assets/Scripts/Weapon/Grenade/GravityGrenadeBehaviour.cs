@@ -31,8 +31,6 @@ public class GravityGunBehaviour : ProjectileBehaviour
         base.Start();
         gc = FindFirstObjectByType<GravityGunController>();
         rb = GetComponent<Rigidbody2D>();
-        projectileCollider = GetComponent<Collider2D>();
-        projectileCollider.enabled = false;
         StartCoroutine(EnableColliderOnLanding());
     }
 
@@ -74,11 +72,6 @@ public class GravityGunBehaviour : ProjectileBehaviour
                 hasLanded = true;
                 rb.linearVelocity = Vector2.zero;
                 rb.bodyType = RigidbodyType2D.Kinematic;
-                Collider2D collider = GetComponent<Collider2D>();
-                if(collider != null)
-                {
-                    collider.enabled = true;
-                }
                 yield break;
             }
             yield return null;
@@ -90,8 +83,6 @@ public class GravityGunBehaviour : ProjectileBehaviour
         if(hasLanded)
             Impulse(true);
     }
-
-
     public void Implode()
     {
         if(hasLanded)
@@ -102,12 +93,12 @@ public class GravityGunBehaviour : ProjectileBehaviour
         if(impulseType == true)
         {
             var child = Instantiate(push, transform.position, Quaternion.identity);
-            child.GetComponent<GrenadeSprite>().Init(damage, magnitude);
+            child.GetComponent<GrenadeSprite>().Init(damage, magnitude, impulseType);
         }
         else
         {
             var child = Instantiate(pull, transform.position, Quaternion.identity);
-            child.GetComponent<GrenadeSprite>().Init(damage, magnitude);
+            child.GetComponent<GrenadeSprite>().Init(damage, magnitude, impulseType);
 
         }
         Destroy(gameObject);

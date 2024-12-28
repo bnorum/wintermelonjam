@@ -37,7 +37,7 @@ public class TriangleGunBehaviour : ProjectileBehaviour
             
 
             var enemyMovement = collision.gameObject.GetComponent<EnemyMovement>(); 
-            StartCoroutine(enemyMovement.Knockback(direction, (bulletRigidbody.linearVelocity.magnitude/20)));
+            StartCoroutine(enemyMovement.Knockback(direction, (bulletRigidbody.linearVelocity.magnitude/20), .2f, true));
             piercesRemaining--;
         }
     }
