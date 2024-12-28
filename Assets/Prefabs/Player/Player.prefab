@@ -63,6 +63,7 @@ GameObject:
   - component: {fileID: 4475171314094871284}
   - component: {fileID: 1310382471089368678}
   - component: {fileID: 6858700391402683700}
+  - component: {fileID: 3279702450590127133}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -234,6 +235,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  invincibilityTime: 0
+--- !u!114 &3279702450590127133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362032968490654826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86fe06c64d0ac584aa3c729c3627e148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxExperience: 100
+  currentExperience: 0
+  upgrades:
+  - {fileID: 11400000, guid: 69cbe4695dab98d459807684d4bcfe8e, type: 2}
+  - {fileID: 11400000, guid: f63fdeca82b4ac94f9391ee2666af857, type: 2}
+  - {fileID: 11400000, guid: d95b763cd0b7a8b4b9e45be5caac6eec, type: 2}
+  - {fileID: 11400000, guid: 0fd1d1929c0656b4eb3e8388f481944f, type: 2}
+  - {fileID: 11400000, guid: 4f288594e075dfa4da73bc0896362263, type: 2}
 --- !u!1 &7136621798117872676
 GameObject:
   m_ObjectHideFlags: 0

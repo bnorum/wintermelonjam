@@ -13,6 +13,7 @@ public class GameLogic : MonoBehaviour
     private Camera mainCamera;
     public List<GameObject> activeEnemies = new List<GameObject>();
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,7 +26,7 @@ public class GameLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     IEnumerator SpawnEnemies()
     {
