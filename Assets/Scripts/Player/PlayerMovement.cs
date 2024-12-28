@@ -10,9 +10,11 @@ public class PlayerMovement : MonoBehaviour
     private Camera mainCamera;
 
     private bool isDashing = false;
+    private float dashCooldown;
 
     void Start()
     {
+        dashCooldown = PlayerStats.Singleton.dashCooldown;
         rb = GetComponent<Rigidbody2D>();
         mainCamera = Camera.main;
     }
@@ -22,7 +24,9 @@ public class PlayerMovement : MonoBehaviour
         InputMovement();
         InputMouse();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        dashCooldown -= Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.Space) && dashCooldown <= 0)
         {
             StartCoroutine(Dash());
         }

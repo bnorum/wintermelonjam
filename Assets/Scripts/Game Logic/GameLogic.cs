@@ -85,19 +85,19 @@ public class GameLogic : MonoBehaviour
 
         //ugly code below
         GameObject enemy = null;
-        if (timer is >= 0 and < 60) {
+        if (timer is >= 0 and < 60) { //60 sec
             enemy = Instantiate(enemyPool1[UnityEngine.Random.Range(0,enemyPool1.Count)], spawnPosition, Quaternion.identity);
         }
-        else if (timer is >= 60 and < 150) {
+        else if (timer is >= 60 and < 150) { //2 min 30 sec
             enemy = Instantiate(enemyPool2[UnityEngine.Random.Range(0,enemyPool2.Count)], spawnPosition, Quaternion.identity);
         }
-        else if (timer is >= 150 and < 300) {
+        else if (timer is >= 150 and < 300) { //5 min
             enemy = Instantiate(enemyPool3[UnityEngine.Random.Range(0,enemyPool3.Count)], spawnPosition, Quaternion.identity);
         }
-        else if (timer is >= 300 and < 450) {
+        else if (timer is >= 300 and < 450) { //7 min 30 sec
             enemy = Instantiate(enemyPool4[UnityEngine.Random.Range(0,enemyPool4.Count)], spawnPosition, Quaternion.identity);
         }
-        else if (timer is >= 450) {
+        else if (timer is >= 450) { //7 min 30 sec+
             enemy = Instantiate(enemyPool5[UnityEngine.Random.Range(0,enemyPool5.Count)], spawnPosition, Quaternion.identity);
         }
         enemy.GetComponent<EnemyMovement>().Initialize(player);
