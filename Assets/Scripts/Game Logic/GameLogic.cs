@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameLogic : MonoBehaviour
 {
     [Header("Enemy Spawning Settings")]
-    public GameObject enemyPrefab;
+    public List<GameObject> enemyPrefabs = new List<GameObject>();
     public Transform player;
     public float spawnInterval = 2f;
     public float spawnDistance = 10f;
@@ -73,7 +73,7 @@ public class GameLogic : MonoBehaviour
                 spawnPosition = new Vector2(xMax, UnityEngine.Random.Range(yMin, yMax));
                 break;
         }
-        GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+        GameObject enemy = Instantiate(enemyPrefabs[UnityEngine.Random.Range(0,2)], spawnPosition, Quaternion.identity);
         enemy.GetComponent<EnemyMovement>().Initialize(player);
         activeEnemies.Add(enemy);
     }

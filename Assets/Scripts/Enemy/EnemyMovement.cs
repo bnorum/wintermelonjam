@@ -7,8 +7,9 @@ public class EnemyMovement : MonoBehaviour
 {
     private Transform player;
     public float moveSpeed;
+    public float weight;
     Rigidbody2D rb;
-    public bool displaced = false;
+    private bool displaced = false;
 
     //dirty hack to get displaced off cooldown
     float displacedtimer = .2f;
@@ -32,7 +33,7 @@ public class EnemyMovement : MonoBehaviour
                 displacedtimer = .2f;
             }
         }
-        
+
         if (player != null)
         {
             // Move toward the player
@@ -48,7 +49,7 @@ public class EnemyMovement : MonoBehaviour
     public IEnumerator Knockback(Vector2 direction, float strength) {
         displaced = true;
         rb.linearVelocity = Vector2.zero;
-        rb.AddForce(direction * strength, ForceMode2D.Impulse);
+        rb.AddForce(direction * strength / weight, ForceMode2D.Impulse);
         yield return new WaitForSeconds(0.2f);
         displaced = false;
 

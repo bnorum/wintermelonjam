@@ -6,6 +6,7 @@ public class BoomerangGunBehaviour : ProjectileBehaviour
     Rigidbody2D rb;
     bool recalled = false;
     public GameObject recallHitbox;
+    public GameObject sprite;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
@@ -16,6 +17,7 @@ public class BoomerangGunBehaviour : ProjectileBehaviour
         rb.linearVelocity = direction * bc.speed;
         
         recallHitbox = transform.GetChild(0).gameObject;
+        sprite = transform.GetChild(1).gameObject;
 
     }
 
@@ -31,6 +33,7 @@ public class BoomerangGunBehaviour : ProjectileBehaviour
         if (recalled) {
             Vector2 directionToPlayer = (bc.transform.position - transform.position).normalized;
             rb.linearVelocity = directionToPlayer * bc.returnSpeed;
+            sprite.transform.Rotate(0, 0, 10);
         }
     }
 
