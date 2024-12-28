@@ -1,16 +1,25 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class GravityGunController
- : WeaponController
+public class GravityGunController : WeaponController
 {
     
     public float LaunchSpeed = 10f;
-    public float gravity = -9.8f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
         base.Start();
+    }
+    protected override void Update()
+    {
+        base.Update();
+        if (Input.GetMouseButtonDown(0)) {
+            Trigger(0);
+        }
+        else if(Input.GetMouseButtonDown(1)) {
+            Trigger(1);
+        }
+
     }
     protected override void Shoot()
     {
@@ -24,14 +33,17 @@ public class GravityGunController
         var grenadeRb = spawnedGrenade.GetComponent<Rigidbody2D>();
         Vector2 velocity = direction * LaunchSpeed;
         grenadeRb.linearVelocity = velocity;
-        grenadeRb.gravityScale = Mathf.Abs(gravity / Physics2D.gravity.y);
-
-        Collider2D grenadeCollider = spawnedGrenade.GetComponent<Collider2D>();
-        if(grenadeCollider != null)
-        {
-            grenadeCollider.enabled = false;
-        }
         spawnedGrenade.GetComponent<GravityGunBehaviour>()?.Init(pm.mouseposition);
 
+    }
+    protected void Trigger(int setting)
+    {
+        foreach (GameObject proj in GameObject.FindGameObjectsWithTag("GravityBullet")) {
+            if(setting ==0)
+                proj.GetComponent<GravityGunBehaviour>().Explode();
+            if(setting ==1)
+                proj.GetComponent<GravityGunBehaviour>().Implode();
+
+        }
     }
 }

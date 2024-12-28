@@ -9,6 +9,7 @@ TagManager:
   - BoomerangBullet
   - Enemy
   - XP
+  - GravityBullet
   layers:
   - Default
   - TransparentFX
