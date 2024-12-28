@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class GameLogic : MonoBehaviour
 {
     [Header("Enemy Spawning Settings")]
@@ -11,7 +10,6 @@ public class GameLogic : MonoBehaviour
     public float spawnInterval = 2f;
     public float spawnDistance = 10f;
     public int enemyLimit = 10;
-
     private Camera mainCamera;
     public List<GameObject> activeEnemies = new List<GameObject>();
 
