@@ -9,18 +9,18 @@ public class EnemyRangedAttack : MonoBehaviour
     private float cooldown;
     public float maxCooldown;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected virtual void Start()
     {
         player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         cooldown -= Time.deltaTime;
     }
 
-    public void AttemptRangedAttack() {
+    public virtual void AttemptRangedAttack() {
         if (cooldown <= 0) {
             cooldown = maxCooldown;
             Vector3 playerPosition = player.transform.position;

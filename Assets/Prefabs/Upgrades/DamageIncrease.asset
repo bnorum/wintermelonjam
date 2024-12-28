@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93fa261c095c7c145830cbc98e9b7be4, type: 3}
   m_Name: DamageIncrease
   m_EditorClassIdentifier: 
-  upgradeType: 2
+  upgradeType: 1
   upgradeName: Damage Increase
-  description: Increase speed by 25%.
+  description: Increase damage by 2.
   upgradeSprite: {fileID: -3174086551541804596, guid: d682336d354070e4286b87695e6ecdf0, type: 3}
-  affectedVariable: speed
-  amount: 1.25
+  affectedVariable: damage
+  amount: 2

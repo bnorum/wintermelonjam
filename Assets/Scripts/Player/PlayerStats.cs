@@ -38,6 +38,7 @@ public class PlayerStats : MonoBehaviour
         else if (LoadingParameters.weaponAbility == 2) {
             usingGrenade = true;
         }
+        
         if (Singleton == null)
         {
             Singleton = this;
