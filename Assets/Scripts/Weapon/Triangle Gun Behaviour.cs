@@ -3,6 +3,11 @@ using UnityEngine;
 public class TriangleGunBehaviour : ProjectileBehaviour
 {
     TriangleGunController tc;
+<<<<<<< Updated upstream
+=======
+    
+    private int pierced = 0;
+>>>>>>> Stashed changes
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
