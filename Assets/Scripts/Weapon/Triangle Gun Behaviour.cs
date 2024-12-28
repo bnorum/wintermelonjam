@@ -15,7 +15,8 @@ public class TriangleGunBehaviour : ProjectileBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += direction * tc.speed * Time.deltaTime;
+        var rb = GetComponent<Rigidbody2D>();
+        rb.linearVelocity = direction * tc.speed;
 
         if (piercesRemaining < 0)
         {
@@ -29,6 +30,13 @@ public class TriangleGunBehaviour : ProjectileBehaviour
         {
             var eh = collision.gameObject.GetComponent<EnemyHealth>();
             eh.currentHealth -= tc.damage;
+
+            var bulletRigidbody = GetComponent<Rigidbody2D>();
+
+            
+
+            var enemyMovement = collision.gameObject.GetComponent<EnemyMovement>(); 
+            StartCoroutine(enemyMovement.Knockback(direction, (bulletRigidbody.linearVelocity.magnitude/20)));
             piercesRemaining--;
         }
     }
