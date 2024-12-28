@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using Microsoft.Unity.VisualStudio.Editor;
 public class UIManager : MonoBehaviour
@@ -19,6 +20,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI boomerangAmmoText;
 
     public TextMeshProUGUI timerText;
+
+    public UnityEngine.UI.Image dashIndicator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -44,9 +47,17 @@ public class UIManager : MonoBehaviour
         xpBar.sizeDelta = new Vector2(maxXpWidth * xpPercent, xpBar.sizeDelta.y);
         healthText.text = playerHealth.currentHealth + "/" + PlayerStats.Singleton.maxHealth;
         xpText.text = playerExperience.currentExperience + "/" + PlayerStats.Singleton.maxXp;
-        //timerText.text = "Time: " + FindFirstObjectByType<GameLogic>().timer;
+        timerText.text = "Time: " + GetTime(FindFirstObjectByType<GameLogic>().timer);
         //currencyText.text = "Currency: " + playerHealth.currency;
         if (boomerangGunController != null) boomerangAmmoText.text = "Boomerang Ammo: " + boomerangGunController.ammo;
 
+        dashIndicator.fillAmount =  (PlayerStats.Singleton.cooldownDuration - FindFirstObjectByType<PlayerMovement>().dashCooldown) / PlayerStats.Singleton.cooldownDuration;
+
+    }
+
+    string GetTime(float time) {
+        int minutes = Mathf.FloorToInt(time / 60);
+        int seconds = Mathf.FloorToInt(time % 60);
+        return string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }
