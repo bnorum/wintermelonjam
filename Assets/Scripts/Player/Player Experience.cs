@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 
 public class PlayerExperience : MonoBehaviour
@@ -5,6 +8,8 @@ public class PlayerExperience : MonoBehaviour
     //assign these in prefab
     public float maxExperience;
     public float currentExperience;
+
+    public List<ScriptableObject> upgrades = new List<ScriptableObject>();
 
     void Start()
     {
@@ -22,7 +27,12 @@ public class PlayerExperience : MonoBehaviour
     {
         if(currentExperience >= maxExperience)
         {
-            //GiveUpgrade();
+            GiveUpgrades();
         }
+    }
+
+    private void GiveUpgrades()
+    {
+        
     }
 }
