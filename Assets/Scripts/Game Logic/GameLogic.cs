@@ -19,14 +19,14 @@ public class GameLogic : MonoBehaviour
         mainCamera = Camera.main;
         StartCoroutine(SpawnEnemies());
         Debug.Log($"Movement Ability Selected: {LoadingParameters.movementAbility}");
-        Debug.Log($"Weapon Selected: {LoadingParameters.movementAbility}");
+        Debug.Log($"Weapon Selected: {LoadingParameters.weaponAbility}");
 
         //equip weapon
         for (int i = 0; i < playerWeapons.Count; i++)
         {
             playerWeapons[i].SetActive(false);
         }
-        playerWeapons[LoadingParameters.weapon].SetActive(true);
+        playerWeapons[LoadingParameters.weaponAbility].SetActive(true);
     }
 
     // Update is called once per frame
