@@ -11,7 +11,10 @@ public class PlayerExperience : MonoBehaviour
     //assign these in prefab
     public float currentExperience;
 
-    public List<PlayerUpgrade> upgrades = new List<PlayerUpgrade>();
+    public List<PlayerUpgrade> upgradesForTriangleGun = new List<PlayerUpgrade>();
+    public List<PlayerUpgrade> upgradesForBoomerang = new List<PlayerUpgrade>();
+    public List<PlayerUpgrade> upgradesForGrenade = new List<PlayerUpgrade>();
+    private List<PlayerUpgrade> upgrades = new List<PlayerUpgrade>();
     private List<PlayerUpgrade> localUpgrades = new List<PlayerUpgrade>();
     private List<PlayerUpgrade> savedUpgrades = new List<PlayerUpgrade>();
 
@@ -21,6 +24,18 @@ public class PlayerExperience : MonoBehaviour
     void Start()
     {
         currentExperience = 0;
+        if (PlayerStats.Singleton.usingTriangle)
+        {
+            upgrades = upgradesForTriangleGun;
+        }
+        else if (PlayerStats.Singleton.usingBoomberang)
+        {
+            upgrades = upgradesForBoomerang;
+        }
+        else if (PlayerStats.Singleton.usingGrenade)
+        {
+            upgrades = upgradesForGrenade;
+        }
     }
     public void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.tag == "XP")

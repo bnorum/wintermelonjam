@@ -18,6 +18,7 @@ public class PlayerStats : MonoBehaviour
     [Header("Player Weapon Related Stats")]
     public bool usingBoomberang;
     public bool usingTriangle;
+    public bool usingGrenade;
     public float boomerangSpiky;
     public float damage;
     public int pierce;
@@ -28,6 +29,15 @@ public class PlayerStats : MonoBehaviour
     public float returnSpeed = 10f;
     private void Awake()
     {
+        if (LoadingParameters.weaponAbility == 0) {
+            usingBoomberang = true;
+        }
+        else if (LoadingParameters.weaponAbility == 1) {
+            usingTriangle = true;
+        }
+        else if (LoadingParameters.weaponAbility == 2) {
+            usingGrenade = true;
+        }
         if (Singleton == null)
         {
             Singleton = this;

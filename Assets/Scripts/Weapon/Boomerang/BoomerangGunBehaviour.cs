@@ -64,6 +64,8 @@ public class BoomerangGunBehaviour : ProjectileBehaviour
         else if (collision.gameObject.tag == "Enemy" && spikyDamage > 0)
         {
             var eh = collision.gameObject.GetComponent<EnemyHealth>();
+            var enemyMovement = collision.gameObject.GetComponent<EnemyMovement>();
+            StartCoroutine(enemyMovement.Knockback(rb.linearVelocity/15, (2), .2f, true));
             eh.currentHealth -= spikyDamage;
         }
     }
