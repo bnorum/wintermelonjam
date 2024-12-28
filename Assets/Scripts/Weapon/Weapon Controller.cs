@@ -21,7 +21,7 @@ public class WeaponController : MonoBehaviour
     protected virtual void Update()
     {
         cooldown -= Time.deltaTime;
-        if(cooldown <= 0f)
+        if(cooldown <= 0f && Input.GetMouseButtonDown(0))
         {
             Shoot();
             Debug.Log("Shooting");
