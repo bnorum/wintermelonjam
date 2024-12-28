@@ -7,6 +7,7 @@ public class BoomerangGunBehaviour : ProjectileBehaviour
     bool recalled = false;
     public GameObject recallHitbox;
     public GameObject sprite;
+    public float spikyDamage = 0;   
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
@@ -18,6 +19,8 @@ public class BoomerangGunBehaviour : ProjectileBehaviour
         
         recallHitbox = transform.GetChild(0).gameObject;
         sprite = transform.GetChild(1).gameObject;
+
+        spikyDamage = bc.spikyDamage;
 
     }
 
@@ -56,6 +59,12 @@ public class BoomerangGunBehaviour : ProjectileBehaviour
             var enemyMovement = collision.gameObject.GetComponent<EnemyMovement>();
             StartCoroutine(enemyMovement.Knockback(rb.linearVelocity/15, (rb.linearVelocity.magnitude/20), .2f, true));
             eh.currentHealth -= PlayerStats.Singleton.damage;
+        }
+
+        if (collision.gameObject.tag == "Enemy" && spikyDamage > 0)
+        {
+            var eh = collision.gameObject.GetComponent<EnemyHealth>();
+            eh.currentHealth -= spikyDamage;
         }
     }
 }

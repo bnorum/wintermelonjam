@@ -103,9 +103,9 @@ private void GiveUpgrades()
             {
                 newValue = currentFloat * upgradeComponent.amount;
             }
-            else //will add bool support
+            else // add bool support
             {
-                return; 
+                newValue = 1;
             }
 
             fieldInfo.SetValue(PlayerStats.Singleton, newValue);
