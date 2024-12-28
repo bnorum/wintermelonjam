@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BoomerangGunBehavior : ProjectileBehaviour
+public class BoomerangGunBehaviour : ProjectileBehaviour
 {
     BoomerangGunController bc;
     Rigidbody2D rb;
