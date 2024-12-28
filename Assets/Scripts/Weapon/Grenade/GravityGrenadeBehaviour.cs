@@ -100,6 +100,7 @@ public class GravityGunBehaviour : ProjectileBehaviour
     private void Impulse(bool impulseType)
     {
 
+<<<<<<< Updated upstream
         foreach (Collider2D obj in affectedObjects)
         {
             if (obj.gameObject.tag == "Enemy")
@@ -120,5 +121,22 @@ public class GravityGunBehaviour : ProjectileBehaviour
             Destroy(gameObject);
         }
         
+=======
+        if(impulseType == true)
+        {
+            var child = Instantiate(push, transform.position, Quaternion.identity);
+            child.GetComponent<GrenadeSprite>().Init(damage, magnitude);
+        }
+        else
+        {
+            var child = Instantiate(pull, transform.position, Quaternion.identity);
+            child.GetComponent<GrenadeSprite>().Init(damage, magnitude);
+
+        }
+        Destroy(gameObject);
+            
+        
+            
+>>>>>>> Stashed changes
     }
 }
