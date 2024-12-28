@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-
-
     //assign these in prefab
     public float maxHealth;
     public float currentHealth;

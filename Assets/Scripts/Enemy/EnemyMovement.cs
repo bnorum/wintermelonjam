@@ -6,12 +6,14 @@ public class EnemyMovement : MonoBehaviour
 {
     private Transform player;
     public float moveSpeed;
+    Rigidbody2D rb;
 
     public event Action OnEnemyDestroyed;
 
     public void Initialize(Transform playerTarget)
     {
         player = playerTarget;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -19,7 +21,12 @@ public class EnemyMovement : MonoBehaviour
         if (player != null)
         {
             // Move toward the player
-            transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+            
+            if (rb != null)
+            {
+                Vector2 direction = (player.position - transform.position).normalized;
+                rb.linearVelocity = direction * moveSpeed;
+            }
         }
     }
     void OnDestroy()
