@@ -7,6 +7,7 @@ public class EnemyRangedAttack : MonoBehaviour
     public float projectileSpeed;
     private GameObject player;
     private float cooldown;
+    public float maxCooldown;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,7 +22,7 @@ public class EnemyRangedAttack : MonoBehaviour
 
     public void AttemptRangedAttack() {
         if (cooldown <= 0) {
-            cooldown = 1.5f;
+            cooldown = maxCooldown;
             Vector3 playerPosition = player.transform.position;
             Vector3 direction = (transform.position - playerPosition).normalized;
             GameObject spawnedProjectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);

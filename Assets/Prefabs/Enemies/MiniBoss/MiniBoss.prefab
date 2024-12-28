@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7034702789159081846}
   - component: {fileID: 3396406948750350080}
   - component: {fileID: 6383695897520262313}
+  - component: {fileID: 2142284797130155879}
   m_Layer: 0
   m_Name: MiniBoss
   m_TagString: Enemy
@@ -32,8 +33,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.64, y: -4.32, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7171459745884792164}
   m_Father: {fileID: 0}
@@ -83,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -712631045867808456, guid: b670ab75dde984907b8570040daa08c5, type: 3}
-  m_Color: {r: 0.63479793, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -187,7 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1
   weight: 3
-  range: 0
+  range: 4
 --- !u!114 &3396406948750350080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,8 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85464ab28c57164ab43f18f7a16cdae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 35
-  currentHealth: 35
+  maxHealth: 100
+  currentHealth: 100
   experienceValue: 20
   damage: 20
   xpOrb: {fileID: 8067498843416175384, guid: 6f87672ba965bdf4b8b6a4a8fd925f1a, type: 3}
@@ -219,6 +220,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   em: {fileID: 3396406948750350080}
   healthBar: {fileID: 6022564591735647640}
+--- !u!114 &2142284797130155879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625528821231669651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760775e2396a72a4d9b3966fa9cc2ed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 452421932226455420, guid: d860bf41df468014fb1114891189fcd0, type: 3}
+  projectileSpeed: 20
+  maxCooldown: 0.25
 --- !u!1 &1601728035692833458
 GameObject:
   m_ObjectHideFlags: 0

@@ -53,7 +53,7 @@ public class BoomerangGunBehaviour : ProjectileBehaviour
             Destroy(gameObject);
         }
 
-        if (collision.gameObject.tag == "Enemy" && recalled)
+        else if (collision.gameObject.tag == "Enemy" && recalled)
         {
             var eh = collision.gameObject.GetComponent<EnemyHealth>();
             var enemyMovement = collision.gameObject.GetComponent<EnemyMovement>();
@@ -61,7 +61,7 @@ public class BoomerangGunBehaviour : ProjectileBehaviour
             eh.currentHealth -= PlayerStats.Singleton.damage;
         }
 
-        if (collision.gameObject.tag == "Enemy" && spikyDamage > 0)
+        else if (collision.gameObject.tag == "Enemy" && spikyDamage > 0)
         {
             var eh = collision.gameObject.GetComponent<EnemyHealth>();
             eh.currentHealth -= spikyDamage;
