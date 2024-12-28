@@ -15,9 +15,10 @@ public class PlayerStats : MonoBehaviour
     public float invincibilityDuration;
 
     public float maxXp;
-    [Header("PLayer Weapon Related Stats")]
+    [Header("Player Weapon Related Stats")]
     public bool usingBoomberang;
     public bool usingTriangle;
+    public float boomerangSpiky;
     public float damage;
     public int pierce;
     public float cooldownDuration;

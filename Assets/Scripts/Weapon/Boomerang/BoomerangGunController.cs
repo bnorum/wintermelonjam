@@ -7,10 +7,13 @@ public class BoomerangGunController : WeaponController
     private int maxAmmo;
     public int ammo;
     private float returnSpeed;
+    public float spikyDamage = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
         base.Start();
+        
+        spikyDamage = PlayerStats.Singleton.boomerangSpiky;
         maxAmmo = PlayerStats.Singleton.maxAmmo;
         returnSpeed = PlayerStats.Singleton.returnSpeed;
         ammo = maxAmmo;
@@ -18,6 +21,7 @@ public class BoomerangGunController : WeaponController
 
     protected override void Update()
     {
+        
         base.Update();
         if (Input.GetMouseButtonDown(1)) {
             ReturnBoomerangs();
@@ -26,6 +30,9 @@ public class BoomerangGunController : WeaponController
         if (ammo > maxAmmo) {
             ammo = maxAmmo;
         }
+
+        
+        spikyDamage = PlayerStats.Singleton.boomerangSpiky;
     }
     
 

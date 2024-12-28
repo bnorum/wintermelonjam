@@ -185,7 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   weight: 1
-  isRanged: 0
+  range: 0
 --- !u!114 &3396406948750350080
 MonoBehaviour:
   m_ObjectHideFlags: 0
