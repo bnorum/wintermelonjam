@@ -8,7 +8,6 @@ public class EnemyMovement : MonoBehaviour
     public float moveSpeed;
     Rigidbody2D rb;
 
-    public event Action OnEnemyDestroyed;
 
     public void Initialize(Transform playerTarget)
     {
@@ -29,8 +28,5 @@ public class EnemyMovement : MonoBehaviour
             }
         }
     }
-    void OnDestroy()
-    {
-        OnEnemyDestroyed?.Invoke();
-    }
+    
 }

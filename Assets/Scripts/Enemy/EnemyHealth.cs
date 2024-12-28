@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -6,8 +8,12 @@ public class EnemyHealth : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
 
+
+    public GameLogic gameLogic;
+
     void Start()
     {
+        gameLogic = FindFirstObjectByType<GameLogic>();
         currentHealth = maxHealth;
     }
 
@@ -16,9 +22,12 @@ public class EnemyHealth : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
+            gameLogic.activeEnemies.Remove(gameObject);
             Destroy(gameObject);
         }
     }
+
+    
 
     
 }
