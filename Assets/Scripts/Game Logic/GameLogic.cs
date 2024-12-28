@@ -9,11 +9,10 @@ public class GameLogic : MonoBehaviour
     public Transform player;
     public float spawnInterval = 2f;
     public float spawnDistance = 10f;
-    public int enemyLimit = 10;
+    public int enemyLimit = 40;
     private Camera mainCamera;
     public List<GameObject> activeEnemies = new List<GameObject>();
-
-
+    public List<GameObject> playerWeapons  = new List<GameObject>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,12 +20,19 @@ public class GameLogic : MonoBehaviour
         StartCoroutine(SpawnEnemies());
         Debug.Log($"Movement Ability Selected: {LoadingParameters.movementAbility}");
         Debug.Log($"Weapon Selected: {LoadingParameters.movementAbility}");
+
+        //equip weapon
+        for (int i = 0; i < playerWeapons.Count; i++)
+        {
+            playerWeapons[i].SetActive(false);
+        }
+        playerWeapons[LoadingParameters.weapon].SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+      
     }
     IEnumerator SpawnEnemies()
     {

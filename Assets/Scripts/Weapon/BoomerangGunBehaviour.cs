@@ -50,6 +50,8 @@ public class BoomerangGunBehaviour : ProjectileBehaviour
         if (collision.gameObject.tag == "Enemy" && recalled)
         {
             var eh = collision.gameObject.GetComponent<EnemyHealth>();
+            var enemyMovement = collision.gameObject.GetComponent<EnemyMovement>();
+            StartCoroutine(enemyMovement.Knockback(direction, (rb.linearVelocity.magnitude/20)));
             eh.currentHealth -= bc.damage;
         }
     }
