@@ -99,29 +99,6 @@ public class GravityGunBehaviour : ProjectileBehaviour
     }
     private void Impulse(bool impulseType)
     {
-
-<<<<<<< Updated upstream
-        foreach (Collider2D obj in affectedObjects)
-        {
-            if (obj.gameObject.tag == "Enemy")
-            {
-                // Apply damage
-                EnemyHealth enemyHealth = obj.GetComponent<EnemyHealth>();
-                enemyHealth.currentHealth -= damage;
-
-                Vector2 direction = (obj.transform.position - transform.position).normalized;
-                int impulseDirection;
-                if(impulseType == true)
-                    impulseDirection = 1;
-                else
-                    impulseDirection = -1;
-                float force = magnitude * impulseDirection;
-                StartCoroutine(obj.GetComponent<EnemyMovement>().Knockback(direction, force));
-            }
-            Destroy(gameObject);
-        }
-        
-=======
         if(impulseType == true)
         {
             var child = Instantiate(push, transform.position, Quaternion.identity);
@@ -134,9 +111,5 @@ public class GravityGunBehaviour : ProjectileBehaviour
 
         }
         Destroy(gameObject);
-            
-        
-            
->>>>>>> Stashed changes
     }
 }
