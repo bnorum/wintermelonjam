@@ -10,11 +10,12 @@ public class PlayerExperience : MonoBehaviour
     {
         currentExperience = 0;
     }
-    public void OnCollisionStay2D(Collision2D collision) {
-
-        if (collision.gameObject.tag == "Experience")
+    public void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "XP")
         {
+            Debug.Log("proper collision");
             currentExperience += collision.gameObject.GetComponent<xpOrb>().value;
+            Destroy(collision.gameObject);
         }
     }
     void Update()

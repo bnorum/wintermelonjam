@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour
     public float currentHealth;
     public float experienceValue;
     public GameObject xpOrb;
-    public GameLogic gameLogic;
+    private GameLogic gameLogic;
 
     void Start()
     {
