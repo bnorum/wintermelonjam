@@ -791,17 +791,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2420c2694127845adb08356c0cfdae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 625528821231669651, guid: bdfe55e13c7b8a94f8fe5212eca27141, type: 3}
-  - {fileID: 625528821231669651, guid: 2e65ded62cc2bef418067b760fdb10c8, type: 3}
   player: {fileID: 774104707}
   spawnInterval: 0.5
   spawnDistance: 10
   enemyLimit: 10
   activeEnemies: []
+  enemyPool1:
+  - {fileID: 625528821231669651, guid: bdfe55e13c7b8a94f8fe5212eca27141, type: 3}
+  - {fileID: 625528821231669651, guid: bdfe55e13c7b8a94f8fe5212eca27141, type: 3}
+  - {fileID: 625528821231669651, guid: 2e65ded62cc2bef418067b760fdb10c8, type: 3}
+  - {fileID: 625528821231669651, guid: bdfe55e13c7b8a94f8fe5212eca27141, type: 3}
+  - {fileID: 625528821231669651, guid: 2e65ded62cc2bef418067b760fdb10c8, type: 3}
+  enemyPool2:
+  - {fileID: 625528821231669651, guid: 2e65ded62cc2bef418067b760fdb10c8, type: 3}
+  - {fileID: 625528821231669651, guid: 2e65ded62cc2bef418067b760fdb10c8, type: 3}
+  - {fileID: 625528821231669651, guid: eb0a5c97dfdd2264e955269b19231741, type: 3}
+  enemyPool3:
+  - {fileID: 625528821231669651, guid: 2e65ded62cc2bef418067b760fdb10c8, type: 3}
+  - {fileID: 625528821231669651, guid: 2e65ded62cc2bef418067b760fdb10c8, type: 3}
+  - {fileID: 625528821231669651, guid: eb0a5c97dfdd2264e955269b19231741, type: 3}
+  - {fileID: 625528821231669651, guid: dc38722cfec1e6e46a2a4b917c0cbd72, type: 3}
+  enemyPool4: []
+  enemyPool5: []
   playerWeapons:
   - {fileID: 1850351370}
   - {fileID: 634729553}
+  timer: 0
 --- !u!1 &633957202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1423,6 +1438,7 @@ MonoBehaviour:
   currencyText: {fileID: 1150133003}
   boomerangGunController: {fileID: 0}
   boomerangAmmoText: {fileID: 633957203}
+  timerText: {fileID: 0}
 --- !u!114 &1700464178
 MonoBehaviour:
   m_ObjectHideFlags: 0
