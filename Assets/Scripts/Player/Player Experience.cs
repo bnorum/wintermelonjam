@@ -9,7 +9,6 @@ using UnityEngine;
 public class PlayerExperience : MonoBehaviour
 {
     //assign these in prefab
-    public float maxExperience;
     public float currentExperience;
 
     public List<PlayerUpgrade> upgrades = new List<PlayerUpgrade>();
@@ -33,7 +32,7 @@ public class PlayerExperience : MonoBehaviour
     }
     void Update()
     {
-        if(currentExperience >= maxExperience && canUpdate)
+        if(currentExperience >= PlayerStats.Singleton.maxXp && canUpdate)
         {
             GiveUpgrades();
         }
@@ -118,6 +117,8 @@ private void GiveUpgrades()
         upgradeMenu.gameObject.SetActive(false);
         currentExperience = 0f;
         canUpdate = true;
+        PlayerStats.Singleton.maxXp *= 1.2f;
+        
     }
 
 

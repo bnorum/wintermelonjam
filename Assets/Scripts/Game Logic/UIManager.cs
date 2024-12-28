@@ -1,16 +1,21 @@
 using UnityEngine;
 using TMPro;
+using Microsoft.Unity.VisualStudio.Editor;
 public class UIManager : MonoBehaviour
 {
-    public PlayerHealth playerHealth;
+    private PlayerHealth playerHealth;
     public TextMeshProUGUI healthText;
+    public TextMeshProUGUI xpText;
+    public RectTransform healthBar;
+    public RectTransform xpBar;
+    private float maxHealthWidth;
+    private float maxXpWidth;
 
-    public PlayerExperience playerExperience;
-    public TextMeshProUGUI expText;
+    private PlayerExperience playerExperience;
 
     public TextMeshProUGUI currencyText;
 
-    public BoomerangGunController boomerangGunController;
+    private BoomerangGunController boomerangGunController;
     public TextMeshProUGUI boomerangAmmoText;
 
     public TextMeshProUGUI timerText;
@@ -20,18 +25,25 @@ public class UIManager : MonoBehaviour
         playerHealth = FindFirstObjectByType<PlayerHealth>();
         playerExperience = FindFirstObjectByType<PlayerExperience>();
         boomerangGunController = FindFirstObjectByType<BoomerangGunController>();
+        maxHealthWidth = healthBar.sizeDelta.x;
+        maxXpWidth = xpBar.sizeDelta.x;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateUIText();
+        UpdateUI();
     }
 
 
-    void UpdateUIText() {
-        healthText.text = "Health: " + playerHealth.currentHealth;
-        expText.text = "Exp: " + playerExperience.currentExperience;
+    void UpdateUI() {
+        float healthPercent = Mathf.Clamp01(playerHealth.currentHealth / PlayerStats.Singleton.maxHealth);
+        float xpPercent = Mathf.Clamp01(playerExperience.currentExperience / PlayerStats.Singleton.maxXp);
+        healthBar.sizeDelta = new Vector2(maxHealthWidth * healthPercent, healthBar.sizeDelta.y);
+        xpBar.sizeDelta = new Vector2(maxXpWidth * xpPercent, xpBar.sizeDelta.y);
+        healthText.text = playerHealth.currentHealth + "/" + PlayerStats.Singleton.maxHealth;
+        xpText.text = playerExperience.currentExperience + "/" + PlayerStats.Singleton.maxXp;
         //timerText.text = "Time: " + FindFirstObjectByType<GameLogic>().timer;
         //currencyText.text = "Currency: " + playerHealth.currency;
         if (boomerangGunController != null) boomerangAmmoText.text = "Boomerang Ammo: " + boomerangGunController.ammo;

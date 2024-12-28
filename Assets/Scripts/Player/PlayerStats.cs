@@ -10,6 +10,8 @@ public class PlayerStats : MonoBehaviour
     [Header("Player Health Related Stats")]
     public float maxHealth;
     public float invincibilityDuration;
+
+    public float maxXp;
     [Header("PLayer Weapon Related Stats")]
     public bool usingBoomberang;
     public bool usingTriangle;
