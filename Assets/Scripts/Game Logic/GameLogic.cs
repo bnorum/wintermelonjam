@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameLogic : MonoBehaviour
@@ -9,8 +10,10 @@ public class GameLogic : MonoBehaviour
     public Transform player;
     public float spawnInterval = 2f;
     public float spawnDistance = 10f;
+    public int enemyLimit = 10;
 
     private Camera mainCamera;
+    private List<GameObject> activeEnemies = new List<GameObject>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,11 +29,11 @@ public class GameLogic : MonoBehaviour
     }
     IEnumerator SpawnEnemies()
     {
-        while (true)
+        while (activeEnemies.Count < enemyLimit)
         {
             SpawnEnemy();
-            yield return new WaitForSeconds(spawnInterval);
         }
+        yield return new WaitForSeconds(spawnInterval);
     }
 
     private void SpawnEnemy()
@@ -64,5 +67,7 @@ public class GameLogic : MonoBehaviour
         }
         GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
         enemy.GetComponent<EnemyMovement>().Initialize(player);
+        activeEnemies.Add(enemy);
+        enemy.GetComponent<EnemyMovement>().OnEnemyDestroyed += () => activeEnemies.Remove(enemy);
     }
 }

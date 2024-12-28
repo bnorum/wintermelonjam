@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 screenMousePosition = Input.mousePosition;
         mouseposition = mainCamera.ScreenToWorldPoint(new Vector3(screenMousePosition.x, screenMousePosition.y, mainCamera.nearClipPlane));
+        mouseposition.z = 0;
     }
 
     void Move()

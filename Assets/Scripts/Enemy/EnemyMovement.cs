@@ -1,9 +1,13 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
     private Transform player;
     public float moveSpeed;
+
+    public event Action OnEnemyDestroyed;
 
     public void Initialize(Transform playerTarget)
     {
@@ -17,5 +21,9 @@ public class EnemyMovement : MonoBehaviour
             // Move toward the player
             transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
         }
+    }
+    void OnDestroy()
+    {
+        OnEnemyDestroyed?.Invoke();
     }
 }
