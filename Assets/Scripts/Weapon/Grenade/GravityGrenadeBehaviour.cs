@@ -1,11 +1,15 @@
 using System;
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem.XR.Haptics;
 
 public class GravityGunBehaviour : ProjectileBehaviour
 {
+    public GameObject pull;
+    public GameObject push;
+
     private Vector2 targetPosition;
     private Vector2 startPosition;
     private Rigidbody2D rb;
@@ -83,18 +87,20 @@ public class GravityGunBehaviour : ProjectileBehaviour
 
     public void Explode()
     {
-        Impulse(true);
+        if(hasLanded)
+            Impulse(true);
     }
 
 
     public void Implode()
     {
-        Impulse(false);
+        if(hasLanded)
+            Impulse(false);
     }
     private void Impulse(bool impulseType)
     {
-        Collider2D[] affectedObjects = Physics2D.OverlapCircleAll(transform.position, projectileCollider.bounds.extents.x);
 
+<<<<<<< Updated upstream
         foreach (Collider2D obj in affectedObjects)
         {
             if (obj.gameObject.tag == "Enemy")
@@ -115,5 +121,22 @@ public class GravityGunBehaviour : ProjectileBehaviour
             Destroy(gameObject);
         }
         
+=======
+        if(impulseType == true)
+        {
+            var child = Instantiate(push, transform.position, Quaternion.identity);
+            child.GetComponent<GrenadeSprite>().Init(damage, magnitude);
+        }
+        else
+        {
+            var child = Instantiate(pull, transform.position, Quaternion.identity);
+            child.GetComponent<GrenadeSprite>().Init(damage, magnitude);
+
+        }
+        Destroy(gameObject);
+            
+        
+            
+>>>>>>> Stashed changes
     }
 }
