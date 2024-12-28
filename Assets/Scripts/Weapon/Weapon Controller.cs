@@ -9,6 +9,8 @@ public class WeaponController : MonoBehaviour
     private float cooldown;
     protected PlayerMovement pm;
 
+    public bool automatic = true;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
@@ -20,11 +22,14 @@ public class WeaponController : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        cooldown -= Time.deltaTime;
-        if(cooldown <= 0f)
+        if(automatic)
         {
-            Shoot();
-            Debug.Log("Shooting");
+            cooldown -= Time.deltaTime;
+            if(cooldown <= 0f)
+            {
+                Shoot();
+                Debug.Log("Shooting");
+            }
         }
     }
 

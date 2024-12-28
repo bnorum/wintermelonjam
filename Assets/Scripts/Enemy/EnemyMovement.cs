@@ -36,9 +36,6 @@ public class EnemyMovement : MonoBehaviour
                 displaced = false;
                 pulled = false;
                 displacedtimer = .2f;
-                tempDirection = Vector2.zero;
-                tempSpeed = 0;
-
             }
         }
         if(displaced && pulled)
@@ -65,6 +62,8 @@ public class EnemyMovement : MonoBehaviour
                 }
             }
         }
+        tempDirection *= .98f;
+        tempSpeed *= .98f;
     }
 
     public IEnumerator Knockback(Vector2 direction, float strength, float duration, bool isDisplaced) {
@@ -78,11 +77,8 @@ public class EnemyMovement : MonoBehaviour
 
     public void AddMovement(Vector2 direction, float strength)
     {
-        displaced = true;
         tempDirection = direction;
         tempSpeed = strength;
-        tempDirection = Vector2.zero;
-        tempSpeed = 0;
     }
     
     public void PullEnemy(Transform point, float strength)

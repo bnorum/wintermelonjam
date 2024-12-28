@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8690274046912833576}
   - component: {fileID: 2537937638193958050}
   m_Layer: 0
-  m_Name: Gravity Projectile_0
+  m_Name: Inward
   m_TagString: GravityBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2929628244836095204, guid: 217d7a579fef6bb41983aaadebcd80e4, type: 3}
+  m_Sprite: {fileID: 2065926057732163580, guid: cb1c56f231d50b04e840ec0c3f213c91, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

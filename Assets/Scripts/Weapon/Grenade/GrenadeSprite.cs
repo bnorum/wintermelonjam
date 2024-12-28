@@ -10,9 +10,9 @@ public class GrenadeSprite : MonoBehaviour
     private float damage;
     private float magnitude;
     [Tooltip("True if Push, false for pull")]
-    public bool impulseType;
+    public int impulseType;
     private List<GameObject> damagedEnemies = new List<GameObject>();
-    public void Init(float inputDamage, float inputMagnitude, bool inputImpulseType)
+    public void Init(float inputDamage, float inputMagnitude, int inputImpulseType)
     {
         damage = inputDamage;
         magnitude = inputMagnitude;
@@ -39,7 +39,7 @@ public class GrenadeSprite : MonoBehaviour
                 }
 
                 Vector2 direction = (obj.transform.position - transform.position).normalized;
-                if(impulseType == true)
+                if(impulseType == 0)
                 {
                     Debug.LogWarning("pushing");
                     obj.GetComponent<EnemyMovement>().AddMovement(direction, magnitude);

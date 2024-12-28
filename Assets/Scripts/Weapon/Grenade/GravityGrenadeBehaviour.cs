@@ -19,19 +19,21 @@ public class GravityGunBehaviour : ProjectileBehaviour
     private bool hasLanded = false;
     private Transform projectileTransform;
     GravityGunController gc;
+    int type;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public void Init(Vector2 target)
+    public void Init(Vector2 target, int inputType)
     {
         startPosition = transform.position;
         targetPosition = target;
         projectileTransform = transform;
+        type = inputType;
     }
     protected override void Start()
     {
         base.Start();
         gc = FindFirstObjectByType<GravityGunController>();
         rb = GetComponent<Rigidbody2D>();
-        StartCoroutine(EnableColliderOnLanding());
+        StartCoroutine(EnableColliderOnLanding(type));
     }
 
     private void Update()
@@ -63,7 +65,7 @@ public class GravityGunBehaviour : ProjectileBehaviour
     }
 
 
-    private IEnumerator EnableColliderOnLanding()
+    private IEnumerator EnableColliderOnLanding(int type)
     {
         while (!hasLanded)
         {
@@ -72,6 +74,10 @@ public class GravityGunBehaviour : ProjectileBehaviour
                 hasLanded = true;
                 rb.linearVelocity = Vector2.zero;
                 rb.bodyType = RigidbodyType2D.Kinematic;
+                if(type == 0)
+                    FindFirstObjectByType<GravityGunController>().liveOutGrenades.Add(gameObject);
+                else
+                    FindFirstObjectByType<GravityGunController>().liveInGrenades.Add(gameObject);
                 yield break;
             }
             yield return null;
@@ -81,16 +87,20 @@ public class GravityGunBehaviour : ProjectileBehaviour
     public void Explode()
     {
         if(hasLanded)
-            Impulse(true);
+            Impulse(0);
     }
     public void Implode()
     {
         if(hasLanded)
-            Impulse(false);
+            Impulse(1);
     }
-    private void Impulse(bool impulseType)
+    private void Impulse(int impulseType)
     {
-        if(impulseType == true)
+        if(impulseType == 0)
+            FindFirstObjectByType<GravityGunController>().liveOutGrenades.RemoveAt(0);
+        else
+            FindFirstObjectByType<GravityGunController>().liveInGrenades.RemoveAt(0);
+        if(impulseType == 0)
         {
             var child = Instantiate(push, transform.position, Quaternion.identity);
             child.GetComponent<GrenadeSprite>().Init(damage, magnitude, impulseType);
