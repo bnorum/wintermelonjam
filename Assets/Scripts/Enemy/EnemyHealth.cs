@@ -7,8 +7,8 @@ public class EnemyHealth : MonoBehaviour
     //assign these in prefab
     public float maxHealth;
     public float currentHealth;
-
-
+    public float experienceValue;
+    public GameObject xpOrb;
     public GameLogic gameLogic;
 
     void Start()
@@ -23,11 +23,13 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             gameLogic.activeEnemies.Remove(gameObject);
+            Vector3 xpPosition = gameObject.transform.position;
+            Quaternion xpRotation = gameObject.transform.rotation;
             Destroy(gameObject);
+            GameObject xp = Instantiate(xpOrb, xpPosition, xpRotation);
+            xp.GetComponent<xpOrb>().Init(experienceValue);
+            
         }
     }
 
-    
-
-    
 }

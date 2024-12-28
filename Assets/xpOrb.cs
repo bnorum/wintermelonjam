@@ -2,8 +2,12 @@ using UnityEngine;
 
 public class xpOrb : MonoBehaviour
 {
-    public int value = 1;
     public float destroyAfterSeconds = 20f;
+    public float value;
+    public void Init(float enemyValue)
+    {
+        value = enemyValue;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
