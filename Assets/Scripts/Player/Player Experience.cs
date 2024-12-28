@@ -4,13 +4,13 @@ public class PlayerExperience : MonoBehaviour
 {
     //assign these in prefab
     public float maxExperience;
-    private float currentExperience;
+    public float currentExperience;
 
     void Start()
     {
         currentExperience = 0;
     }
-    public void OnCollisionEnter2D(Collision2D collision) {
+    public void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.tag == "XP")
         {
             Debug.Log("proper collision");
