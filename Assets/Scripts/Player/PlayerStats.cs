@@ -27,6 +27,8 @@ public class PlayerStats : MonoBehaviour
     public int maxAmmo = 6;
     public int ammo = 6;
     public float returnSpeed = 10f;
+
+    public float tempModifier = 5f;
     private void Awake()
     {
         if (LoadingParameters.weaponAbility == 0) {

@@ -20,6 +20,12 @@ public class GrenadeSprite : MonoBehaviour
         impulseType = inputImpulseType;
     }
 
+    void OnDestroy()
+    {
+        damagedEnemies.Clear();
+    }
+
+
     void Update()
     {
         ContactFilter2D filter = new ContactFilter2D().NoFilter();
@@ -42,7 +48,8 @@ public class GrenadeSprite : MonoBehaviour
                 if(impulseType == 0)
                 {
                     Debug.LogWarning("pushing");
-                    obj.GetComponent<EnemyMovement>().AddMovement(direction, magnitude);
+                    magnitude = direction.x + direction.y;
+                    obj.GetComponent<EnemyMovement>().PushEnemy(direction, magnitude*PlayerStats.Singleton.tempModifier);
                 }
                 else
                 {
