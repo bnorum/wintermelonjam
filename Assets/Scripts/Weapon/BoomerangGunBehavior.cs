@@ -5,6 +5,7 @@ public class BoomerangGunBehavior : ProjectileBehaviour
     BoomerangGunController bc;
     Rigidbody2D rb;
     bool recalled = false;
+    public GameObject recallHitbox;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
@@ -14,6 +15,8 @@ public class BoomerangGunBehavior : ProjectileBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = direction * bc.speed;
         
+        recallHitbox = transform.GetChild(0).gameObject;
+
     }
 
     // Update is called once per frame
@@ -33,7 +36,7 @@ public class BoomerangGunBehavior : ProjectileBehaviour
 
     public void ReturnToPlayer() {
         recalled = true;
-        
+        recallHitbox.SetActive(true);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
