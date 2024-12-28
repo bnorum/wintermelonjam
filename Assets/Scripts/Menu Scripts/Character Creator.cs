@@ -43,6 +43,9 @@ public class CharacterCreator : MonoBehaviour
 
     private void OnGameStart()
     {
+        LoadingParameters.movementAbility = currentMovement;
+        LoadingParameters.weaponAbility = currentWeapon;
+
         UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
     }
 
