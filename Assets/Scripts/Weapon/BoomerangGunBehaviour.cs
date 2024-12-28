@@ -14,7 +14,7 @@ public class BoomerangGunBehaviour : ProjectileBehaviour
         bc = FindFirstObjectByType<BoomerangGunController>();
 
         rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = direction * bc.speed;
+        rb.linearVelocity = direction * PlayerStats.Singleton.speed;
         
         recallHitbox = transform.GetChild(0).gameObject;
         sprite = transform.GetChild(1).gameObject;
@@ -32,7 +32,7 @@ public class BoomerangGunBehaviour : ProjectileBehaviour
         
         if (recalled) {
             Vector2 directionToPlayer = (bc.transform.position - transform.position).normalized;
-            rb.linearVelocity = directionToPlayer * bc.returnSpeed;
+            rb.linearVelocity = directionToPlayer * PlayerStats.Singleton.returnSpeed;
             sprite.transform.Rotate(0, 0, 10);
         }
     }
@@ -55,7 +55,7 @@ public class BoomerangGunBehaviour : ProjectileBehaviour
             var eh = collision.gameObject.GetComponent<EnemyHealth>();
             var enemyMovement = collision.gameObject.GetComponent<EnemyMovement>();
             StartCoroutine(enemyMovement.Knockback(rb.linearVelocity/15, (rb.linearVelocity.magnitude/20)));
-            eh.currentHealth -= bc.damage;
+            eh.currentHealth -= PlayerStats.Singleton.damage;
         }
     }
 }

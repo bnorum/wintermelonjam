@@ -3,7 +3,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Movement Settings")]
-    public float speed = 5f;
     Rigidbody2D rb;
     public Vector2 movement; //probably shouldnt be public, need it for now
 
@@ -42,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        rb.linearVelocity= new Vector2(movement.x * speed, movement.y * speed);
+        float currentSpeed = PlayerStats.Singleton.speed;
+        rb.linearVelocity= new Vector2(movement.x * currentSpeed, movement.y * currentSpeed);
     }
 }

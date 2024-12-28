@@ -3,19 +3,22 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     //assign these in prefab
-    public float maxHealth;
     public float currentHealth;
     public float invincibilityTime;
+    public float invincibilityDuration;
+
 
     void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = PlayerStats.Singleton.maxHealth;
+        invincibilityDuration = PlayerStats.Singleton.invincibilityDuration;
     }
 
     // Update is called once per frame
     void Update()
     {
-        invincibilityTime -= Time.deltaTime;
+        if(invincibilityTime >= 0)
+            invincibilityTime -= Time.deltaTime;
 
         if (currentHealth <= 0)
         {
@@ -29,7 +32,8 @@ public class PlayerHealth : MonoBehaviour
         {
             float damage = collision.gameObject.GetComponent<EnemyHealth>().damage;
             currentHealth -= damage;
-            invincibilityTime = 0.5f;
+            invincibilityTime = invincibilityDuration;
         }
     }
+
 }

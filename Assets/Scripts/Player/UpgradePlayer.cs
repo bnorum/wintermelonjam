@@ -6,19 +6,17 @@ using UnityEngine;
 public class PlayerUpgrade : ScriptableObject
 {
     [Header("Upgrade Variables")]
+    [Tooltip("Upgrade Type:\n1: Additive \n2: Multiplicative \n3: Enable Bool")]
+    [Range(1,3)]
+    public int upgradeType;
     public string upgradeName;
     public string description;
 
-    public Sprite upgradeImage;
+    public Sprite upgradeSprite;
 
     public string affectedVariable;
-    public string affectedScript;
 
-    [Header("Only have one set to true, additive or multiplicative. Not Both")]
-    public bool additive;
-    public int additiveAmount;
-    public bool multiplicative;
-    public float multiplicativeAmount;
+    public float amount;
 
 
 }

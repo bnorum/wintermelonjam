@@ -16,31 +16,30 @@ public class UpgradeMenu : MonoBehaviour
     public TextMeshProUGUI name3;
     public Button select3;
     public Image image3;
-    private PlayerExperience pE;
+    public PlayerExperience pE;
 
     void Start()
     {
         select1.onClick.AddListener(On1Click);
         select2.onClick.AddListener(On2Click);
         select3.onClick.AddListener(On3Click);
-        pE = GetComponent<PlayerExperience>();
     }
 
     private void On1Click()
     {
-       pE.ReceiveUpgrade(1);
+       pE.ReceiveUpgrade(0);
        gameObject.SetActive(false);
     }
 
     private void On2Click()
     {
-        pE.ReceiveUpgrade(2);
+        pE.ReceiveUpgrade(1);
         gameObject.SetActive(false);
     }
 
     private void On3Click()
     {
-        pE.ReceiveUpgrade(3);
+        pE.ReceiveUpgrade(2);
         gameObject.SetActive(false);
     }
 

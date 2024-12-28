@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93fa261c095c7c145830cbc98e9b7be4, type: 3}
-  m_Name: P_IncreaseHealth
+  m_Name: HealthIncrease
   m_EditorClassIdentifier: 
-  mod: 1
+  upgradeType: 1
   upgradeName: Health Increase
   description: increases base health by 20 points.
+  upgradeSprite: {fileID: 1709132548577384259, guid: b9795af14b568a34b854cdf0bb0fd083, type: 3}
   affectedVariable: maxHealth
-  additive: 1
-  additiveAmount: 20
-  multiplicative: 0
-  multiplicativeAmount: 0
+  amount: 20

@@ -45,10 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 8262753899718983031, guid: ad3b362be07dae843abd513159f1e0d2, type: 3}
-  damage: 2
-  pierce: 0
-  speed: 3
-  cooldownDuration: 2
 --- !u!1 &5362032968490654826
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,6 +60,7 @@ GameObject:
   - component: {fileID: 1310382471089368678}
   - component: {fileID: 6858700391402683700}
   - component: {fileID: 3279702450590127133}
+  - component: {fileID: 3111347690843950255}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -182,7 +179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3416d749b5fee4588db3e31bc254d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
   movement: {x: 0, y: 0}
   mouseposition: {x: 0, y: 0, z: 0}
 --- !u!58 &1310382471089368678
@@ -233,9 +229,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29be4bb8bf8a5d04ca82aa8bc8e7fda4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
   currentHealth: 0
   invincibilityTime: 0
+  invincibilityDuration: 0
 --- !u!114 &3279702450590127133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +252,30 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d95b763cd0b7a8b4b9e45be5caac6eec, type: 2}
   - {fileID: 11400000, guid: 0fd1d1929c0656b4eb3e8388f481944f, type: 2}
   - {fileID: 11400000, guid: 4f288594e075dfa4da73bc0896362263, type: 2}
+  upgradeMenu: {fileID: 0}
+--- !u!114 &3111347690843950255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362032968490654826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b14345453a972f646a04daac9b8c5a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  maxHealth: 100
+  invincibilityDuration: 0.5
+  usingBoomberang: 0
+  usingTriangle: 0
+  damage: 5
+  pierce: 2
+  cooldownDuration: 2
+  maxAmmo: 6
+  ammo: 6
+  returnSpeed: 10
 --- !u!1 &7136621798117872676
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,10 +321,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 2271046836425912758, guid: 9d8ded6eaee6f9e4f9a3efcb435a4b43, type: 3}
-  damage: 2
-  pierce: 0
-  speed: 3
-  cooldownDuration: 2
-  maxAmmo: 6
   ammo: 6
-  returnSpeed: 50

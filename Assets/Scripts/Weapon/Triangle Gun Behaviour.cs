@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TriangleGunBehaviour : ProjectileBehaviour
@@ -9,14 +10,14 @@ public class TriangleGunBehaviour : ProjectileBehaviour
     {
         base.Start();
         tc = FindFirstObjectByType<TriangleGunController>();
-        piercesRemaining = tc.pierce;
+        piercesRemaining = PlayerStats.Singleton.pierce;
     }
 
     // Update is called once per frame
     void Update()
     {
         var rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = direction * tc.speed;
+        rb.linearVelocity = direction * PlayerStats.Singleton.speed;
 
         if (piercesRemaining < 0)
         {
@@ -29,7 +30,7 @@ public class TriangleGunBehaviour : ProjectileBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             var eh = collision.gameObject.GetComponent<EnemyHealth>();
-            eh.currentHealth -= tc.damage;
+            eh.currentHealth -= PlayerStats.Singleton.damage;
 
             var bulletRigidbody = GetComponent<Rigidbody2D>();
 

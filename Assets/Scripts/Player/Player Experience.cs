@@ -12,9 +12,9 @@ public class PlayerExperience : MonoBehaviour
     public float maxExperience;
     public float currentExperience;
 
-    public List<ScriptableObject> upgrades = new List<ScriptableObject>();
-    private List<ScriptableObject> localUpgrades = new List<ScriptableObject>();
-    private List<ScriptableObject> savedUpgrades = new List<ScriptableObject>();
+    public List<PlayerUpgrade> upgrades = new List<PlayerUpgrade>();
+    private List<PlayerUpgrade> localUpgrades = new List<PlayerUpgrade>();
+    private List<PlayerUpgrade> savedUpgrades = new List<PlayerUpgrade>();
 
     public UpgradeMenu upgradeMenu;
     bool canUpdate = true;
@@ -39,103 +39,88 @@ public class PlayerExperience : MonoBehaviour
         }
     }
 
-    private void GiveUpgrades()
+private void GiveUpgrades()
+{
+    canUpdate = false;
+    localUpgrades = new List<PlayerUpgrade>(upgrades);
+    for (int i = 1; i <= 3; i++)
     {
-        canUpdate = false;
-        localUpgrades = new List<ScriptableObject>(upgrades);
-        for (int i = 0; i < 3; i++)
-        {
-            int choice = UnityEngine.Random.Range(0, localUpgrades.Count);
-            ScriptableObject selectedUpgrade = localUpgrades[choice];
+        int choice = UnityEngine.Random.Range(0, localUpgrades.Count);
+        PlayerUpgrade selectedUpgrade = localUpgrades[choice];
+        upgradeMenu.SetUpgrade(i, selectedUpgrade.upgradeName, selectedUpgrade.upgradeSprite);
+        Debug.Log($"Upgrade {i}: {selectedUpgrade.upgradeName}");
 
-            if (selectedUpgrade is PlayerUpgrade playerUpgrade)
-            {
-                upgradeMenu.SetUpgrade(i, playerUpgrade.upgradeName, playerUpgrade.upgradeImage);
-            }
-            else if (selectedUpgrade is WeaponUpgrade weaponUpgrade)
-            {
-                upgradeMenu.SetUpgrade(i, weaponUpgrade.upgradeName, weaponUpgrade.upgradeImage);
-            }
-            savedUpgrades.Add(selectedUpgrade);
-            localUpgrades.RemoveAt(choice);
-        }
-
-        Time.timeScale = 0;
-        upgradeMenu.gameObject.SetActive(true);
+        savedUpgrades.Add(selectedUpgrade);
+        localUpgrades.RemoveAt(choice);
     }
+    Time.timeScale = 0;
+    upgradeMenu.gameObject.SetActive(true);
+    localUpgrades.Clear();
+}
 
     public void ReceiveUpgrade(int choice)
     {
-        ScriptableObject selectedUpgrade = savedUpgrades[choice];
-        if (selectedUpgrade is PlayerUpgrade upgrade)
+        Debug.Log($"Player Choice: {choice}. Associated Upgrade: {savedUpgrades[choice].upgradeName}");
+        // Validate the index
+        if (choice < 0 || choice >= savedUpgrades.Count)
         {
-            string affectedScript = upgrade.affectedScript;
-            string affectedVariable = upgrade.affectedVariable;  
-            Component targetComponent = GetComponent(affectedScript);
-            if (targetComponent != null)
-            {
-                var targetField = targetComponent.GetType().GetField(affectedVariable);
-                var targetProperty = targetComponent.GetType().GetProperty(affectedVariable);
-
-                if (targetField != null)
-                {
-                    object currentValue = targetField.GetValue(targetComponent);
-                    if (upgrade.additive)
-                    {
-                        if (currentValue is int currentInt)
-                        {
-                            targetField.SetValue(targetComponent, currentInt + upgrade.additiveAmount);
-                        }
-                        else if (currentValue is float currentFloat)
-                        {
-                            targetField.SetValue(targetComponent, currentFloat + upgrade.additiveAmount);
-                        }
-                    }
-                    else if (upgrade.multiplicative)
-                    {
-                        if (currentValue is int currentInt)
-                        {
-                            targetField.SetValue(targetComponent, (int)(currentInt * upgrade.multiplicativeAmount));
-                        }
-                        else if (currentValue is float currentFloat)
-                        {
-                            targetField.SetValue(targetComponent, currentFloat * upgrade.multiplicativeAmount);
-                        }
-                    }
-                }
-                else if (targetProperty != null && targetProperty.CanWrite)
-                {
-                    object currentValue = targetProperty.GetValue(targetComponent);
-                    if (upgrade.additive)
-                    {
-                        if (currentValue is int currentInt)
-                        {
-                            targetProperty.SetValue(targetComponent, currentInt + upgrade.additiveAmount);
-                        }
-                        else if (currentValue is float currentFloat)
-                        {
-                            targetProperty.SetValue(targetComponent, currentFloat + upgrade.additiveAmount);
-                        }
-                    }
-                    else if (upgrade.multiplicative)
-                    {
-                        if (currentValue is int currentInt)
-                        {
-                            targetProperty.SetValue(targetComponent, (int)(currentInt * upgrade.multiplicativeAmount));
-                        }
-                        else if (currentValue is float currentFloat)
-                        {
-                            targetProperty.SetValue(targetComponent, currentFloat * upgrade.multiplicativeAmount);
-                        }
-                    }
-                }
-            }
+            Debug.LogError($"Invalid upgrade choice index: {choice}. List count: {savedUpgrades.Count}");
+            return;
         }
+
+        // Cast the selected upgrade
+        PlayerUpgrade upgradeComponent = savedUpgrades[choice] as PlayerUpgrade;
+
+        if (upgradeComponent == null)
+        {
+            Debug.LogError("Selected upgrade is not a PlayerUpgrade!");
+            return;
+        }
+
+        string affectedVar = upgradeComponent.affectedVariable;
+
+        // Get the field from PlayerStats
+        var fieldInfo = typeof(PlayerStats).GetField(affectedVar, System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic);
+
+        if (fieldInfo == null)
+        {
+            Debug.LogError($"{affectedVar} doesn't exist in PlayerStats.");
+            return;
+        }
+
+        // Get the current value of the field
+        object currentValue = fieldInfo.GetValue(PlayerStats.Singleton);
+
+        // Ensure the value is numeric
+        if (currentValue is float currentFloat)
+        {
+            float newValue;
+
+            if (upgradeComponent.upgradeType == 1) // Additive upgrade
+            {
+                newValue = currentFloat + upgradeComponent.amount;
+            }
+            else if (upgradeComponent.upgradeType == 2) // Multiplicative upgrade
+            {
+                newValue = currentFloat * upgradeComponent.amount;
+            }
+            else //will add bool support
+            {
+                return; 
+            }
+
+            fieldInfo.SetValue(PlayerStats.Singleton, newValue);
+
+            Debug.LogWarning($"Upgraded {affectedVar}: {currentFloat} -> {newValue}");
+        }
+        savedUpgrades.Clear();
         Time.timeScale = 1;
         upgradeMenu.gameObject.SetActive(false);
         currentExperience = 0f;
         canUpdate = true;
     }
+
+
     
 
 }

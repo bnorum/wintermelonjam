@@ -6,18 +6,15 @@ public class WeaponController : MonoBehaviour
 {
     [Header("Base Weapon Class")]
     public GameObject prefab;
-    public float damage;
-    public int pierce;
-    public float speed;
-    public float cooldownDuration;
-    float cooldown;
+    private float cooldown;
     protected PlayerMovement pm;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
         pm = FindFirstObjectByType<PlayerMovement>();
-        cooldown = cooldownDuration;
+        cooldown = PlayerStats.Singleton.cooldownDuration;
+
     }
 
     // Update is called once per frame
@@ -33,6 +30,6 @@ public class WeaponController : MonoBehaviour
 
     protected virtual void Shoot()
     {
-        cooldown = cooldownDuration;
+        cooldown = PlayerStats.Singleton.cooldownDuration;
     }
 }

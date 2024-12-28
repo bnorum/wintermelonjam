@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93fa261c095c7c145830cbc98e9b7be4, type: 3}
-  m_Name: P_IncreaseInvincibility
+  m_Name: InvincibilityIncrease
   m_EditorClassIdentifier: 
+  upgradeType: 1
   upgradeName: Increase Invincibility Time
   description: +1 second of invincibility when hit
-  affectedVariable: invincibilityTime
-  affectedScript: PlayerHealth
-  additive: 1
-  additiveAmount: 1
-  multiplicative: 0
-  multiplicativeAmount: 0
+  upgradeSprite: {fileID: 8438930697898722258, guid: 5720dc3528ae60d419241c787fe6e9a6, type: 3}
+  affectedVariable: invincibilityDuration
+  amount: 1

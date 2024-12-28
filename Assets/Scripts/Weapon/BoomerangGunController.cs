@@ -4,13 +4,16 @@ public class BoomerangGunController : WeaponController
 {
 
     [Header("Boomerang Gun Settings")]
-    public int maxAmmo = 6;
-    public int ammo = 6;
-    public float returnSpeed = 10f;
+    private int maxAmmo;
+    public int ammo;
+    private float returnSpeed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
         base.Start();
+        maxAmmo = PlayerStats.Singleton.maxAmmo;
+        returnSpeed = PlayerStats.Singleton.returnSpeed;
+        ammo = maxAmmo;
     }
 
     protected override void Update()

@@ -9,15 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3985dc406b691c141b049237da0486d3, type: 3}
-  m_Name: B_IncreaseAmmo
+  m_Script: {fileID: 11500000, guid: 93fa261c095c7c145830cbc98e9b7be4, type: 3}
+  m_Name: AmmoIncrease
   m_EditorClassIdentifier: 
-  weapon: 1
+  upgradeType: 1
   upgradeName: +1 Ammo
-  description: Increases ammunition by 1
+  description: +1 Max Ammo
+  upgradeSprite: {fileID: 1298082695912347347, guid: e21e858cecf99dd4d9f6fd47b7fd2581, type: 3}
   affectedVariable: maxAmmo
-  affectedScript: BoomerangGunController
-  additive: 1
-  additiveAmount: 1
-  multiplicative: 0
-  multiplicativeAmount: 0
+  amount: 1
