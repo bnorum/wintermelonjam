@@ -9,7 +9,7 @@ public class PlayerUpgrade : ScriptableObject
     public string upgradeName;
     public string description;
 
-    public Image upgradeImage;
+    public Sprite upgradeImage;
 
     public string affectedVariable;
     public string affectedScript;
