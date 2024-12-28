@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Movement Settings")]
@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 mouseposition;
     private Camera mainCamera;
 
+    private bool isDashing = false;
 
     void Start()
     {
@@ -20,6 +21,11 @@ public class PlayerMovement : MonoBehaviour
     {
         InputMovement();
         InputMouse();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(Dash());
+        }
     }
 
     void FixedUpdate()
@@ -42,6 +48,25 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {
         float currentSpeed = PlayerStats.Singleton.speed;
-        rb.linearVelocity= new Vector2(movement.x * currentSpeed, movement.y * currentSpeed);
+        if (!isDashing) rb.linearVelocity= new Vector2(movement.x * currentSpeed, movement.y * currentSpeed);
+    }
+
+    IEnumerator Dash() 
+    {
+        float dashSpeed = PlayerStats.Singleton.speed * 2;
+        float dashTime = PlayerStats.Singleton.dashTime;
+        float dashCooldown = PlayerStats.Singleton.dashCooldown;
+        float dashTimer = 0;
+        isDashing = true;
+        Vector2 dashDirection = movement;
+        rb.linearVelocity = dashDirection * dashSpeed;
+        while (dashTimer < dashTime)
+        {
+            dashTimer += Time.deltaTime;
+            yield return null;
+        }
+        isDashing = false;
+        rb.linearVelocity = Vector2.zero;
+
     }
 }

@@ -46,7 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1381418215432091721, guid: 147b7e387708455438d99d48c4e63906, type: 3}
   LaunchSpeed: 10
-  gravity: -9.8
 --- !u!1 &4733759703464206915
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,7 +105,6 @@ GameObject:
   - component: {fileID: 4475171314094871284}
   - component: {fileID: 1310382471089368678}
   - component: {fileID: 6858700391402683700}
-  - component: {fileID: 3279702450590127133}
   - component: {fileID: 3111347690843950255}
   m_Layer: 0
   m_Name: Player
@@ -280,26 +278,6 @@ MonoBehaviour:
   currentHealth: 0
   invincibilityTime: 0
   invincibilityDuration: 0
---- !u!114 &3279702450590127133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5362032968490654826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86fe06c64d0ac584aa3c729c3627e148, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentExperience: 0
-  upgrades:
-  - {fileID: 11400000, guid: 69cbe4695dab98d459807684d4bcfe8e, type: 2}
-  - {fileID: 11400000, guid: f63fdeca82b4ac94f9391ee2666af857, type: 2}
-  - {fileID: 11400000, guid: d95b763cd0b7a8b4b9e45be5caac6eec, type: 2}
-  - {fileID: 11400000, guid: 9b5cd081c0e1d964492bb9716d22d9e7, type: 2}
-  - {fileID: 11400000, guid: 826c6628275534c45b0c52a4d669b163, type: 2}
-  upgradeMenu: {fileID: 0}
 --- !u!114 &3111347690843950255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,6 +291,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  dashSpeed: 0
+  dashTime: 0
+  dashCooldown: 0
   maxHealth: 100
   invincibilityDuration: 0.5
   maxXp: 0

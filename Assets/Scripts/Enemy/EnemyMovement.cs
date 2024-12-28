@@ -8,7 +8,7 @@ public class EnemyMovement : MonoBehaviour
     private Transform player;
     public float moveSpeed;
     public float weight;
-    public bool isRanged;
+    public float range;
     Rigidbody2D rb;
     private bool displaced = false;
 
@@ -39,12 +39,12 @@ public class EnemyMovement : MonoBehaviour
         {
             // Move toward the player
             
-            if (!isRanged)
+            if (range <= 0)
             {
                 Vector2 direction = (player.position - transform.position).normalized;
                 rb.linearVelocity = direction * moveSpeed;
             } else {
-                if (Vector2.Distance(player.position, transform.position) > 5)
+                if (Vector2.Distance(player.position, transform.position) > range)
                 {
                     Vector2 direction = (player.position - transform.position).normalized;
                     rb.linearVelocity = direction * moveSpeed;

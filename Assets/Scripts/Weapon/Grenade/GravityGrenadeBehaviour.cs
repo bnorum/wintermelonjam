@@ -114,7 +114,6 @@ public class GravityGunBehaviour : ProjectileBehaviour
             }
             Destroy(gameObject);
         }
-        if(impulseType == true)
-            gameObject.
+        
     }
 }

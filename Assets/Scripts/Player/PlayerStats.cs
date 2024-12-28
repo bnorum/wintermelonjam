@@ -7,6 +7,9 @@ public class PlayerStats : MonoBehaviour
 
     [Header("Player Movement Related Stats")]
     public float speed;
+    public float dashTime;
+    public float dashCooldown;
+
     [Header("Player Health Related Stats")]
     public float maxHealth;
     public float invincibilityDuration;
