@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7034702789159081846}
   - component: {fileID: 3396406948750350080}
   m_Layer: 0
-  m_Name: Big Enemy
+  m_Name: Enemy 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,6 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   weight: 2
+  isRanged: 0
 --- !u!114 &3396406948750350080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,4 +201,5 @@ MonoBehaviour:
   maxHealth: 5
   currentHealth: 0
   experienceValue: 10
+  damage: 5
   xpOrb: {fileID: 8067498843416175384, guid: 6f87672ba965bdf4b8b6a4a8fd925f1a, type: 3}

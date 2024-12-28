@@ -5,14 +5,23 @@ using UnityEngine;
 public class GameLogic : MonoBehaviour
 {
     [Header("Enemy Spawning Settings")]
-    public List<GameObject> enemyPrefabs = new List<GameObject>();
     public Transform player;
     public float spawnInterval = 2f;
     public float spawnDistance = 10f;
     public int enemyLimit = 40;
     private Camera mainCamera;
     public List<GameObject> activeEnemies = new List<GameObject>();
+    [Header("Enemy Pools")]
+    public List<GameObject> enemyPool1 = new List<GameObject>();
+    public List<GameObject> enemyPool2 = new List<GameObject>();
+    public List<GameObject> enemyPool3 = new List<GameObject>();
+    public List<GameObject> enemyPool4 = new List<GameObject>();
+    public List<GameObject> enemyPool5 = new List<GameObject>();
+
+    [Header("Equip Manager")]
     public List<GameObject> playerWeapons  = new List<GameObject>();
+    [Header("Game Attributes")]
+    public float timer = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,7 +41,7 @@ public class GameLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+      timer += Time.deltaTime;
     }
     IEnumerator SpawnEnemies()
     {
@@ -73,7 +82,24 @@ public class GameLogic : MonoBehaviour
                 spawnPosition = new Vector2(xMax, UnityEngine.Random.Range(yMin, yMax));
                 break;
         }
-        GameObject enemy = Instantiate(enemyPrefabs[UnityEngine.Random.Range(0,2)], spawnPosition, Quaternion.identity);
+
+        //ugly code below
+        GameObject enemy = null;
+        if (timer is >= 0 and < 60) {
+            enemy = Instantiate(enemyPool1[UnityEngine.Random.Range(0,enemyPool1.Count)], spawnPosition, Quaternion.identity);
+        }
+        else if (timer is >= 60 and < 150) {
+            enemy = Instantiate(enemyPool2[UnityEngine.Random.Range(0,enemyPool2.Count)], spawnPosition, Quaternion.identity);
+        }
+        else if (timer is >= 150 and < 300) {
+            enemy = Instantiate(enemyPool3[UnityEngine.Random.Range(0,enemyPool3.Count)], spawnPosition, Quaternion.identity);
+        }
+        else if (timer is >= 300 and < 450) {
+            enemy = Instantiate(enemyPool4[UnityEngine.Random.Range(0,enemyPool4.Count)], spawnPosition, Quaternion.identity);
+        }
+        else if (timer is >= 450) {
+            enemy = Instantiate(enemyPool5[UnityEngine.Random.Range(0,enemyPool5.Count)], spawnPosition, Quaternion.identity);
+        }
         enemy.GetComponent<EnemyMovement>().Initialize(player);
         activeEnemies.Add(enemy);
     }

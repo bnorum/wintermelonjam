@@ -54,7 +54,7 @@ public class BoomerangGunBehaviour : ProjectileBehaviour
         {
             var eh = collision.gameObject.GetComponent<EnemyHealth>();
             var enemyMovement = collision.gameObject.GetComponent<EnemyMovement>();
-            StartCoroutine(enemyMovement.Knockback(direction, (rb.linearVelocity.magnitude/20)));
+            StartCoroutine(enemyMovement.Knockback(rb.linearVelocity/15, (rb.linearVelocity.magnitude/20)));
             eh.currentHealth -= bc.damage;
         }
     }

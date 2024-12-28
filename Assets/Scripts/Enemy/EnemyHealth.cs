@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
     public float experienceValue;
+    public float damage;
     public GameObject xpOrb;
     private GameLogic gameLogic;
 

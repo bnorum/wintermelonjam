@@ -27,7 +27,8 @@ public class PlayerHealth : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy" && invincibilityTime <= 0)
         {
-            currentHealth -= 1;
+            float damage = collision.gameObject.GetComponent<EnemyHealth>().damage;
+            currentHealth -= damage;
             invincibilityTime = 0.5f;
         }
     }
