@@ -10,11 +10,14 @@ public class PlayerMovement : MonoBehaviour
     private Camera mainCamera;
 
     private bool isDashing = false;
-    private float dashCooldown;
+    private float dashCooldownFull;
+    public float dashCooldown;
+
 
     void Start()
     {
-        dashCooldown = PlayerStats.Singleton.dashCooldown;
+        dashCooldown = PlayerStats.Singleton.cooldownDuration;
+        dashCooldownFull = dashCooldown;
         rb = GetComponent<Rigidbody2D>();
         mainCamera = Camera.main;
     }
@@ -24,11 +27,13 @@ public class PlayerMovement : MonoBehaviour
         InputMovement();
         InputMouse();
 
+        dashCooldownFull = PlayerStats.Singleton.cooldownDuration; //only here to refresh for upgrades
         dashCooldown -= Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.Space) && dashCooldown <= 0)
         {
             StartCoroutine(Dash());
+            dashCooldown = dashCooldownFull;
         }
     }
 
@@ -59,7 +64,6 @@ public class PlayerMovement : MonoBehaviour
     {
         float dashSpeed = PlayerStats.Singleton.speed * 2;
         float dashTime = PlayerStats.Singleton.dashTime;
-        float dashCooldown = PlayerStats.Singleton.dashCooldown;
         float dashTimer = 0;
         isDashing = true;
         Vector2 dashDirection = movement;
