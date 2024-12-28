@@ -109,7 +109,7 @@ private void GiveUpgrades()
             }
 
             fieldInfo.SetValue(PlayerStats.Singleton, newValue);
-
+            PlayerStats.Singleton.collectedUpgrades.Add(savedUpgrades[choice]);
             Debug.LogWarning($"Upgraded {affectedVar}: {currentFloat} -> {newValue}");
         }
         savedUpgrades.Clear();
