@@ -12,6 +12,11 @@ public class GravityGunController : MonoBehaviour
     public float outwardMaxAmmo = 1;
     private float outwardAmmo;
 
+    private float cooldownIn;
+    private float cooldownDurationIn;
+    private float cooldownOut;
+    private float cooldownDurationOut;
+
     public float LaunchSpeed = 10f;
     public List<GameObject> liveInGrenades = new List<GameObject>();
     public List<GameObject> liveOutGrenades = new List<GameObject>();
@@ -19,24 +24,37 @@ public class GravityGunController : MonoBehaviour
     void Start()
     {
         pm = FindFirstObjectByType<PlayerMovement>();
+
         inwardAmmo = inwardMaxAmmo;
         outwardAmmo = outwardMaxAmmo;
+
+        cooldownDurationIn = PlayerStats.Singleton.cooldownDuration;
+        cooldownIn = cooldownDurationIn;
+        cooldownDurationOut = PlayerStats.Singleton.cooldownDuration;
+        cooldownOut = cooldownDurationOut;
+        
     }
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && liveOutGrenades.Count > 0) {
             Trigger(0);
         }
-        else if(Input.GetMouseButtonDown(0) && outwardAmmo > 0){
+        else if(Input.GetMouseButtonDown(0) && outwardAmmo > 0 && cooldownOut <= 0){
             Shoot(0);
         }
         else if(Input.GetMouseButtonDown(1) && liveInGrenades.Count > 0) {
             Trigger(1);
         }
-        else if(Input.GetMouseButtonDown(1) && inwardAmmo > 0)
+        else if(Input.GetMouseButtonDown(1) && inwardAmmo > 0 && cooldownIn <= 0)
         {
             Shoot(1);
         }
+
+        //here so that it updates when we get upgrades
+        cooldownDurationIn = PlayerStats.Singleton.cooldownDuration;
+        cooldownDurationOut = PlayerStats.Singleton.cooldownDuration;
+        cooldownIn -= Time.deltaTime;
+        cooldownOut -= Time.deltaTime;
 
     }
     void Shoot(int type)
@@ -55,10 +73,17 @@ public class GravityGunController : MonoBehaviour
             Vector2 velocity = direction * LaunchSpeed;
             grenadeRb.linearVelocity = velocity;
             spawnedGrenade.GetComponent<GravityGunBehaviour>()?.Init(pm.mouseposition, type);
-            if(type == 0)
+            if(type == 0) {
                 outwardAmmo = 0;
-            else
+                cooldownOut = cooldownDurationOut;
+
+            }
+                
+            else {
                 inwardAmmo = 0;
+                cooldownIn = cooldownDurationIn;
+            }
+                
         }
     }
     protected void Trigger(int type)

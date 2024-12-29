@@ -17,13 +17,14 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(invincibilityTime >= 0)
-            invincibilityTime -= Time.deltaTime;
+        if(invincibilityTime >= 0) invincibilityTime -= Time.deltaTime;
 
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
+        if (currentHealth > PlayerStats.Singleton.maxHealth) currentHealth = PlayerStats.Singleton.maxHealth;
+        currentHealth += PlayerStats.Singleton.regeneration * Time.deltaTime;
     }
 
     public void OnCollisionStay2D(Collision2D collision) {

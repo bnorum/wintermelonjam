@@ -6,6 +6,9 @@ public class xpOrb : MonoBehaviour
     public float value;
     
     Rigidbody2D rb;
+
+    public GameObject player;
+
     public void Init(float enemyValue)
     {
         value = enemyValue;
@@ -18,6 +21,16 @@ public class xpOrb : MonoBehaviour
         {
             Destroy(gameObject, destroyAfterSeconds);
         } 
+
+        player = GameObject.Find("Player");
+    }
+
+    void Update() {
+        if (Vector2.Distance(transform.position, player.transform.position) <= PlayerStats.Singleton.xpSuckRange)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, Time.deltaTime * 5 * PlayerStats.Singleton.xpSuckRange / 2);
+        }
+
     }
 
 }

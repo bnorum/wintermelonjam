@@ -17,11 +17,13 @@ public class GameLogic : MonoBehaviour
     public List<GameObject> enemyPool3 = new List<GameObject>();
     public List<GameObject> enemyPool4 = new List<GameObject>();
     public List<GameObject> enemyPool5 = new List<GameObject>();
+    public GameObject bossArenaPrefab;
 
     [Header("Equip Manager")]
     public List<GameObject> playerWeapons  = new List<GameObject>();
     [Header("Game Attributes")]
     public float timer = 0;
+    private bool bossArenaSpawned = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,6 +45,12 @@ public class GameLogic : MonoBehaviour
     {
         timer += Time.deltaTime;
 
+
+        if (timer >= 500 && !bossArenaSpawned)
+        {
+            SpawnBossArena();
+            bossArenaSpawned = true;
+        }
         if (timer >= 500)
         {
             foreach (var enemy in activeEnemies)
@@ -118,5 +126,12 @@ public class GameLogic : MonoBehaviour
         }
         enemy.GetComponent<EnemyMovement>().Initialize(player);
         activeEnemies.Add(enemy);
+    }
+
+
+    void SpawnBossArena()
+    {
+        GameObject bossArena = Instantiate(bossArenaPrefab, player.transform.position, Quaternion.identity);
+        bossArena.GetComponent<BossArena>().Initialize();
     }
 }

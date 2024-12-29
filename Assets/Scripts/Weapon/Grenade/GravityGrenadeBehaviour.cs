@@ -15,7 +15,7 @@ public class GravityGunBehaviour : ProjectileBehaviour
     private Rigidbody2D rb;
     private Collider2D projectileCollider;
     public float magnitude = 5f;
-    public float damage = 1f;
+    public float damage;
     private bool hasLanded = false;
     private Transform projectileTransform;
     GravityGunController gc;
@@ -27,6 +27,7 @@ public class GravityGunBehaviour : ProjectileBehaviour
         targetPosition = target;
         projectileTransform = transform;
         type = inputType;
+        damage = PlayerStats.Singleton.damage;
     }
     protected override void Start()
     {

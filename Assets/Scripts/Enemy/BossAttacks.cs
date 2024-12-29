@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BossAttacks : EnemyRangedAttack
 {
-    
+    public BossArena bossArena;
 
     public override void AttemptRangedAttack()
     {
@@ -59,12 +59,23 @@ public class BossAttacks : EnemyRangedAttack
     {
         Debug.Log("Boss is teleporting randomly!");
 
-        Vector3 randomPosition = new Vector3(
-            Random.Range(transform.position.x - 10, transform.position.x + 10),
-            Random.Range(transform.position.y - 10, transform.position.y + 10),
-            transform.position.z
-        );
+        Vector3 randomPosition;
+        do
+        {
+            randomPosition = new Vector3(
+                Random.Range(transform.position.x - 10, transform.position.x + 10),
+                Random.Range(transform.position.y - 10, transform.position.y + 10),
+                transform.position.z
+            );
+        } while (!bossArena.IsPositionInsideArena(randomPosition) || Vector3.Distance(randomPosition, player.transform.position) < 3.0f);
 
         transform.position = randomPosition;
+    }
+
+    public void DoNothing()
+    {
+        if (cooldown <= 0) {
+            cooldown = maxCooldown * 2;
+        }
     }
 }

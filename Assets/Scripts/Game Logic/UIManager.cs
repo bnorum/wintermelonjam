@@ -45,8 +45,8 @@ public class UIManager : MonoBehaviour
         float xpPercent = Mathf.Clamp01(playerExperience.currentExperience / PlayerStats.Singleton.maxXp);
         healthBar.sizeDelta = new Vector2(maxHealthWidth * healthPercent, healthBar.sizeDelta.y);
         xpBar.sizeDelta = new Vector2(maxXpWidth * xpPercent, xpBar.sizeDelta.y);
-        healthText.text = playerHealth.currentHealth + "/" + PlayerStats.Singleton.maxHealth;
-        xpText.text = playerExperience.currentExperience + "/" + PlayerStats.Singleton.maxXp;
+        healthText.text = Mathf.FloorToInt(playerHealth.currentHealth) + "/" + Mathf.FloorToInt(PlayerStats.Singleton.maxHealth);
+        xpText.text = playerExperience.currentExperience + "/" + Mathf.FloorToInt(PlayerStats.Singleton.maxXp);
         timerText.text = "Time: " + GetTime(FindFirstObjectByType<GameLogic>().timer);
         //currencyText.text = "Currency: " + playerHealth.currency;
         if (boomerangGunController != null) boomerangAmmoText.text = "Boomerang Ammo: " + boomerangGunController.ammo;

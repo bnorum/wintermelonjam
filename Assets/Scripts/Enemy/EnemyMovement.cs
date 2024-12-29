@@ -67,17 +67,19 @@ public class EnemyMovement : MonoBehaviour
                     GetComponent<EnemyRangedAttack>().AttemptRangedAttack();
                 } else {
                     rb.linearVelocity = Vector2.zero;
-                    int choice = UnityEngine.Random.Range(0, 2);
+                    int choice = UnityEngine.Random.Range(0, 3);
                     if (choice == 0)
                     {
                         GetComponent<BossAttacks>().AttemptRangedAttack();
                     } else if (choice == 1){
-                        if (UnityEngine.Random.Range(0, 200) == 0)
+                        if (UnityEngine.Random.Range(0, 400) == 0)
                         {
                             GetComponent<BossAttacks>().TeleportRandomly();
                         }
                         GetComponent<BossAttacks>().SuperAttack();
-                    } 
+                    }  else if (choice == 2) {
+                        GetComponent<BossAttacks>().DoNothing();
+                    }
 
                 }
             }

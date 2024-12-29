@@ -62,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Dash() 
     {
+        GetComponent<PlayerHealth>().invincibilityTime = PlayerStats.Singleton.dashTime;
         float dashSpeed = PlayerStats.Singleton.speed * 2;
         float dashTime = PlayerStats.Singleton.dashTime;
         float dashTimer = 0;
