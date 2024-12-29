@@ -12,6 +12,8 @@ public class EnemyMovement : MonoBehaviour
     Rigidbody2D rb;
     private bool displaced = false;
     private bool pulled = false;
+    private bool pushed = false;
+    float pushedTimer;
     Vector2 tempDirection;
     float tempSpeed;
     public bool isBoss = false;
@@ -29,22 +31,39 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         //dirty hack to get displaced off cooldown
-        if (displaced)
+        if(pushed)
+        {
+            pushedTimer -= Time.deltaTime;
+            if (pushedTimer <= 0)
+            {
+                pushed = false;
+                pushedTimer = 1f;
+            }
+        }
+        
+        if (displaced && !pushed)
         {
             displacedtimer -= Time.deltaTime;
             if (displacedtimer <= 0)
             {
                 displaced = false;
                 pulled = false;
-                displacedtimer = .2f;
+                displacedtimer = .3f;
+                tempDirection = Vector2.zero;
+                tempSpeed = 0f;
+
             }
         }
         if(displaced && pulled)
         {
             rb.linearVelocity = tempDirection * tempSpeed;
         }
+        if(displaced && pushed)
+        {
+            rb.linearVelocity = tempDirection * tempSpeed;
+        }
 
-        if (player != null && !displaced)
+        if (player != null && !displaced && !pushed)
         {
             // Move toward the player
             
@@ -77,8 +96,8 @@ public class EnemyMovement : MonoBehaviour
                 }
             }
         }
-        tempDirection *= .98f;
-        tempSpeed *= .98f;
+        tempDirection *= .99f;
+        tempSpeed *= .99f;
     }
 
     public IEnumerator Knockback(Vector2 direction, float strength, float duration, bool isDisplaced) {
@@ -90,8 +109,9 @@ public class EnemyMovement : MonoBehaviour
 
     }
 
-    public void AddMovement(Vector2 direction, float strength)
+    public void PushEnemy(Vector2 direction, float strength)
     {
+        pushed = true;
         tempDirection = direction;
         tempSpeed = strength;
     }

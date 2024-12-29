@@ -1219,28 +1219,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentExperience: 0
-  upgradesForTriangleGun:
-  - {fileID: 11400000, guid: fd720d90d0257e140b013498545f3971, type: 2}
-  - {fileID: 11400000, guid: f140442d04804f149b9d10d38dcb7975, type: 2}
-  - {fileID: 11400000, guid: 826c6628275534c45b0c52a4d669b163, type: 2}
-  - {fileID: 11400000, guid: 69cbe4695dab98d459807684d4bcfe8e, type: 2}
-  - {fileID: 11400000, guid: f63fdeca82b4ac94f9391ee2666af857, type: 2}
-  - {fileID: 11400000, guid: d95b763cd0b7a8b4b9e45be5caac6eec, type: 2}
-  upgradesForBoomerang:
-  - {fileID: 11400000, guid: 9b5cd081c0e1d964492bb9716d22d9e7, type: 2}
-  - {fileID: 11400000, guid: d67aaa57d75ca3a44a69f8618a579db8, type: 2}
-  - {fileID: 11400000, guid: f140442d04804f149b9d10d38dcb7975, type: 2}
-  - {fileID: 11400000, guid: 826c6628275534c45b0c52a4d669b163, type: 2}
-  - {fileID: 11400000, guid: 69cbe4695dab98d459807684d4bcfe8e, type: 2}
-  - {fileID: 11400000, guid: f63fdeca82b4ac94f9391ee2666af857, type: 2}
-  - {fileID: 11400000, guid: d95b763cd0b7a8b4b9e45be5caac6eec, type: 2}
-  upgradesForGrenade:
-  - {fileID: 11400000, guid: 9b5cd081c0e1d964492bb9716d22d9e7, type: 2}
-  - {fileID: 11400000, guid: f140442d04804f149b9d10d38dcb7975, type: 2}
-  - {fileID: 11400000, guid: 826c6628275534c45b0c52a4d669b163, type: 2}
-  - {fileID: 11400000, guid: 69cbe4695dab98d459807684d4bcfe8e, type: 2}
-  - {fileID: 11400000, guid: f63fdeca82b4ac94f9391ee2666af857, type: 2}
-  - {fileID: 11400000, guid: d95b763cd0b7a8b4b9e45be5caac6eec, type: 2}
+  upgradesForTriangleGun: []
+  upgradesForBoomerang: []
+  upgradesForGrenade: []
   upgradeMenu: {fileID: 2038995697}
 --- !u!1 &826839748
 GameObject:
@@ -1490,9 +1471,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2660398274292474150, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
+      propertyPath: prefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2660398274292474150, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
       propertyPath: gravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2660398274292474150, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
+      propertyPath: inProjectile
+      value: 
+      objectReference: {fileID: 1381418215432091721, guid: 5232c1578701fe44380fe1bc75e47acc, type: 3}
+    - target: {fileID: 2660398274292474150, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
+      propertyPath: outProjectile
+      value: 
+      objectReference: {fileID: 1381418215432091721, guid: 147b7e387708455438d99d48c4e63906, type: 3}
     - target: {fileID: 2840064133842233429, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
       propertyPath: speed
       value: 50
