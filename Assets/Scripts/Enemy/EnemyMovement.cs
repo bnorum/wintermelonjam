@@ -17,9 +17,10 @@ public class EnemyMovement : MonoBehaviour
     Vector2 tempDirection;
     float tempSpeed;
     public bool isBoss = false;
+    float displacedTimerAmount = .2f;
 
     //dirty hack to get displaced off cooldown
-    float displacedtimer = .2f;
+    float displacedtimer;
 
     public void Initialize(Transform playerTarget)
     {
@@ -30,27 +31,17 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        //dirty hack to get displaced off cooldown
-        if(pushed)
-        {
-            pushedTimer -= Time.deltaTime;
-            if (pushedTimer <= 0)
-            {
-                pushed = false;
-                pushedTimer = 1f;
-            }
-        }
-        
-        if (displaced && !pushed)
+
+        if (displaced)
         {
             displacedtimer -= Time.deltaTime;
             if (displacedtimer <= 0)
             {
                 displaced = false;
                 pulled = false;
-                displacedtimer = .3f;
                 tempDirection = Vector2.zero;
-                tempSpeed = 0f;
+                tempSpeed = 0;
+                displacedtimer = displacedTimerAmount;
 
             }
         }
@@ -58,11 +49,6 @@ public class EnemyMovement : MonoBehaviour
         {
             rb.linearVelocity = tempDirection * tempSpeed;
         }
-        if(displaced && pushed)
-        {
-            rb.linearVelocity = tempDirection * tempSpeed;
-        }
-
         if (player != null && !displaced && !pushed)
         {
             // Move toward the player
@@ -96,8 +82,6 @@ public class EnemyMovement : MonoBehaviour
                 }
             }
         }
-        tempDirection *= .99f;
-        tempSpeed *= .99f;
     }
 
     public IEnumerator Knockback(Vector2 direction, float strength, float duration, bool isDisplaced) {
@@ -111,15 +95,16 @@ public class EnemyMovement : MonoBehaviour
 
     public void PushEnemy(Vector2 direction, float strength)
     {
-        pushed = true;
-        tempDirection = direction;
-        tempSpeed = strength;
+        displaced = true;
+        displacedtimer = displacedTimerAmount;
+        rb.AddForce(direction * strength, ForceMode2D.Impulse);
     }
     
     public void PullEnemy(Transform point, float strength)
     {
         displaced = true;
         pulled = true;
+        displacedtimer = displacedTimerAmount;
         tempDirection = (point.position - transform.position).normalized;
         tempSpeed = strength;
     }

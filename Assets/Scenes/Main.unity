@@ -1456,6 +1456,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3111347690843950255, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
+      propertyPath: tempModifier
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3111347690843950255, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
       propertyPath: boomerangSpiky
       value: 0
       objectReference: {fileID: 0}
@@ -1706,6 +1710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPaused: 0
   pauseCanvas: {fileID: 1339514327}
+  upgradeText: {fileID: 0}
 --- !u!114 &1339514325
 MonoBehaviour:
   m_ObjectHideFlags: 0

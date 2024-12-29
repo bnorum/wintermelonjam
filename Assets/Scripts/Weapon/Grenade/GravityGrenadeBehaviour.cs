@@ -14,7 +14,7 @@ public class GravityGunBehaviour : ProjectileBehaviour
     private Vector2 startPosition;
     private Rigidbody2D rb;
     private Collider2D projectileCollider;
-    public float magnitude = 50f;
+    public float magnitude = 5f;
     public float damage = 1f;
     private bool hasLanded = false;
     private Transform projectileTransform;
@@ -87,7 +87,11 @@ public class GravityGunBehaviour : ProjectileBehaviour
     public void Explode()
     {
         if(hasLanded)
+        {
+            magnitude *= 1.5f;
             Impulse(0);
+            magnitude /= 1.5f;
+        }
     }
     public void Implode()
     {

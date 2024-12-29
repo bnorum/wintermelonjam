@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7034702789159081846}
   - component: {fileID: 3396406948750350080}
   - component: {fileID: 4293770769717374485}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -188,6 +188,7 @@ MonoBehaviour:
   moveSpeed: 2
   weight: 2
   range: 0
+  isBoss: 0
 --- !u!114 &3396406948750350080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,7 +232,7 @@ GameObject:
   - component: {fileID: 3481239491556314112}
   - component: {fileID: 4838861836372360328}
   - component: {fileID: 2624622433746167347}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +333,7 @@ GameObject:
   - component: {fileID: 8092548586899614671}
   - component: {fileID: 3815239746214539075}
   - component: {fileID: 5353630500987388870}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: HealthBarValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +408,7 @@ GameObject:
   - component: {fileID: 1153682505064042413}
   - component: {fileID: 4873268276160552813}
   - component: {fileID: 7646202932191493703}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -484,7 +485,7 @@ GameObject:
   - component: {fileID: 5325400138320277640}
   - component: {fileID: 2916808809721217836}
   - component: {fileID: 6936379652531500347}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: HealthBarFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
