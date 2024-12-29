@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 70e9c169f54bcd040918bfbfc2f174bb
+guid: 0c5966926387ae849a162a26046e98d5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6661921701841663311
-    second: Play Button MainMenu-Sheet_0
+      213: -4405477364533177942
+    second: MM_Quit-Sheet_0
   - first:
-      213: -6365934589868500117
-    second: Play Button MainMenu-Sheet_1
+      213: 7902499607249729284
+    second: MM_Quit-Sheet_1
   - first:
-      213: -2986703117740218925
-    second: Play Button MainMenu-Sheet_2
+      213: -8027445082863804343
+    second: MM_Quit-Sheet_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -57,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1
+  spritePixelsToUnits: 60
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -106,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Play Button MainMenu-Sheet_0
+      name: MM_Quit-Sheet_0
       rect:
         serializedVersion: 2
-        x: 374
-        y: 58
-        width: 95
-        height: 48
+        x: 0
+        y: 0
+        width: 100
+        height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,20 +121,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1ba034032891c83a0800000000000000
-      internalID: -6661921701841663311
+      spriteID: aa1d9fc9da99cd2c0800000000000000
+      internalID: -4405477364533177942
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Play Button MainMenu-Sheet_1
+      name: MM_Quit-Sheet_1
       rect:
         serializedVersion: 2
-        x: 885
-        y: 59
-        width: 99
-        height: 46
+        x: 100
+        y: 0
+        width: 100
+        height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b6b148bf738a7a7a0800000000000000
-      internalID: -6365934589868500117
+      spriteID: 407b8c706815bad60800000000000000
+      internalID: 7902499607249729284
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Play Button MainMenu-Sheet_2
+      name: MM_Quit-Sheet_2
       rect:
         serializedVersion: 2
-        x: 1399
-        y: 59
-        width: 102
-        height: 46
+        x: 200
+        y: 0
+        width: 100
+        height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,8 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3d5ea81b6591d86d0800000000000000
-      internalID: -2986703117740218925
+      spriteID: 94062f57a39c89090800000000000000
+      internalID: -8027445082863804343
       vertices: []
       indices: 
       edges: []
@@ -175,7 +175,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 27380fba3ec374f40974898a4ef3a080
     internalID: 0
     vertices: []
     indices: 
@@ -185,9 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Play Button MainMenu-Sheet_0: -6661921701841663311
-      Play Button MainMenu-Sheet_1: -6365934589868500117
-      Play Button MainMenu-Sheet_2: -2986703117740218925
+      MM_Quit-Sheet_0: -4405477364533177942
+      MM_Quit-Sheet_1: 7902499607249729284
+      MM_Quit-Sheet_2: -8027445082863804343
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
