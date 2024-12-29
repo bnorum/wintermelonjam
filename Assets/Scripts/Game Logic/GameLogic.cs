@@ -24,6 +24,7 @@ public class GameLogic : MonoBehaviour
     [Header("Game Attributes")]
     public float timer = 0;
     private bool bossArenaSpawned = false;
+    private bool bossCanvasShown = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -57,8 +58,8 @@ public class GameLogic : MonoBehaviour
                 Destroy(enemy);
             }
             activeEnemies.Clear();
-            //show BOSS APPROACHING!!
-            
+            if (!bossCanvasShown) StartCoroutine(ShowBossCanvas());
+
         }
 
     }
@@ -134,5 +135,14 @@ public class GameLogic : MonoBehaviour
     {
         GameObject bossArena = Instantiate(bossArenaPrefab, player.transform.position, Quaternion.identity);
         bossArena.GetComponent<BossArena>().Initialize();
+    }
+
+    IEnumerator ShowBossCanvas()
+    {
+        GameObject bossCanvas = GameObject.Find("BossCanvas");
+        bossCanvas.GetComponent<Canvas>().enabled = true;
+        bossCanvasShown = true;
+        yield return new WaitForSeconds(10);
+        bossCanvas.GetComponent<Canvas>().enabled = false;
     }
 }

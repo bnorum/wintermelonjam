@@ -10,7 +10,7 @@ public class TriangleGunBehaviour : ProjectileBehaviour
     {
         base.Start();
         tc = FindFirstObjectByType<TriangleGunController>();
-        piercesRemaining = PlayerStats.Singleton.pierce;
+        piercesRemaining = (int)PlayerStats.Singleton.pierce;
     }
 
     // Update is called once per frame

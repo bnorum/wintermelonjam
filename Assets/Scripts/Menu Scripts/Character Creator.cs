@@ -85,7 +85,7 @@ public class CharacterSelect : MonoBehaviour
 
     void OnGravityGunClick()
     {
-        LoadingParameters.weaponAbility = 1;
+        LoadingParameters.weaponAbility = 2;
         weaponNameText.gameObject.SetActive(false);
         descriptionText.gameObject.SetActive(false);
         TitleText.text = "Weapon Selected:\n Impulser";

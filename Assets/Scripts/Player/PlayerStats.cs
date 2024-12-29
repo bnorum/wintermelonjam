@@ -23,7 +23,7 @@ public class PlayerStats : MonoBehaviour
     public bool usingGrenade;
     public float boomerangSpiky;
     public float damage;
-    public int pierce;
+    public float pierce;
     public float cooldownDuration;
     float cooldown;
     public int maxAmmo = 6;
