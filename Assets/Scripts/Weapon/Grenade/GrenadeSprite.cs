@@ -46,7 +46,7 @@ public class GrenadeSprite : MonoBehaviour
                 {
                     Vector2 _direction = (obj.transform.position - transform.position).normalized;
                     float newMagnitude = PlayerStats.Singleton.tempModifier;
-                    obj.GetComponent<EnemyMovement>().PushEnemy(_direction, newMagnitude);   
+                    obj.GetComponent<EnemyMovement>().PushEnemy(_direction, newMagnitude / obj.GetComponent<EnemyMovement>().weight);   
                 }
                 if(impulseType == 1)
                 {
