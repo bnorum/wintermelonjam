@@ -17,6 +17,9 @@ public class GravityGunController : MonoBehaviour
     private float cooldownOut;
     private float cooldownDurationOut;
 
+    public GameObject trianglePrefab;
+    public bool TriangleExperiment = true;
+
     public float LaunchSpeed = 10f;
     public List<GameObject> liveInGrenades = new List<GameObject>();
     public List<GameObject> liveOutGrenades = new List<GameObject>();
@@ -36,13 +39,24 @@ public class GravityGunController : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && liveOutGrenades.Count > 0) {
-            Trigger(0);
+        if (!TriangleExperiment) {
+            
+            if (Input.GetMouseButtonDown(0) && liveOutGrenades.Count > 0) {
+                Trigger(0);
+            }
+            else if(Input.GetMouseButtonDown(0) && outwardAmmo > 0 && cooldownOut <= 0){
+                Shoot(0);
+            }
+
         }
-        else if(Input.GetMouseButtonDown(0) && outwardAmmo > 0 && cooldownOut <= 0){
-            Shoot(0);
+        else {
+            if(Input.GetMouseButtonDown(0) && outwardAmmo > 0 && cooldownOut <= 0)
+            {
+                ShootTriangle();
+            }
         }
-        else if(Input.GetMouseButtonDown(1) && liveInGrenades.Count > 0) {
+        
+        if(Input.GetMouseButtonDown(1) && liveInGrenades.Count > 0) {
             Trigger(1);
         }
         else if(Input.GetMouseButtonDown(1) && inwardAmmo > 0 && cooldownIn <= 0)
@@ -99,6 +113,19 @@ public class GravityGunController : MonoBehaviour
             liveInGrenades[0].GetComponent<GravityGunBehaviour>().Implode();
             inwardAmmo = 1;
         }
+    }
+
+    void ShootTriangle() 
+    {
+        cooldownOut = cooldownDurationOut;
+        pm = FindFirstObjectByType<PlayerMovement>();
+        Vector3 playerPosition = transform.position;
+        Vector3 direction = (pm.mouseposition - playerPosition).normalized;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; //Sets angle of projectile spawning aiming towards player's current mouse position.
+        GameObject spawnedKnife = Instantiate(trianglePrefab, playerPosition, Quaternion.Euler(0, 0, angle));
+
+        spawnedKnife.GetComponent<TriangleGunBehaviour>().SetDirection(direction);
+
     }
 }
 

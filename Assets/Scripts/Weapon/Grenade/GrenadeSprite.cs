@@ -61,7 +61,7 @@ public class GrenadeSprite : MonoBehaviour
                 {
                     Debug.Log("Dealing Damage");
                     EnemyHealth enemyHealth = obj.GetComponent<EnemyHealth>();
-                    enemyHealth.currentHealth -= damage;
+                    enemyHealth.TakeDamage(damage);
                     damagedEnemies.Add(obj.gameObject);
                 }
             }
