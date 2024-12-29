@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Microsoft.Unity.VisualStudio.Editor;
 public class UIManager : MonoBehaviour
 {
     private PlayerHealth playerHealth;

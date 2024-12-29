@@ -113,6 +113,10 @@ private void GiveUpgrades()
             if (upgradeComponent.upgradeType == 1) // Additive upgrade
             {
                 newValue = currentFloat + upgradeComponent.amount;
+                if (affectedVar == "maxHealth")
+                {
+                    GetComponent<PlayerHealth>().currentHealth += 20;
+                }
             }
             else if (upgradeComponent.upgradeType == 2) // Multiplicative upgrade
             {

@@ -1,5 +1,3 @@
-using Microsoft.Unity.VisualStudio.Editor;
-using UnityEditor.EditorTools;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Upgrade", menuName = "ScriptableObjects/New Player Upgrade")]

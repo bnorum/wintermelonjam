@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class GrenadeSprite : MonoBehaviour
@@ -51,7 +50,10 @@ public class GrenadeSprite : MonoBehaviour
                 if(impulseType == 1)
                 {
                     Debug.LogWarning("pulling");
-                    obj.GetComponent<EnemyMovement>().PullEnemy(gameObject.transform, magnitude / obj.GetComponent<EnemyMovement>().weight);
+                    if (Vector2.Distance(obj.transform.position, transform.position) > 0.5f)
+                    {
+                        obj.GetComponent<EnemyMovement>().PullEnemy(gameObject.transform, magnitude / 10 / obj.GetComponent<EnemyMovement>().weight);
+                    }
                 }
 
                 // Apply damage
