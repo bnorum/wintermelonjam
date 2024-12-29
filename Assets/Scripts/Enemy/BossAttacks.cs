@@ -19,13 +19,11 @@ public class BossAttacks : EnemyRangedAttack
             Quaternion rotation30 = Quaternion.Euler(0, 0, 30);
             Quaternion rotationMinus30 = Quaternion.Euler(0, 0, -30);
 
-            // Fire the first additional projectile
             Vector3 direction30 = rotation30 * direction;
             GameObject projectile30 = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             projectile30.GetComponent<EnemyProjectile>().projectileSpeed = projectileSpeed;
             projectile30.GetComponent<EnemyProjectile>().SetDirection(-direction30);
 
-            // Fire the second additional projectile
             Vector3 directionMinus30 = rotationMinus30 * direction;
             GameObject projectileMinus30 = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             projectileMinus30.GetComponent<EnemyProjectile>().projectileSpeed = projectileSpeed;
@@ -50,9 +48,9 @@ public class BossAttacks : EnemyRangedAttack
             };
 
             foreach (Vector3 direction in directions) {
-            GameObject spawnedProjectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-            spawnedProjectile.GetComponent<EnemyProjectile>().projectileSpeed = projectileSpeed;
-            spawnedProjectile.GetComponent<EnemyProjectile>().SetDirection(direction);
+                GameObject spawnedProjectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                spawnedProjectile.GetComponent<EnemyProjectile>().projectileSpeed = projectileSpeed;
+                spawnedProjectile.GetComponent<EnemyProjectile>().SetDirection(direction);
             }
         }
     }

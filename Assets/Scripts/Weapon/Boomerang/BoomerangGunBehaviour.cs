@@ -33,7 +33,7 @@ public class BoomerangGunBehaviour : ProjectileBehaviour
             rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, Time.deltaTime);
         }
         
-        if (recalled) {
+        if (recalled && bc != null) {
             Vector2 directionToPlayer = (bc.transform.position - transform.position).normalized;
             rb.linearVelocity = directionToPlayer * PlayerStats.Singleton.returnSpeed;
             sprite.transform.Rotate(0, 0, 10);

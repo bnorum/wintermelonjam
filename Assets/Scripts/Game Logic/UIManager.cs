@@ -50,9 +50,10 @@ public class UIManager : MonoBehaviour
         timerText.text = "Time: " + GetTime(FindFirstObjectByType<GameLogic>().timer);
         //currencyText.text = "Currency: " + playerHealth.currency;
         if (boomerangGunController != null) boomerangAmmoText.text = "Boomerang Ammo: " + boomerangGunController.ammo;
-
-        dashIndicator.fillAmount =  (PlayerStats.Singleton.cooldownDuration - FindFirstObjectByType<PlayerMovement>().dashCooldown) / PlayerStats.Singleton.cooldownDuration;
-
+        if (FindFirstObjectByType<PlayerMovement>() != null) {
+            dashIndicator.fillAmount =  (PlayerStats.Singleton.cooldownDuration - FindFirstObjectByType<PlayerMovement>().dashCooldown) / PlayerStats.Singleton.cooldownDuration;
+        }
+        
     }
 
     string GetTime(float time) {

@@ -23,10 +23,9 @@ public class EnemyHealth : MonoBehaviour
             gameLogic.activeEnemies.Remove(gameObject);
             Vector3 xpPosition = gameObject.transform.position;
             Quaternion xpRotation = gameObject.transform.rotation;
-            Destroy(gameObject);
             GameObject xp = Instantiate(xpOrb, xpPosition, xpRotation);
             xp.GetComponent<xpOrb>().Init(experienceValue);
-            
+            Destroy(gameObject);
         }
     }
 
