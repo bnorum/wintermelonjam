@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: eda662738d7c0ef4eb5d9dada334ce2c
+guid: da3acbcd137a1cb4fbce01c8c325127a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2056580502566223389
-    second: Magnet_Final_0
+      213: -2999979409240521807
+    second: Magnet_Final-Sheet_0
+  - first:
+      213: -2784138193597300539
+    second: Magnet_Final-Sheet_1
+  - first:
+      213: -278509529927148297
+    second: Magnet_Final-Sheet_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Magnet_Final_0
+      name: Magnet_Final-Sheet_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 3
-        width: 26
-        height: 26
+        x: 0
+        y: 0
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +121,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3e1cb8cddee8573e0800000000000000
-      internalID: -2056580502566223389
+      spriteID: 1b38bb23f9eed56d0800000000000000
+      internalID: -2999979409240521807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magnet_Final-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c0090d5011cc59d0800000000000000
+      internalID: -2784138193597300539
       vertices: []
       indices: 
       edges: []
@@ -125,7 +153,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b0e739aa0a5a37e49b9ae7a53b1a29b6
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +163,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Magnet_Final_0: -2056580502566223389
+      Magnet_Final-Sheet_0: -2999979409240521807
+      Magnet_Final-Sheet_1: -2784138193597300539
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
