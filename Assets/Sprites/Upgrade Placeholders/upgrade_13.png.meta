@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b9795af14b568a34b854cdf0bb0fd083
+guid: 8162100d0a884e846a69a58bcd501b25
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1709132548577384259
-    second: UpgradeRedArrow_0
+      213: 4109535688556081656
+    second: upgrade_13_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UpgradeRedArrow_0
+      name: upgrade_13_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 2
-        width: 26
-        height: 27
+        x: 2
+        y: 0
+        width: 14
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 34753006ffe08b710800000000000000
-      internalID: 1709132548577384259
+      spriteID: 8f1fc2c7fe0080930800000000000000
+      internalID: 4109535688556081656
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      UpgradeRedArrow_0: 1709132548577384259
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

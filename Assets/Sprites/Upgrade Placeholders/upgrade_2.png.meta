@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 5720dc3528ae60d419241c787fe6e9a6
+guid: c644b596d2a7ad44f8884b0780d0a62b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8438930697898722258
-    second: UpgradeBlueArrow_0
+      213: 4662713246244735542
+    second: upgrade_2_0
+  - first:
+      213: -3541457864192050959
+    second: upgrade_2_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UpgradeBlueArrow_0
+      name: upgrade_2_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 2
-        width: 26
-        height: 27
+        x: 0
+        y: 6
+        width: 8
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2d3846422ca1d1570800000000000000
-      internalID: 8438930697898722258
+      spriteID: 63a0deb4ef845b040800000000000000
+      internalID: 4662713246244735542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: upgrade_2_1
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 3
+        width: 7
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f8b1d106d63adec0800000000000000
+      internalID: -3541457864192050959
       vertices: []
       indices: 
       edges: []
@@ -134,8 +159,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      UpgradeBlueArrow_0: 8438930697898722258
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
