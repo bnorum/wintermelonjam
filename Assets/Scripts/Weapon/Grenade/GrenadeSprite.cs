@@ -55,7 +55,7 @@ public class GrenadeSprite : MonoBehaviour
                 }
 
                 // Apply damage
-                if(damagedEnemies.Contains(obj.gameObject))
+                if(!damagedEnemies.Contains(obj.gameObject))
                 {
                     Debug.Log("Dealing Damage");
                     EnemyHealth enemyHealth = obj.GetComponent<EnemyHealth>();
