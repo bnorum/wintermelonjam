@@ -41,7 +41,17 @@ public class GameLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      timer += Time.deltaTime;
+        timer += Time.deltaTime;
+
+        if (timer >= 500)
+        {
+            foreach (var enemy in activeEnemies)
+            {
+                Destroy(enemy);
+            }
+            activeEnemies.Clear();
+        }
+
     }
     IEnumerator SpawnEnemies()
     {
@@ -97,8 +107,10 @@ public class GameLogic : MonoBehaviour
         else if (timer is >= 300 and < 450) { //7 min 30 sec
             enemy = Instantiate(enemyPool4[UnityEngine.Random.Range(0,enemyPool4.Count)], spawnPosition, Quaternion.identity);
         }
-        else if (timer is >= 450) { //7 min 30 sec+
+        else if (timer is >= 450 and < 500) { //7 min 30 sec+
             enemy = Instantiate(enemyPool5[UnityEngine.Random.Range(0,enemyPool5.Count)], spawnPosition, Quaternion.identity);
+        } else if (timer >= 500) {
+            return;
         }
         enemy.GetComponent<EnemyMovement>().Initialize(player);
         activeEnemies.Add(enemy);

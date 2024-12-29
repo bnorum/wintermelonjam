@@ -85,9 +85,13 @@ public class EnemyMovement : MonoBehaviour
                     if (choice == 0)
                     {
                         GetComponent<BossAttacks>().AttemptRangedAttack();
-                    } else {
+                    } else if (choice == 1){
+                        if (UnityEngine.Random.Range(0, 200) == 0)
+                        {
+                            GetComponent<BossAttacks>().TeleportRandomly();
+                        }
                         GetComponent<BossAttacks>().SuperAttack();
-                    }
+                    } 
 
                 }
             }

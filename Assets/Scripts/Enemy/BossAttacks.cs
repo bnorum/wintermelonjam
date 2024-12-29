@@ -55,6 +55,18 @@ public class BossAttacks : EnemyRangedAttack
             spawnedProjectile.GetComponent<EnemyProjectile>().SetDirection(direction);
             }
         }
+    }
 
+    public void TeleportRandomly()
+    {
+        Debug.Log("Boss is teleporting randomly!");
+
+        Vector3 randomPosition = new Vector3(
+            Random.Range(transform.position.x - 10, transform.position.x + 10),
+            Random.Range(transform.position.y - 10, transform.position.y + 10),
+            transform.position.z
+        );
+
+        transform.position = randomPosition;
     }
 }
