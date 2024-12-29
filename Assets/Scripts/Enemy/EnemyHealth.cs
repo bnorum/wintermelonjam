@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -29,4 +30,16 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        StartCoroutine(FlashRed());
+    }
+
+    IEnumerator FlashRed()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+    }
 }

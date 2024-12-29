@@ -1,4 +1,6 @@
 using UnityEngine;
+using System;
+using System.Collections;
 
 public class EnemyProjectile : MonoBehaviour
 {
@@ -33,6 +35,7 @@ public class EnemyProjectile : MonoBehaviour
         if (other.CompareTag("Player")) {
             other.GetComponent<PlayerHealth>().currentHealth -= damage;
             Destroy(gameObject);
+            StartCoroutine(other.GetComponent<PlayerHealth>().FlashRed());
         }
     }
 }

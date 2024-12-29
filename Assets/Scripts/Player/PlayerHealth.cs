@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -34,7 +37,15 @@ public class PlayerHealth : MonoBehaviour
             float damage = collision.gameObject.GetComponent<EnemyHealth>().damage;
             currentHealth -= damage;
             invincibilityTime = invincibilityDuration;
+            StartCoroutine(FlashRed());
         }
+    }
+
+    public IEnumerator FlashRed()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
     }
 
 }

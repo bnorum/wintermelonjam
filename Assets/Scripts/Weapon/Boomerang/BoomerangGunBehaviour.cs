@@ -58,7 +58,7 @@ public class BoomerangGunBehaviour : ProjectileBehaviour
             var eh = collision.gameObject.GetComponent<EnemyHealth>();
             var enemyMovement = collision.gameObject.GetComponent<EnemyMovement>();
             StartCoroutine(enemyMovement.Knockback(rb.linearVelocity/15, (rb.linearVelocity.magnitude/20), .2f, true));
-            eh.currentHealth -= PlayerStats.Singleton.damage;
+            eh.TakeDamage(PlayerStats.Singleton.damage);
         }
 
         else if (collision.gameObject.tag == "Enemy" && spikyDamage > 0)
@@ -66,7 +66,7 @@ public class BoomerangGunBehaviour : ProjectileBehaviour
             var eh = collision.gameObject.GetComponent<EnemyHealth>();
             var enemyMovement = collision.gameObject.GetComponent<EnemyMovement>();
             StartCoroutine(enemyMovement.Knockback(rb.linearVelocity/15, (2), .2f, true));
-            eh.currentHealth -= spikyDamage;
+            eh.TakeDamage(spikyDamage);
         }
     }
 }

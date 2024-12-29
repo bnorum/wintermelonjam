@@ -45,7 +45,7 @@ public class GameLogic : MonoBehaviour
         timer += Time.deltaTime;
 
 
-        if (timer >= 500 && !bossArenaSpawned)
+        if (timer >= 510 && !bossArenaSpawned)
         {
             SpawnBossArena();
             bossArenaSpawned = true;
@@ -57,6 +57,8 @@ public class GameLogic : MonoBehaviour
                 Destroy(enemy);
             }
             activeEnemies.Clear();
+            //show BOSS APPROACHING!!
+            
         }
 
     }
