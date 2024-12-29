@@ -29,7 +29,6 @@ public class GameLogic : MonoBehaviour
     {
         mainCamera = Camera.main;
         StartCoroutine(SpawnEnemies());
-        Debug.Log($"Movement Ability Selected: {LoadingParameters.movementAbility}");
         Debug.Log($"Weapon Selected: {LoadingParameters.weaponAbility}");
 
         //equip weapon

@@ -44,8 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e21a844c3a996b448376ce2880f6a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1381418215432091721, guid: 147b7e387708455438d99d48c4e63906, type: 3}
+  inProjectile: {fileID: 0}
+  outProjectile: {fileID: 0}
+  inwardMaxAmmo: 1
+  outwardMaxAmmo: 1
   LaunchSpeed: 10
+  liveInGrenades: []
+  liveOutGrenades: []
 --- !u!1 &4733759703464206915
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 8262753899718983031, guid: ad3b362be07dae843abd513159f1e0d2, type: 3}
+  automatic: 1
 --- !u!1 &5362032968490654826
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +181,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 2426255941197476044, guid: df15e679a49e6d84a96a7cc2f98459ca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -227,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {x: 0, y: 0}
   mouseposition: {x: 0, y: 0, z: 0}
+  dashCooldown: 0
 --- !u!58 &1310382471089368678
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -290,21 +297,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14345453a972f646a04daac9b8c5a42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectedUpgrades: []
   speed: 5
-  dashSpeed: 0
   dashTime: 0
-  dashCooldown: 0
   maxHealth: 100
   invincibilityDuration: 0.5
   maxXp: 0
   usingBoomberang: 0
   usingTriangle: 0
+  usingGrenade: 0
+  boomerangSpiky: 0
   damage: 5
   pierce: 2
   cooldownDuration: 2
   maxAmmo: 6
   ammo: 6
   returnSpeed: 10
+  tempModifier: 5
 --- !u!1 &7136621798117872676
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,4 +359,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 2271046836425912758, guid: 9d8ded6eaee6f9e4f9a3efcb435a4b43, type: 3}
+  automatic: 1
   ammo: 6
+  spikyDamage: 0

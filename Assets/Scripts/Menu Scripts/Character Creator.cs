@@ -1,91 +1,105 @@
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
-using System.Collections.Generic;
-using System;
+using TMPro;
+using UnityEngine.EventSystems;
 
-public class CharacterCreator : MonoBehaviour
+public class CharacterSelect : MonoBehaviour
 {
-    [Header("Menus")]
+    // Assign these in the Unity Inspector
+    public Button MagnetButton;
+    public Button GravityGunButton;
+    public GameObject customization;
     public GameObject mainMenu;
-    public GameObject customizationMenu;
-    
-    public Button gameStart;
     public Button back;
-    [Header("Movement")]
-    public Button leftArrowMovement;
-    public Button rightArrowMovement;
-    public List<Sprite> movementImages = new List<Sprite>();
-    public Image movementSpriteHolder;
-    private int currentMovement = 0;
+    public Button startButton;
+    public TMP_Text descriptionText;
+    public TMP_Text weaponNameText;
+    public TMP_Text TitleText;
 
-    [Header("Weapons")]
-    public Button leftArrowWeapon;
-    public Button rightArrowWeapon;
-    public List<Sprite> weaponImages = new List<Sprite>();
-    public Image weaponSpriteHolder;
-    private int currentWeapon = 0;
+    // Descriptions for the buttons
+    [TextArea]
+    public string MagnetDescription = "Throw magnetic Boomerangs, then recall them to deal damage.";
+    [TextArea]
+    public string GravityGunDescription = "Double Barreled Gravity Gun.\nLeft Click shoots an exploding round, Right Click shoots an imploding round.";
+
+    // Default texts
+    public string DefaultWeaponName = "Default Weapon Name";
+    public string DefaultDescription = "Hover over a button to see its description.";
+
     void Start()
     {
-        gameStart.onClick.AddListener(OnGameStart);
-        back.onClick.AddListener(OnBackClick);
-        leftArrowMovement.onClick.AddListener(OnLeftMovement);
-        rightArrowMovement.onClick.AddListener(OnRightMovement);
-        leftArrowWeapon.onClick.AddListener(OnLeftWeapon);
-        rightArrowWeapon.onClick.AddListener(OnRightWeapon);
+        descriptionText.text = DefaultDescription;
+        weaponNameText.text = DefaultWeaponName;
+        TitleText.gameObject.SetActive(true);
+        AddHoverListeners(MagnetButton, MagnetDescription, "Boomerang");
+        AddHoverListeners(GravityGunButton, GravityGunDescription, "Impulser");
+        MagnetButton.onClick.AddListener(() => OnMagnetClick());
+        GravityGunButton.onClick.AddListener(() => OnGravityGunClick());
+        back.onClick.AddListener(() => OnBackClick());
+        startButton.onClick.AddListener(() => OnStartClick());
     }
 
+    void AddHoverListeners(Button button, string description, string weaponName)
+    {
+        EventTrigger trigger = button.gameObject.AddComponent<EventTrigger>();
+
+        EventTrigger.Entry pointerEnter = new EventTrigger.Entry
+        {
+            eventID = EventTriggerType.PointerEnter
+        };
+        pointerEnter.callback.AddListener((eventData) =>
+        {
+            descriptionText.text = description;
+            weaponNameText.text = weaponName;
+            weaponNameText.gameObject.SetActive(true);
+            descriptionText.gameObject.SetActive(true);
+            TitleText.gameObject.SetActive(false);
+        });
+
+        EventTrigger.Entry pointerExit = new EventTrigger.Entry
+        {
+            eventID = EventTriggerType.PointerExit
+        };
+        pointerExit.callback.AddListener((eventData) =>
+        {
+            descriptionText.text = DefaultDescription;
+            weaponNameText.text = DefaultWeaponName;
+            weaponNameText.gameObject.SetActive(false);
+            descriptionText.gameObject.SetActive(false);
+            TitleText.gameObject.SetActive(true);
+        });
+
+        trigger.triggers.Add(pointerEnter);
+        trigger.triggers.Add(pointerExit);
+    }
+
+    void OnMagnetClick()
+    {
+        LoadingParameters.weaponAbility = 0;
+        weaponNameText.gameObject.SetActive(false);
+        descriptionText.gameObject.SetActive(false);
+        TitleText.text = "Weapon Selected:\n Boomerang";
+        TitleText.gameObject.SetActive(true);
+        startButton.gameObject.SetActive(true);
+    }
+
+    void OnGravityGunClick()
+    {
+        LoadingParameters.weaponAbility = 1;
+        weaponNameText.gameObject.SetActive(false);
+        descriptionText.gameObject.SetActive(false);
+        TitleText.text = "Weapon Selected:\n Impulser";
+        TitleText.gameObject.SetActive(true);
+        startButton.gameObject.SetActive(true);
+    }
     private void OnBackClick()
     {
-        customizationMenu.SetActive(false);
+        customization.SetActive(false);
         mainMenu.SetActive(true);      
     }
-
-    private void OnGameStart()
+    private void OnStartClick()
     {
-        LoadingParameters.movementAbility = currentMovement;
-        LoadingParameters.weaponAbility = currentWeapon;
-
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
-    }
-
-    private void OnRightWeapon()
-    {
-        currentWeapon ++;
-        if(currentWeapon > weaponImages.Count-1)
-        {
-            currentWeapon = 0;
-        }
-        weaponSpriteHolder.sprite = weaponImages[currentWeapon];
-    }
-
-    private void OnLeftWeapon()
-    {
-        currentWeapon --;
-        if(currentWeapon < 0)
-        {
-            currentWeapon = weaponImages.Count-1;
-        }
-        weaponSpriteHolder.sprite = weaponImages[currentWeapon];
-    }
-
-    private void OnRightMovement()
-    {
-        currentMovement ++;
-        if(currentMovement > movementImages.Count-1)
-        {
-            currentMovement = 0;
-        }
-        movementSpriteHolder.sprite = movementImages[currentMovement];
-    }
-
-    private void OnLeftMovement()
-    {
-        currentMovement --;
-        if(currentMovement < 0)
-        {
-            currentMovement = movementImages.Count-1;
-        }
-        movementSpriteHolder.sprite = movementImages[currentMovement];
+        customization.SetActive(false);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main");   
     }
 }

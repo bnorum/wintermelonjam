@@ -8,8 +8,6 @@ public class MainMenu : MonoBehaviour
     [Header("Menus")]
     public GameObject mainMenu;
     public GameObject customizationMenu;
-    public Button playGame;
-    public Button howToPlay;
     public Button credits;
     public Button quit;
 
@@ -18,26 +16,22 @@ public class MainMenu : MonoBehaviour
     {
         mainMenu.SetActive(true);
         customizationMenu.SetActive(false);
-        playGame.onClick.AddListener(OnPlayGameClicked);
-        howToPlay.onClick.AddListener(OnHowToPlayClicked);
+        // startGame.onClick.AddListener(OnStartButtonClicked);
         credits.onClick.AddListener(OnCreditsClicked);
         quit.onClick.AddListener(OnQuitClicked);
     }
 
-    void OnPlayGameClicked()
+    void OnStartButtonClicked()
     {
-        customizationMenu.SetActive(true);
-        mainMenu.SetActive(false);  
-    }
+      //credits
 
-    void OnHowToPlayClicked()
-    {
-        //how to play
     }
 
     void OnCreditsClicked()
     {
-        //credits
+        Debug.Log("OnPlayGameClicked");
+        customizationMenu.SetActive(true);
+        mainMenu.SetActive(false); 
     }
     
     void OnQuitClicked()

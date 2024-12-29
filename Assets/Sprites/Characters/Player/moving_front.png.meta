@@ -1,16 +1,13 @@
 fileFormatVersion: 2
-guid: e1189c491fae8f543ada7235ee3833a2
+guid: df15e679a49e6d84a96a7cc2f98459ca
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5157606167457644682
-    second: Title Border-Sheet_0
+      213: 2426255941197476044
+    second: Rat_frontside-Sheet_0
   - first:
-      213: 8655323643196480022
-    second: Title Border-Sheet_1
-  - first:
-      213: 4152254869574213208
-    second: Title Border-Sheet_2
+      213: -2866832753393100604
+    second: Rat_frontside-Sheet_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -57,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1
+  spritePixelsToUnits: 26
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -106,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Title Border-Sheet_0
+      name: Rat_frontside-Sheet_0
       rect:
         serializedVersion: 2
-        x: 207
-        y: 118
-        width: 294
-        height: 97
+        x: 0
+        y: 0
+        width: 32
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,20 +118,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 67fb25154808c68b0800000000000000
-      internalID: -5157606167457644682
+      spriteID: cc0b1457ceacba120800000000000000
+      internalID: 2426255941197476044
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Title Border-Sheet_1
+      name: Rat_frontside-Sheet_1
       rect:
         serializedVersion: 2
-        x: 717
-        y: 117
-        width: 297
-        height: 98
+        x: 32
+        y: 0
+        width: 32
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,30 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 61a14c0eef2ed1870800000000000000
-      internalID: 8655323643196480022
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Title Border-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 1228
-        y: 119
-        width: 304
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 85e5bd5edc5cf9930800000000000000
-      internalID: 4152254869574213208
+      spriteID: 4c89c87ccc6f638d0800000000000000
+      internalID: -2866832753393100604
       vertices: []
       indices: 
       edges: []
@@ -175,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 233188f3d8668e444a27cedb71e8eaa5
     internalID: 0
     vertices: []
     indices: 
@@ -185,9 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Title Border-Sheet_0: -5157606167457644682
-      Title Border-Sheet_1: 8655323643196480022
-      Title Border-Sheet_2: 4152254869574213208
+      Rat_frontside-Sheet_0: 2426255941197476044
+      Rat_frontside-Sheet_1: -2866832753393100604
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
