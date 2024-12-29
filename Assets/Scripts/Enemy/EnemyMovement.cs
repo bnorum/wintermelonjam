@@ -66,7 +66,9 @@ public class EnemyMovement : MonoBehaviour
                     rb.linearVelocity = Vector2.zero;
                     GetComponent<EnemyRangedAttack>().AttemptRangedAttack();
                 } else {
-                    rb.linearVelocity = Vector2.zero;
+                    //rb.linearVelocity = Vector2.zero;
+                    Vector2 direction = (player.position - transform.position).normalized;
+                    rb.linearVelocity = direction * moveSpeed;
                     int choice = UnityEngine.Random.Range(0, 3);
                     if (choice == 0)
                     {

@@ -51,7 +51,7 @@ public class GrenadeSprite : MonoBehaviour
                 if(impulseType == 1)
                 {
                     Debug.LogWarning("pulling");
-                    obj.GetComponent<EnemyMovement>().PullEnemy(gameObject.transform, magnitude);
+                    obj.GetComponent<EnemyMovement>().PullEnemy(gameObject.transform, magnitude / obj.GetComponent<EnemyMovement>().weight);
                 }
 
                 // Apply damage
