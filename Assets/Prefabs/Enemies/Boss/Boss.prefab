@@ -191,6 +191,9 @@ MonoBehaviour:
   weight: 40
   range: 10
   isBoss: 1
+  animator: {fileID: 6714180724562601221}
+  frontAnimationName: boss_front
+  backAnimationName: boss)back
 --- !u!114 &3396406948750350080
 MonoBehaviour:
   m_ObjectHideFlags: 0

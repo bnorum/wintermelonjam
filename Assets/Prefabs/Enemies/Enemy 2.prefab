@@ -137,6 +137,9 @@ MonoBehaviour:
   weight: 2
   range: 0
   isBoss: 0
+  animator: {fileID: 8362881248038032276}
+  frontAnimationName: green_front
+  backAnimationName: green_back
 --- !u!114 &3396406948750350080
 MonoBehaviour:
   m_ObjectHideFlags: 0

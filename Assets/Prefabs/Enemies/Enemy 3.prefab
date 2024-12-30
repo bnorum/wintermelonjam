@@ -137,6 +137,9 @@ MonoBehaviour:
   weight: 3
   range: 0
   isBoss: 0
+  animator: {fileID: 1844618369730157905}
+  frontAnimationName: red_front
+  backAnimationName: red_back
 --- !u!114 &3396406948750350080
 MonoBehaviour:
   m_ObjectHideFlags: 0

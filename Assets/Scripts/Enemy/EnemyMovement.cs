@@ -18,6 +18,10 @@ public class EnemyMovement : MonoBehaviour
     float tempSpeed;
     public bool isBoss = false;
     float displacedTimerAmount = .2f;
+    public Animator animator;
+    public string frontAnimationName;
+    public string backAnimationName;
+
 
     //dirty hack to get displaced off cooldown
     float displacedtimer;
@@ -31,6 +35,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
+        UpdateAnimation();
 
         if (displaced)
         {
@@ -113,6 +118,14 @@ public class EnemyMovement : MonoBehaviour
         tempSpeed = strength;
     }
 
-
+    void UpdateAnimation()
+    {
+        if(transform.position.y > player.position.y)
+        {
+            animator.Play(frontAnimationName);
+        }
+        else
+            animator.Play(backAnimationName);
+    }
     
 }
