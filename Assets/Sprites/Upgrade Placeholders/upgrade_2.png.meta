@@ -120,9 +120,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 6
-        width: 8
-        height: 9
+        y: 0
+        width: 18
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,33 +137,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: upgrade_2_1
-      rect:
-        serializedVersion: 2
-        x: 9
-        y: 3
-        width: 7
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1f8b1d106d63adec0800000000000000
-      internalID: -3541457864192050959
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2c8f445f26f388841a128a9781db7a73
     internalID: 0
     vertices: []
     indices: 
@@ -174,7 +152,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       upgrade_2_0: 4662713246244735542
-      upgrade_2_1: -3541457864192050959
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

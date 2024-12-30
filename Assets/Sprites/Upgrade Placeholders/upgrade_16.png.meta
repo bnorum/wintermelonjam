@@ -123,9 +123,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1
-        width: 16
-        height: 18
+        y: 0
+        width: 18
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,55 +140,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: upgrade_16_1
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 11
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e24282b5cecc3b800800000000000000
-      internalID: 627070088648336430
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: upgrade_16_2
-      rect:
-        serializedVersion: 2
-        x: 10
-        y: 1
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ebf679c9677777cc0800000000000000
-      internalID: -3713368016426668098
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 78cadc4356658e140a579e8ffc3b8da3
     internalID: 0
     vertices: []
     indices: 
@@ -199,8 +155,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       upgrade_16_0: -3386944714261645014
-      upgrade_16_1: 627070088648336430
-      upgrade_16_2: -3713368016426668098
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

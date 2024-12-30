@@ -1,22 +1,19 @@
 fileFormatVersion: 2
-guid: 164489ae17d062c459931a9b3447637b
+guid: a788befda5cced742981ddcf2241e0b6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5466242895031206388
-    second: Upgrade_Final_Border-Sheet_0
+      213: 2866324638163811051
+    second: Upgrade_Final_Border-Sheet (2)_0
   - first:
-      213: 4216493300974775363
-    second: Upgrade_Final_Border-Sheet_1
+      213: -455625022907746677
+    second: Upgrade_Final_Border-Sheet (2)_1
   - first:
-      213: 7157278568864360333
-    second: Upgrade_Final_Border-Sheet_2
+      213: 6337430506413121933
+    second: Upgrade_Final_Border-Sheet (2)_2
   - first:
-      213: -5209630149331962738
-    second: Upgrade_Final_Border-Sheet_3
-  - first:
-      213: 401581947480045939
-    second: Upgrade_Final_Border-Sheet_4
+      213: 805248958290217313
+    second: Upgrade_Final_Border-Sheet (2)_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -117,118 +114,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4f1865e93fefbdb40800000000000000
-      internalID: 5466242895031206388
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Upgrade_Final_Border-Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 34c6a6a315ef38a30800000000000000
-      internalID: 4216493300974775363
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Upgrade_Final_Border-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d872dafffe2c35360800000000000000
-      internalID: 7157278568864360333
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Upgrade_Final_Border-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e8437e12bfca3b7b0800000000000000
-      internalID: -5209630149331962738
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Upgrade_Final_Border-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 379f1cf47a4b29500800000000000000
-      internalID: 401581947480045939
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Upgrade_Final_Border-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,8 +124,118 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1146cb79965093b4f94f94229776d0af
-      internalID: -233632506
+      spriteID: 5cf8827cb0db1df4faffbb37d877c31a
+      internalID: 737478596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Upgrade_Final_Border-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87c8610f6befc8f43bcf1f5f5f806df0
+      internalID: 2105211220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Upgrade_Final_Border-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d35976c1b03e8914d818c7425a048f6e
+      internalID: -1318512226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Upgrade_Final_Border-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17014025b10568a4ea2693010f53f4e7
+      internalID: 1925014448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Upgrade_Final_Border-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47c3784b0925bdb49ab7dd1dba975e8f
+      internalID: -428479550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Upgrade_Final_Border-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c0804681ae7a774a96cac20b08ddb9c
+      internalID: -876971015
       vertices: []
       indices: 
       edges: []
@@ -247,7 +244,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a861065fe42c93a449b9801426475f39
+    spriteID: 71752b2ff20169c43a1fa49e4458ed6c
     internalID: 0
     vertices: []
     indices: 
@@ -257,12 +254,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Upgrade_Final_Border-Sheet_0: 5466242895031206388
-      Upgrade_Final_Border-Sheet_1: 4216493300974775363
-      Upgrade_Final_Border-Sheet_2: 7157278568864360333
-      Upgrade_Final_Border-Sheet_3: -5209630149331962738
-      Upgrade_Final_Border-Sheet_4: 401581947480045939
-      Upgrade_Final_Border-Sheet_5: -233632506
+      Upgrade_Final_Border-Sheet_0: 737478596
+      Upgrade_Final_Border-Sheet_1: 2105211220
+      Upgrade_Final_Border-Sheet_2: -1318512226
+      Upgrade_Final_Border-Sheet_3: 1925014448
+      Upgrade_Final_Border-Sheet_4: -428479550
+      Upgrade_Final_Border-Sheet_5: -876971015
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

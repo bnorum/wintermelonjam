@@ -116,9 +116,9 @@ TextureImporter:
       name: upgrade_7_0
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 0
-        width: 14
+        width: 18
         height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d2f7c784d6167bd48a54c00f8d4909bc
     internalID: 0
     vertices: []
     indices: 

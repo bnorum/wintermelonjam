@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System;
 public class UpgradeMenu : MonoBehaviour
 {
+
     [Header("Upgrade 1")]
     public TextMeshProUGUI name1;
     public Button select1;
