@@ -3747,12 +3747,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3525899971fd87c45b31952dc985b3ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthText: {fileID: 0}
-  xpText: {fileID: 0}
+  healthText: {fileID: 1121510470}
+  xpText: {fileID: 1272371812}
   healthBar: {fileID: 584397398}
   xpBar: {fileID: 418713232}
   currencyText: {fileID: 0}
-  boomerangAmmoText: {fileID: 0}
+  boomerangAmmoText: {fileID: 553624642}
   timerText: {fileID: 103726205}
   dashIndicator: {fileID: 795349593}
 --- !u!114 &1700464178
