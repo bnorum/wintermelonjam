@@ -48,7 +48,7 @@ public class UIManager : MonoBehaviour
         xpText.text = playerExperience.currentExperience + "/" + Mathf.FloorToInt(PlayerStats.Singleton.maxXp);
         timerText.text = "Time: " + GetTime(FindFirstObjectByType<GameLogic>().timer);
         //currencyText.text = "Currency: " + playerHealth.currency;
-        if (boomerangGunController != null) boomerangAmmoText.text = "Boomerang Ammo: " + boomerangGunController.ammo;
+        if (boomerangGunController != null) boomerangAmmoText.text = $"{boomerangGunController.ammo}/{PlayerStats.Singleton.maxAmmo}";
         if (FindFirstObjectByType<PlayerMovement>() != null) {
             dashIndicator.fillAmount =  (PlayerStats.Singleton.cooldownDuration - FindFirstObjectByType<PlayerMovement>().dashCooldown) / PlayerStats.Singleton.cooldownDuration;
         }
