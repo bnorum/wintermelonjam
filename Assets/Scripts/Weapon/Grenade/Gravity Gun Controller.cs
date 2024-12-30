@@ -6,7 +6,6 @@ public class GravityGunController : MonoBehaviour
 {
     private PlayerMovement pm;
     public GameObject inProjectile;
-    public GameObject outProjectile;
     public float inwardMaxAmmo = 1;
     private float inwardAmmo;
     // public float outwardMaxAmmo = 1;
@@ -33,7 +32,6 @@ public class GravityGunController : MonoBehaviour
         pm = FindFirstObjectByType<PlayerMovement>();
 
         inwardAmmo = inwardMaxAmmo;
-        // outwardAmmo = outwardMaxAmmo;
 
         cooldownDurationIn = PlayerStats.Singleton.cooldownDuration;
         cooldownIn = cooldownDurationIn;
@@ -54,9 +52,13 @@ public class GravityGunController : MonoBehaviour
             Shoot(1);
         }
 
-        cooldownDurationTriangle = PlayerStats.Singleton.cooldownDuration;
-        cooldownTriangle -= Time.deltaTime;
-
+        if(cooldownTriangle <= 0)
+        {
+            ShootTriangle();
+            cooldownDurationTriangle = PlayerStats.Singleton.cooldownDuration;
+        }
+        else
+            cooldownTriangle -= Time.deltaTime;
     void Shoot(int type)
     {
         
@@ -68,7 +70,7 @@ public class GravityGunController : MonoBehaviour
             Vector3 playerPosition = transform.position;
             Vector3 direction = (pm.mouseposition - playerPosition).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; //Sets angle of projectile spawning aiming towards player's current mouse position.
-            GameObject spawnedGrenade = Instantiate(type == 0 ? outProjectile : inProjectile, playerPosition, Quaternion.Euler(0, 0, angle));
+            GameObject spawnedGrenade = Instantiate(inProjectile, playerPosition, Quaternion.Euler(0, 0, angle));
 
             spawnedGrenade.GetComponent<GravityGunBehaviour>().SetDirection(direction);
             var grenadeRb = spawnedGrenade.GetComponent<Rigidbody2D>();
