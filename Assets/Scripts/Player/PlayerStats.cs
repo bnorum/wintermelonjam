@@ -22,6 +22,7 @@ public class PlayerStats : MonoBehaviour
     public bool usingTriangle;
     public bool usingGrenade;
     public float boomerangSpiky;
+    public GameObject boomerangAmmoUI;
     public float damage;
     public float pierce;
     public float cooldownDuration;
@@ -37,10 +38,12 @@ public class PlayerStats : MonoBehaviour
         if (LoadingParameters.weaponAbility == 0) {
             usingBoomberang = true;
             FindFirstObjectByType<GunSpriteHolder>().SetSprite(true);
+
         }
         else if (LoadingParameters.weaponAbility == 1) {
             usingGrenade = true;
             FindFirstObjectByType<GunSpriteHolder>().SetSprite(false);
+            boomerangAmmoUI.SetActive(false);
 
         }
         grenadeCooldownDuration = cooldownDuration;
