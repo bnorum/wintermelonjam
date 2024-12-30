@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using System;
 
 public class MainMenu : MonoBehaviour
 {
@@ -9,8 +10,11 @@ public class MainMenu : MonoBehaviour
     public GameObject mainMenu;
     public GameObject customizationMenu;
     public GameObject creditsMenu;
+    public GameObject loreMenu;
+    public Button loreButton;
     public Button startMission;
     public Button creditScreen;
+
     public Button quit;
 
 
@@ -21,14 +25,19 @@ public class MainMenu : MonoBehaviour
         startMission.onClick.AddListener(OnStartMissionClicked);
         quit.onClick.AddListener(OnQuitClicked);
         creditScreen.onClick.AddListener(OnCreditScreenClicked);
+        loreButton.onClick.AddListener(onLoreNextClicked);
 
     }
 
-
+    private void onLoreNextClicked()
+    {
+        customizationMenu.SetActive(true);
+        loreMenu.SetActive(false);
+    }
 
     void OnStartMissionClicked()
     {
-        customizationMenu.SetActive(true);
+        loreMenu.SetActive(true);
         mainMenu.SetActive(false); 
     }
     
