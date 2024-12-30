@@ -170,7 +170,7 @@ public class GameLogic : MonoBehaviour
             fadeOutImage.color = new Color(1, 1, 1, i); 
             yield return null;
         }
-        bossDefeatedText.text = GameObject.Find("Pause Menu").GetComponent<PauseManager>().DisplayUpgrades();
+        bossDefeatedText.text = GameObject.Find("UIManager").GetComponent<UIManager>().DisplayUpgrades();
         enableAfterFade.SetActive(true);
     }
 }
