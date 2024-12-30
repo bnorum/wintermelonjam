@@ -23,6 +23,22 @@ public class MapController : MonoBehaviour
     void Start()
     {
         pm = FindFirstObjectByType<PlayerMovement>();
+                noTerrainPosition =currentChunk.transform.Find("Top Chunk").position;
+                SpawnChunk();
+                noTerrainPosition =currentChunk.transform.Find("TopRight Chunk").position;
+                SpawnChunk();
+                noTerrainPosition =currentChunk.transform.Find("TopLeft Chunk").position;
+                SpawnChunk();
+                noTerrainPosition =currentChunk.transform.Find("Bottom Chunk").position;
+                SpawnChunk();
+                noTerrainPosition =currentChunk.transform.Find("BottomRight Chunk").position;
+                SpawnChunk();
+                noTerrainPosition =currentChunk.transform.Find("BottomLeft Chunk").position;
+                SpawnChunk();
+                noTerrainPosition =currentChunk.transform.Find("Left Chunk").position;
+                SpawnChunk();
+                noTerrainPosition = currentChunk.transform.Find("Right Chunk").position;
+                SpawnChunk();
     }
 
     // Update is called once per frame
