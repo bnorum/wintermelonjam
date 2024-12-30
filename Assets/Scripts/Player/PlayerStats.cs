@@ -30,6 +30,8 @@ public class PlayerStats : MonoBehaviour
     public float returnSpeed = 10f;
     public float tempModifier = 5f;
     public float grenadeCooldownDuration;
+    public float grenadeLaunchSpeed;
+    public float implodeRadiusModifier;
     private void Awake()
     {
         if (LoadingParameters.weaponAbility == 0) {

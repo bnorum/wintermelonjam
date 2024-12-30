@@ -18,7 +18,6 @@ public class GravityGunController : MonoBehaviour
 
     public GameObject trianglePrefab;
 
-    public float LaunchSpeed = 10f;
     public List<GameObject> liveInGrenades = new List<GameObject>();
     // public List<GameObject> liveOutGrenades = new List<GameObject>();
 
@@ -104,7 +103,7 @@ public class GravityGunController : MonoBehaviour
 
             spawnedGrenade.GetComponent<GravityGunBehaviour>().SetDirection(direction);
             var grenadeRb = spawnedGrenade.GetComponent<Rigidbody2D>();
-            Vector2 velocity = direction * LaunchSpeed;
+            Vector2 velocity = direction * PlayerStats.Singleton.grenadeLaunchSpeed;
             grenadeRb.linearVelocity = velocity;
             spawnedGrenade.GetComponent<GravityGunBehaviour>()?.Init(pm.mouseposition, type);
                 inwardAmmo = 0;

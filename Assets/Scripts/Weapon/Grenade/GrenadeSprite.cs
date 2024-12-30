@@ -16,6 +16,7 @@ public class GrenadeSprite : MonoBehaviour
     public bool initalized = false;
     public void Init(float inputDamage, float inputMagnitude, int inputImpulseType)
     {
+        gameObject.transform.localScale *= PlayerStats.Singleton.implodeRadiusModifier;
         damage = inputDamage;
         magnitude = inputMagnitude;
         Destroy(gameObject, destroyAfterSeconds);
