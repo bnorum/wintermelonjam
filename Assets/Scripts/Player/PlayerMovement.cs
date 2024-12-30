@@ -6,12 +6,15 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     public Vector2 movement; //probably shouldnt be public, need it for now
 
+    public Animator animator;
+    private Vector3 lastPosition; //animations
     public Vector3 mouseposition;
     private Camera mainCamera;
 
     private bool isDashing = false;
     private float dashCooldownFull;
     public float dashCooldown;
+    private bool isMoving;
 
     [Header("Sound Settings")]
     public AudioClip[] stepSounds;
@@ -22,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
         dashCooldown = PlayerStats.Singleton.cooldownDuration;
         dashCooldownFull = dashCooldown;
         rb = GetComponent<Rigidbody2D>();
+        animator.GetComponent<Animator>();
         mainCamera = Camera.main;
     }
 
@@ -29,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
     {
         InputMovement();
         InputMouse();
+        UpdateMovementStatus();
+        UpdateAnimation();
 
         dashCooldownFull = PlayerStats.Singleton.cooldownDuration; //only here to refresh for upgrades
         dashCooldown -= Time.deltaTime;
@@ -72,6 +78,11 @@ public class PlayerMovement : MonoBehaviour
         float currentSpeed = PlayerStats.Singleton.speed;
         if (!isDashing) rb.linearVelocity= new Vector2(movement.x * currentSpeed, movement.y * currentSpeed);
     }
+    void UpdateMovementStatus()
+    {
+        isMoving = transform.position != lastPosition;
+        lastPosition = transform.position;
+    }
 
     IEnumerator Dash() 
     {
@@ -90,5 +101,34 @@ public class PlayerMovement : MonoBehaviour
         isDashing = false;
         rb.linearVelocity = Vector2.zero;
 
+    }
+    void UpdateAnimation()
+    {
+        Vector3 mousePosition = mainCamera.ScreenToWorldPoint(
+            new Vector3(Input.mousePosition.x, Input.mousePosition.y, mainCamera.nearClipPlane)
+        );
+        bool isMouseAbove = mousePosition.y > transform.position.y;
+        if (isMoving)
+        {
+            if (isMouseAbove)
+            {
+                animator.Play("player_walking_back");
+            }
+            else
+            {
+                animator.Play("player_walking_front");
+            }
+        }
+        else
+        {
+                if (isMouseAbove)
+            {
+                animator.Play("player_idle_back");
+            }
+            else
+            {
+                animator.Play("player_idle_front");
+            }
+        }
     }
 }

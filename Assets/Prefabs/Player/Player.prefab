@@ -148,6 +148,8 @@ MonoBehaviour:
   outProjectile: {fileID: 1381418215432091721, guid: 147b7e387708455438d99d48c4e63906, type: 3}
   inwardMaxAmmo: 1
   outwardMaxAmmo: 1
+  trianglePrefab: {fileID: 0}
+  TriangleExperiment: 1
   LaunchSpeed: 10
   liveInGrenades: []
   liveOutGrenades: []
@@ -213,6 +215,7 @@ GameObject:
   - component: {fileID: 3111347690843950255}
   - component: {fileID: 1924827901051658983}
   - component: {fileID: 561981136553380478}
+  - component: {fileID: 8495415819164764917}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -334,8 +337,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {x: 0, y: 0}
+  animator: {fileID: 8495415819164764917}
   mouseposition: {x: 0, y: 0, z: 0}
   dashCooldown: 0
+  stepSounds: []
 --- !u!114 &6858700391402683700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,6 +474,28 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.68053365, y: 0.38862717}
   m_EdgeRadius: 0
+--- !u!95 &8495415819164764917
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362032968490654826}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8938c3d36f2069840bcbd58d6d61593e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7136621798117872676
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,3 +544,5 @@ MonoBehaviour:
   automatic: 1
   ammo: 6
   spikyDamage: 0
+  shootSound: {fileID: 0}
+  returnSound: {fileID: 0}
