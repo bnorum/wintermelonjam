@@ -362,6 +362,7 @@ MonoBehaviour:
   currentHealth: 0
   invincibilityTime: 0
   invincibilityDuration: 0
+  isDead: 0
 --- !u!114 &3111347690843950255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,7 +388,9 @@ MonoBehaviour:
   usingTriangle: 0
   usingGrenade: 0
   boomerangSpiky: 0
+  boomerangAmmoUI: {fileID: 0}
   damage: 3
+  triangleDamage: 4
   pierce: 2
   cooldownDuration: 2
   maxAmmo: 6
@@ -397,6 +400,7 @@ MonoBehaviour:
   grenadeCooldownDuration: 0
   grenadeLaunchSpeed: 10
   implodeRadiusModifier: 1
+  triangleSpeed: 0
 --- !u!114 &1924827901051658983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,6 +433,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 54711026737f87147918de3467ba4c69, type: 2}
   - {fileID: 11400000, guid: e881c7b5a44a03440b78b1b15d679a7c, type: 2}
   upgradeMenu: {fileID: 0}
+  experienceSound: {fileID: 0}
 --- !u!61 &561981136553380478
 BoxCollider2D:
   m_ObjectHideFlags: 0
