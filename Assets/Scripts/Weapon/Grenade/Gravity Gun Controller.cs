@@ -80,12 +80,11 @@ public class GravityGunController : MonoBehaviour
             Shoot(1);
         }
 
-        if(cooldownTriangle <= 0)
+        if(Input.GetMouseButtonDown(0) && cooldownTriangle <= 0)
         {
             ShootTriangle();
             cooldownDurationTriangle = PlayerStats.Singleton.cooldownDuration;
         }
-        else
             cooldownTriangle -= Time.deltaTime;
             cooldownIn -=Time.deltaTime;
     }  

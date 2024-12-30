@@ -1121,8 +1121,8 @@ MonoBehaviour:
   weaponNameText: {fileID: 1108680460}
   TitleText: {fileID: 435504060}
   MagnetDescription: Throw magnetic Boomerangs, then recall them to deal damage.
-  GravityGunDescription: Double Barreled Gravity Gun. Left Click shoots an exploding
-    round, Right Click shoots an imploding round.
+  GravityGunDescription: Double Barreled Gravity Gun. Right Click shoots an imploding
+    round, Left Click fires a high velocity nut that pierces enemies.
   DefaultWeaponName: Default Weapon Name
   DefaultDescription: Hover over a button to see its description.
 --- !u!1 &873342221

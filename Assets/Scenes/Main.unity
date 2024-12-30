@@ -471,8 +471,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4288793844
+  m_fontColor: {r: 0.9568628, g: 0.8000001, b: 0.6313726, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3234,16 +3234,16 @@ RectTransform:
   m_GameObject: {fileID: 692633684}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.92, y: 2.92, z: 2.92}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 22515052}
   m_Father: {fileID: 1949323022}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: -311}
+  m_SizeDelta: {x: 166.66666, y: 99.99999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &692633686
 MonoBehaviour:
@@ -3257,8 +3257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b1c361636c9c94fb03be41d18aa412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  medal1: {fileID: 0}
-  medal2: {fileID: 0}
+  medal1: {fileID: -5724111553924352075, guid: 9ceb5b1d9332a354395eaf63ccc9b0a2, type: 3}
+  medal2: {fileID: -6730248708516571926, guid: 9ceb5b1d9332a354395eaf63ccc9b0a2, type: 3}
   medalImage: {fileID: 0}
 --- !u!114 &692633687
 MonoBehaviour:
@@ -3336,8 +3336,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -5724111553924352075, guid: 9ceb5b1d9332a354395eaf63ccc9b0a2, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
