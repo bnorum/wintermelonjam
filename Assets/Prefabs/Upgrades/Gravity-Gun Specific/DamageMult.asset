@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93fa261c095c7c145830cbc98e9b7be4, type: 3}
   m_Name: DamageMult
   m_EditorClassIdentifier: 
-  upgradeType: 2
+  upgradeType: 1
   upgradeName: Increase Damage
   description: 
   upgradeSprite: {fileID: -8318219315756538554, guid: e3e6ee7ecaaaba949b3b5b569c14d798, type: 3}
   affectedVariable: triangleDamage
-  amount: 1.1
+  amount: 2
