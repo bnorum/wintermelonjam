@@ -19,6 +19,8 @@ public class PlayerExperience : MonoBehaviour
     public UpgradeMenu upgradeMenu;
     bool canUpdate = true;
 
+    public AudioClip experienceSound;
+
     void Start()
     {
         currentExperience = 0;
@@ -34,6 +36,8 @@ public class PlayerExperience : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.tag == "XP")
         {
+            GameObject.Find("XP Audio").GetComponent<AudioSource>().pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+            GameObject.Find("XP Audio").GetComponent<AudioSource>().PlayOneShot(experienceSound);
             Debug.Log("proper collision");
             currentExperience += collision.gameObject.GetComponent<xpOrb>().value;
             Destroy(collision.gameObject);
