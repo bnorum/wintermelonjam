@@ -9,8 +9,8 @@ public class UIManager : MonoBehaviour
     private PlayerHealth playerHealth;
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI xpText;
-    public RectTransform healthBar;
-    public RectTransform xpBar;
+    public Image healthBar;
+    public Image xpBar;
     private float maxHealthWidth;
     private float maxXpWidth;
 
@@ -35,8 +35,8 @@ public class UIManager : MonoBehaviour
         playerHealth = FindFirstObjectByType<PlayerHealth>();
         playerExperience = FindFirstObjectByType<PlayerExperience>();
         boomerangGunController = FindFirstObjectByType<BoomerangGunController>();
-        maxHealthWidth = healthBar.sizeDelta.x;
-        maxXpWidth = xpBar.sizeDelta.x;
+        //maxHealthWidth = healthBar.sizeDelta.x;
+        //maxXpWidth = xpBar.sizeDelta.x;
 
     }
 
@@ -48,10 +48,13 @@ public class UIManager : MonoBehaviour
 
 
     void UpdateUI() {
-        float healthPercent = Mathf.Clamp01(playerHealth.currentHealth / PlayerStats.Singleton.maxHealth);
-        float xpPercent = Mathf.Clamp01(playerExperience.currentExperience / PlayerStats.Singleton.maxXp);
-        healthBar.sizeDelta = new Vector2(maxHealthWidth * healthPercent, healthBar.sizeDelta.y);
-        xpBar.sizeDelta = new Vector2(maxXpWidth * xpPercent, xpBar.sizeDelta.y);
+        //float healthPercent = Mathf.Clamp01(playerHealth.currentHealth / PlayerStats.Singleton.maxHealth);
+        //float xpPercent = Mathf.Clamp01(playerExperience.currentExperience / PlayerStats.Singleton.maxXp);
+
+        //healthBar.sizeDelta = new Vector2(maxHealthWidth * healthPercent, healthBar.sizeDelta.y);
+        //xpBar.sizeDelta = new Vector2(maxXpWidth * xpPercent, xpBar.sizeDelta.y);
+        xpBar.fillAmount = (playerExperience.currentExperience) / PlayerStats.Singleton.maxXp;
+        healthBar.fillAmount = (playerHealth.currentHealth) / PlayerStats.Singleton.maxHealth;
         healthText.text = Mathf.FloorToInt(playerHealth.currentHealth) + "/" + Mathf.FloorToInt(PlayerStats.Singleton.maxHealth);
         xpText.text = playerExperience.currentExperience + "/" + Mathf.FloorToInt(PlayerStats.Singleton.maxXp);
         timerText.text = GetTime(FindFirstObjectByType<GameLogic>().timer);
