@@ -18,7 +18,6 @@ public class UpgradeMenu : MonoBehaviour
     public Button select3;
     public Image image3;
     public PlayerExperience pE;
-
     void Start()
     {
         select1.onClick.AddListener(On1Click);

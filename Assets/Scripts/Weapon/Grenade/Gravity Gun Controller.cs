@@ -70,17 +70,14 @@ public class GravityGunController : MonoBehaviour
             }
         }
         if(Input.GetMouseButtonDown(1) && liveInGrenades.Count > 0) {
-            Debug.LogWarning("Triggering");
             Trigger(1);
         }
-        else if(Input.GetMouseButtonDown(1) && inwardAmmo > 0 && cooldownIn <= 0)
+        if(Input.GetMouseButtonDown(1) && inwardAmmo > 0 && cooldownIn <= 0)
         {
-            Debug.LogWarning("Shooting");
-
             Shoot(1);
         }
 
-        if(Input.GetMouseButtonDown(0) && cooldownTriangle <= 0)
+        if(cooldownTriangle <= 0)
         {
             ShootTriangle();
             cooldownDurationTriangle = PlayerStats.Singleton.cooldownDuration;
@@ -107,20 +104,16 @@ public class GravityGunController : MonoBehaviour
             spawnedGrenade.GetComponent<GravityGunBehaviour>()?.Init(pm.mouseposition, type);
                 inwardAmmo = 0;
                 cooldownIn = cooldownDurationIn;
-            FindFirstObjectByType<GunSpriteHolder>().GetComponent<SpriteRenderer>().sprite = gravityGunRedShot;
+            FindFirstObjectByType<GunSpriteHolder>().GetComponent<SpriteRenderer>().sprite = gravityGunBlueShot;
             redShotTimer = shotDuration;
             redShooting = true;
             }
         }
     protected void Trigger(int type)
     {
+        liveInGrenades[0].GetComponent<GravityGunBehaviour>().Implode();
+        inwardAmmo = 1;
         
-        GameObject.Find("Grenade Explode Audio").GetComponent<AudioSource>().PlayOneShot(GrenadeExplode);
-        if(type == 1 && liveInGrenades.Count <= 0) return;
-        {
-            liveInGrenades[0].GetComponent<GravityGunBehaviour>().Implode();
-            inwardAmmo = 1;
-        }
     }
 
     void ShootTriangle() 
@@ -133,7 +126,7 @@ public class GravityGunController : MonoBehaviour
         GameObject spawnedKnife = Instantiate(trianglePrefab, playerPosition, Quaternion.Euler(0, 0, angle));
 
         spawnedKnife.GetComponent<TriangleGunBehaviour>().SetDirection(direction);
-        FindFirstObjectByType<GunSpriteHolder>().GetComponent<SpriteRenderer>().sprite = gravityGunBlueShot;
+        FindFirstObjectByType<GunSpriteHolder>().GetComponent<SpriteRenderer>().sprite = gravityGunRedShot;
             blueShotTimer = shotDuration;
             blueShooting = true;
     }

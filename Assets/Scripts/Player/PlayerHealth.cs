@@ -26,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0 && !isDead)
         {
             isDead = true;
-            StartCoroutine(GameObject.Find("UIManager").GetComponent<UIManager>().GameOver());
+            StartCoroutine(FindFirstObjectByType<UIManager>().GameOver());
             DisablePlayer();
         }
         if (currentHealth > PlayerStats.Singleton.maxHealth) currentHealth = PlayerStats.Singleton.maxHealth;
