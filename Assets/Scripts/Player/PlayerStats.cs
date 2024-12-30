@@ -33,6 +33,7 @@ public class PlayerStats : MonoBehaviour
     public float grenadeCooldownDuration;
     public float grenadeLaunchSpeed;
     public float implodeRadiusModifier;
+    public float triangleSpeed;
     private void Awake()
     {
         if (LoadingParameters.weaponAbility == 0) {

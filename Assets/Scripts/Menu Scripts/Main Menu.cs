@@ -8,7 +8,9 @@ public class MainMenu : MonoBehaviour
     [Header("Menus")]
     public GameObject mainMenu;
     public GameObject customizationMenu;
-    public Button credits;
+    public GameObject creditsMenu;
+    public Button startMission;
+    public Button creditScreen;
     public Button quit;
 
 
@@ -16,20 +18,16 @@ public class MainMenu : MonoBehaviour
     {
         mainMenu.SetActive(true);
         customizationMenu.SetActive(false);
-        // startGame.onClick.AddListener(OnStartButtonClicked);
-        credits.onClick.AddListener(OnCreditsClicked);
+        startMission.onClick.AddListener(OnStartMissionClicked);
         quit.onClick.AddListener(OnQuitClicked);
-    }
-
-    void OnStartButtonClicked()
-    {
-      //credits
+        creditScreen.onClick.AddListener(OnCreditScreenClicked);
 
     }
 
-    void OnCreditsClicked()
+
+
+    void OnStartMissionClicked()
     {
-        Debug.Log("OnPlayGameClicked");
         customizationMenu.SetActive(true);
         mainMenu.SetActive(false); 
     }
@@ -37,5 +35,10 @@ public class MainMenu : MonoBehaviour
     void OnQuitClicked()
     {
         Application.Quit(); // Works in a built application        
+    }
+    void OnCreditScreenClicked()
+    {
+        creditsMenu.SetActive(true);
+        mainMenu.SetActive(false);     
     }
 }

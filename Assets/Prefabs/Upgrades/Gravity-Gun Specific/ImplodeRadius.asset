@@ -17,4 +17,4 @@ MonoBehaviour:
   description: 
   upgradeSprite: {fileID: 38714493913449769, guid: 91bff6513f9bc0c4498681a75d02300c, type: 3}
   affectedVariable: implodeRadiusModifier
-  amount: 1.25
+  amount: 1.1

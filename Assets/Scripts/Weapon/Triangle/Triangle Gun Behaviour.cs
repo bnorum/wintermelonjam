@@ -17,7 +17,7 @@ public class TriangleGunBehaviour : ProjectileBehaviour
     void Update()
     {
         var rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = direction * PlayerStats.Singleton.speed;
+        rb.linearVelocity = direction * PlayerStats.Singleton.triangleSpeed;
 
         if (piercesRemaining < 0)
         {
