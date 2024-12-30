@@ -24,6 +24,7 @@ public class PlayerStats : MonoBehaviour
     public float boomerangSpiky;
     public GameObject boomerangAmmoUI;
     public float damage;
+    public float triangleDamage;
     public float pierce;
     public float cooldownDuration;
     public int maxAmmo = 6;

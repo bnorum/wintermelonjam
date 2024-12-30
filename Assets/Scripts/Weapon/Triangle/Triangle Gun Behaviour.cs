@@ -30,7 +30,7 @@ public class TriangleGunBehaviour : ProjectileBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             var eh = collision.gameObject.GetComponent<EnemyHealth>();
-            eh.currentHealth -= PlayerStats.Singleton.damage;
+            eh.currentHealth -= PlayerStats.Singleton.triangleDamage;
 
             var bulletRigidbody = GetComponent<Rigidbody2D>();
 
