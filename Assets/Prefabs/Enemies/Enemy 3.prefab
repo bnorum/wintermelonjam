@@ -153,6 +153,8 @@ MonoBehaviour:
   experienceValue: 20
   damage: 20
   xpOrb: {fileID: 8067498843416175384, guid: 6f87672ba965bdf4b8b6a4a8fd925f1a, type: 3}
+  damageSound: {fileID: 8300000, guid: 5d8cfd21fccf6fd4fbdbecc43d6d098d, type: 3}
+  deathSound: {fileID: 8300000, guid: 0c5be50df7ed7964291830a5f486c8a7, type: 3}
 --- !u!114 &6383695897520262313
 MonoBehaviour:
   m_ObjectHideFlags: 0

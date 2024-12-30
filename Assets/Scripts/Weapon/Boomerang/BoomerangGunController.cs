@@ -8,6 +8,9 @@ public class BoomerangGunController : WeaponController
     public int ammo;
     private float returnSpeed;
     public float spikyDamage = 0;
+
+    public AudioClip shootSound;
+    public AudioClip returnSound;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
@@ -24,6 +27,8 @@ public class BoomerangGunController : WeaponController
         
         base.Update();
         if (Input.GetMouseButtonDown(1)) {
+            GameObject.Find("Boomerang Return Audio").GetComponent<AudioSource>().pitch = 1;
+            GameObject.Find("Boomerang Return Audio").GetComponent<AudioSource>().PlayOneShot(returnSound);
             ReturnBoomerangs();
         }
 
@@ -39,6 +44,8 @@ public class BoomerangGunController : WeaponController
     protected override void Shoot()
     {
         if (ammo > 0) {
+            GameObject.Find("Boomerang Throw Audio").GetComponent<AudioSource>().pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+            GameObject.Find("Boomerang Throw Audio").GetComponent<AudioSource>().PlayOneShot(shootSound);
             ammo--;
             Debug.Log("Shooting from Boomerang");
             base.Shoot();

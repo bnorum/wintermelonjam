@@ -13,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     private float dashCooldownFull;
     public float dashCooldown;
 
+    [Header("Sound Settings")]
+    public AudioClip[] stepSounds;
+    private float stepCooldown;
 
     void Start()
     {
@@ -35,6 +38,16 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(Dash());
             dashCooldown = dashCooldownFull;
         }
+
+        if (movement != Vector2.zero && stepCooldown <= 0)
+        {
+                AudioClip stepSound = stepSounds[Random.Range(0, stepSounds.Length)];
+                GameObject.Find("Walking Audio").GetComponent<AudioSource>().pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+                GameObject.Find("Walking Audio").GetComponent<AudioSource>().PlayOneShot(stepSound);
+                stepCooldown = 2 / PlayerStats.Singleton.speed;
+        }
+
+        stepCooldown -= Time.deltaTime;
     }
 
     void FixedUpdate()
