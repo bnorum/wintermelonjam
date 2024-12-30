@@ -22,6 +22,11 @@ public class EnemyHealth : MonoBehaviour
     }
     void Update()
     {
+
+        if (currentHealth <= 0 && GetComponent<EnemyMovement>().isBoss) {
+            gameLogic.bossDefeated = true;
+
+        }
         if (currentHealth <= 0)
         {
             gameLogic.activeEnemies.Remove(gameObject);

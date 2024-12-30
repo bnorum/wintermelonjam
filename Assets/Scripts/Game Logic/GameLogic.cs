@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 public class GameLogic : MonoBehaviour
 {
     [Header("Enemy Spawning Settings")]
@@ -25,6 +27,13 @@ public class GameLogic : MonoBehaviour
     public float timer = 0;
     private bool bossArenaSpawned = false;
     private bool bossCanvasShown = false;
+    public bool bossDefeated = false;
+    private bool bossDefeatedDontRepeat = false;
+
+    public GameObject fadeOutCanvas;
+    public Image fadeOutImage;
+    public GameObject enableAfterFade;
+    public TextMeshProUGUI bossDefeatedText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -60,6 +69,13 @@ public class GameLogic : MonoBehaviour
             activeEnemies.Clear();
             if (!bossCanvasShown) StartCoroutine(ShowBossCanvas());
 
+        }
+
+        if (bossDefeated && !bossDefeatedDontRepeat)
+        {
+            fadeOutCanvas.SetActive(true);
+            bossDefeatedDontRepeat = true;
+            StartCoroutine(BossDefeated());
         }
 
     }
@@ -144,5 +160,17 @@ public class GameLogic : MonoBehaviour
         bossCanvasShown = true;
         yield return new WaitForSeconds(10);
         bossCanvas.GetComponent<Canvas>().enabled = false;
+    }
+
+    IEnumerator BossDefeated()
+    {
+        yield return new WaitForSeconds(5);
+        for (float i = 0; i < 1; i+=Time.deltaTime)
+        {
+            fadeOutImage.color = new Color(1, 1, 1, i); 
+            yield return null;
+        }
+        bossDefeatedText.text = GameObject.Find("Pause Menu").GetComponent<PauseManager>().DisplayUpgrades();
+        enableAfterFade.SetActive(true);
     }
 }

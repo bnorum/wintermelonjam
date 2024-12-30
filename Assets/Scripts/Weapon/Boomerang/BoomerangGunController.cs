@@ -4,7 +4,7 @@ public class BoomerangGunController : WeaponController
 {
 
     [Header("Boomerang Gun Settings")]
-    private int maxAmmo;
+    public int maxAmmo;
     public int ammo;
     private float returnSpeed;
     public float spikyDamage = 0;
