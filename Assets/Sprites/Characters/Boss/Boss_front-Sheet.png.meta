@@ -108,7 +108,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 128
+        width: 64
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -120,6 +120,28 @@ TextureImporter:
       bones: []
       spriteID: afeed3f7c6c47c4d0800000000000000
       internalID: -3114436588428464390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_front-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceb37048b74863d4cadb0a3f3aa40bd6
+      internalID: 2087885224
       vertices: []
       indices: 
       edges: []
@@ -139,6 +161,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Boss_front-Sheet_0: -3114436588428464390
+      Boss_front-Sheet_1: 2087885224
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

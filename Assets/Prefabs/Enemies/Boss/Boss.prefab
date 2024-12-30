@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3396406948750350080}
   - component: {fileID: 6383695897520262313}
   - component: {fileID: 397939920265118421}
+  - component: {fileID: 6714180724562601221}
   m_Layer: 3
   m_Name: Boss
   m_TagString: Enemy
@@ -83,8 +84,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -712631045867808456, guid: b670ab75dde984907b8570040daa08c5, type: 3}
-  m_Color: {r: 1, g: 0.9027058, b: 0, a: 1}
+  m_Sprite: {fileID: -3114436588428464390, guid: 8aaceed61860460409bfa352a38930f1, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -159,7 +160,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.8828125}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 0.8828125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -208,6 +209,7 @@ MonoBehaviour:
   damage: 20
   xpOrb: {fileID: 8067498843416175384, guid: 6f87672ba965bdf4b8b6a4a8fd925f1a, type: 3}
   damageSound: {fileID: 8300000, guid: 5d8cfd21fccf6fd4fbdbecc43d6d098d, type: 3}
+  deathSound: {fileID: 0}
 --- !u!114 &6383695897520262313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,6 +240,28 @@ MonoBehaviour:
   projectileSpeed: 7
   maxCooldown: 0.5
   bossArena: {fileID: 0}
+--- !u!95 &6714180724562601221
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625528821231669651}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c2105024bfda8364f92e687564b94841, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1601728035692833458
 GameObject:
   m_ObjectHideFlags: 0
