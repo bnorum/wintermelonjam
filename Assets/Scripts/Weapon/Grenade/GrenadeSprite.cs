@@ -36,33 +36,16 @@ public class GrenadeSprite : MonoBehaviour
         filter.SetLayerMask(LayerMask.GetMask("Enemies"));
         List<Collider2D> affectedObjects = new List<Collider2D>();
         Physics2D.OverlapCollider(myCollider, affectedObjects);
-        float pushRadius = myCollider.radius;
         foreach (Collider2D obj in affectedObjects)
         {
             if (obj.gameObject.tag == "Enemy")
             {
-                if(impulseType == 0)
-                {
-                    Vector2 _direction = (obj.transform.position - transform.position).normalized;
-                    float newMagnitude = PlayerStats.Singleton.tempModifier;
-                    obj.GetComponent<EnemyMovement>().PushEnemy(_direction, newMagnitude / obj.GetComponent<EnemyMovement>().weight);   
-                }
                 if(impulseType == 1)
                 {
-                    Debug.LogWarning("pulling");
                     if (Vector2.Distance(obj.transform.position, transform.position) > 0.5f)
                     {
                         obj.GetComponent<EnemyMovement>().PullEnemy(gameObject.transform, magnitude / 10 / obj.GetComponent<EnemyMovement>().weight);
                     }
-                }
-
-                // Apply damage
-                if(!damagedEnemies.Contains(obj.gameObject))
-                {
-                    Debug.Log("Dealing Damage");
-                    EnemyHealth enemyHealth = obj.GetComponent<EnemyHealth>();
-                    enemyHealth.TakeDamage(damage);
-                    damagedEnemies.Add(obj.gameObject);
                 }
             }
         } 

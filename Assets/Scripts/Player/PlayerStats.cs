@@ -29,6 +29,7 @@ public class PlayerStats : MonoBehaviour
     public int ammo = 6;
     public float returnSpeed = 10f;
     public float tempModifier = 5f;
+    public float grenadeCooldownDuration;
     private void Awake()
     {
         if (LoadingParameters.weaponAbility == 0) {
@@ -40,6 +41,7 @@ public class PlayerStats : MonoBehaviour
             FindFirstObjectByType<GunSpriteHolder>().SetSprite(false);
 
         }
+        grenadeCooldownDuration = cooldownDuration;
         
         if (Singleton == null)
         {

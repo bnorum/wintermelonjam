@@ -3381,6 +3381,18 @@ PrefabInstance:
       propertyPath: GrenadeFireAudio
       value: 
       objectReference: {fileID: 8300000, guid: 2c3b11becb2b25841ba05bed6007185e, type: 3}
+    - target: {fileID: 2660398274292474150, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
+      propertyPath: gravityGunRedShot
+      value: 
+      objectReference: {fileID: -8919153140613561117, guid: c68ddbe637589d9408d3584e200a8f7f, type: 3}
+    - target: {fileID: 2660398274292474150, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
+      propertyPath: gravityGunRegular
+      value: 
+      objectReference: {fileID: -3699993553678438194, guid: c68ddbe637589d9408d3584e200a8f7f, type: 3}
+    - target: {fileID: 2660398274292474150, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
+      propertyPath: gravityGunBlueShot
+      value: 
+      objectReference: {fileID: 8096088696174269718, guid: c68ddbe637589d9408d3584e200a8f7f, type: 3}
     - target: {fileID: 2840064133842233429, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
       propertyPath: speed
       value: 50

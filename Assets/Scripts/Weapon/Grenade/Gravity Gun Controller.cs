@@ -25,6 +25,15 @@ public class GravityGunController : MonoBehaviour
     public AudioClip GrenadeFireAudio;
     public AudioClip GrenadeExplode;
     public AudioClip TriangleFire;
+
+    public Sprite gravityGunBlueShot;
+    public Sprite gravityGunRedShot;
+    public Sprite gravityGunRegular;
+    public float shotDuration =.25f;
+    private float redShotTimer = 0;
+    private float blueShotTimer = 0;
+    private bool blueShooting = false;
+    private bool redShooting = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,13 +43,33 @@ public class GravityGunController : MonoBehaviour
         inwardAmmo = inwardMaxAmmo;
 
         cooldownDurationIn = PlayerStats.Singleton.cooldownDuration;
-        cooldownIn = cooldownDurationIn;
+        cooldownIn = PlayerStats.Singleton.grenadeCooldownDuration;
         // cooldownDurationOut = PlayerStats.Singleton.cooldownDuration;
         cooldownTriangle = cooldownDurationTriangle;
         
     }
     void Update()
     {
+        if (blueShooting)
+        {
+            blueShotTimer -= Time.deltaTime;
+            if (blueShotTimer <= 0)
+            {
+                blueShooting = false;
+                blueShotTimer = shotDuration;
+                FindFirstObjectByType<GunSpriteHolder>().GetComponent<SpriteRenderer>().sprite = gravityGunRegular;
+            }
+        }
+        if (redShooting)
+        {
+            redShotTimer -= Time.deltaTime;
+            if (redShotTimer <= 0)
+            {
+                redShooting = false;
+                redShotTimer = shotDuration;
+                FindFirstObjectByType<GunSpriteHolder>().GetComponent<SpriteRenderer>().sprite = gravityGunRegular;
+            }
+        }
         if(Input.GetMouseButtonDown(1) && liveInGrenades.Count > 0) {
             Debug.LogWarning("Triggering");
             Trigger(1);
@@ -59,11 +88,12 @@ public class GravityGunController : MonoBehaviour
         }
         else
             cooldownTriangle -= Time.deltaTime;
+            cooldownIn -=Time.deltaTime;
+    }  
     void Shoot(int type)
     {
         
         GameObject.Find("Grenade Fire Audio").GetComponent<AudioSource>().PlayOneShot(GrenadeFireAudio);
-        Debug.LogWarning("Shooting!");
         if(type == 1 && inwardAmmo == 1)
         {
 
@@ -78,10 +108,12 @@ public class GravityGunController : MonoBehaviour
             grenadeRb.linearVelocity = velocity;
             spawnedGrenade.GetComponent<GravityGunBehaviour>()?.Init(pm.mouseposition, type);
                 inwardAmmo = 0;
-                cooldownIn = cooldownDurationIn;             
+                cooldownIn = cooldownDurationIn;
+            FindFirstObjectByType<GunSpriteHolder>().GetComponent<SpriteRenderer>().sprite = gravityGunRedShot;
+            redShotTimer = shotDuration;
+            redShooting = true;
             }
         }
-    }
     protected void Trigger(int type)
     {
         
@@ -103,7 +135,11 @@ public class GravityGunController : MonoBehaviour
         GameObject spawnedKnife = Instantiate(trianglePrefab, playerPosition, Quaternion.Euler(0, 0, angle));
 
         spawnedKnife.GetComponent<TriangleGunBehaviour>().SetDirection(direction);
-
+        FindFirstObjectByType<GunSpriteHolder>().GetComponent<SpriteRenderer>().sprite = gravityGunBlueShot;
+            blueShotTimer = shotDuration;
+            blueShooting = true;
     }
+
+
 }
 
