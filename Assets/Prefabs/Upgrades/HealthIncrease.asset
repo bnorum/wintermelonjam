@@ -15,6 +15,6 @@ MonoBehaviour:
   upgradeType: 1
   upgradeName: Health Increase
   description: increases base health by 20 points.
-  upgradeSprite: {fileID: 1709132548577384259, guid: b9795af14b568a34b854cdf0bb0fd083, type: 3}
+  upgradeSprite: {fileID: 4517003918771548439, guid: f3e5a07130c548640b512961a805a485, type: 3}
   affectedVariable: maxHealth
   amount: 20

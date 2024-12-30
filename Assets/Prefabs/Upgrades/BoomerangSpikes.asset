@@ -15,6 +15,6 @@ MonoBehaviour:
   upgradeType: 1
   upgradeName: Boomerang Spikes
   description: Boomerangs do damage while on ground.
-  upgradeSprite: {fileID: -3174086551541804596, guid: d682336d354070e4286b87695e6ecdf0, type: 3}
+  upgradeSprite: {fileID: 5958689867121393335, guid: 826fdfc19b4c9414681fb5155781c2a3, type: 3}
   affectedVariable: boomerangSpiky
   amount: 2

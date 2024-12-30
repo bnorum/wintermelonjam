@@ -15,6 +15,6 @@ MonoBehaviour:
   upgradeType: 2
   upgradeName: Decrease Cooldown
   description: -20% to shooting cooldown
-  upgradeSprite: {fileID: 3258025938074385141, guid: 41b3442c056cf7542b9a5b6ca2666a9c, type: 3}
+  upgradeSprite: {fileID: 3604363145670636790, guid: c607baad4d210b7499864ed76bf20655, type: 3}
   affectedVariable: cooldownDuration
   amount: 0.8

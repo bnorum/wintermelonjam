@@ -15,6 +15,6 @@ MonoBehaviour:
   upgradeType: 1
   upgradeName: Pierce Increase
   description: Increase pierce by 1.
-  upgradeSprite: {fileID: -3174086551541804596, guid: d682336d354070e4286b87695e6ecdf0, type: 3}
+  upgradeSprite: {fileID: 5534038387059301150, guid: 7de0dc071fcdd4945bd47c1c5057dd49, type: 3}
   affectedVariable: pierce
   amount: 1

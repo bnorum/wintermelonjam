@@ -15,6 +15,6 @@ MonoBehaviour:
   upgradeType: 1
   upgradeName: Increase Invincibility Time
   description: +1 second of invincibility when hit
-  upgradeSprite: {fileID: 8438930697898722258, guid: 5720dc3528ae60d419241c787fe6e9a6, type: 3}
+  upgradeSprite: {fileID: 6801851008410305686, guid: c7606520278a2234db6e134f7e5acd96, type: 3}
   affectedVariable: invincibilityDuration
   amount: 1

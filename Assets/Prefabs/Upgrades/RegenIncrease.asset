@@ -15,6 +15,6 @@ MonoBehaviour:
   upgradeType: 1
   upgradeName: Regneration Increase
   description: increases regeneration by 0.25.
-  upgradeSprite: {fileID: 1709132548577384259, guid: b9795af14b568a34b854cdf0bb0fd083, type: 3}
+  upgradeSprite: {fileID: 3390888318826925580, guid: afe27511fe52dfa4fa00c8b0b5c0166d, type: 3}
   affectedVariable: regeneration
   amount: 0.25

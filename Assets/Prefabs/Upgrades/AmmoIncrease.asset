@@ -15,6 +15,6 @@ MonoBehaviour:
   upgradeType: 1
   upgradeName: +1 Ammo
   description: +1 Max Ammo
-  upgradeSprite: {fileID: 1298082695912347347, guid: e21e858cecf99dd4d9f6fd47b7fd2581, type: 3}
+  upgradeSprite: {fileID: 4662713246244735542, guid: c644b596d2a7ad44f8884b0780d0a62b, type: 3}
   affectedVariable: maxAmmo
   amount: 1
