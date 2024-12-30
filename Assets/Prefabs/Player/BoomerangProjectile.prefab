@@ -380,6 +380,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyAfterSeconds: 0
-  recallHitbox: {fileID: 0}
+  recallHitbox: {fileID: 1002680223598704776}
   sprite: {fileID: 1794028806589497769}
   spikyDamage: 0

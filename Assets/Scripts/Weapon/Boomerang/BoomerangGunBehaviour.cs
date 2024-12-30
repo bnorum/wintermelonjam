@@ -17,7 +17,7 @@ public class BoomerangGunBehaviour : ProjectileBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = direction * PlayerStats.Singleton.speed;
         
-        recallHitbox = transform.GetChild(0).gameObject;
+        // recallHitbox = transform.GetChild(0).gameObject;
         sprite = transform.GetChild(1).gameObject;
 
         spikyDamage = bc.spikyDamage;
