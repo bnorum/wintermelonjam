@@ -23,6 +23,10 @@ public class GravityGunController : MonoBehaviour
     public float LaunchSpeed = 10f;
     public List<GameObject> liveInGrenades = new List<GameObject>();
     public List<GameObject> liveOutGrenades = new List<GameObject>();
+
+    public AudioClip GrenadeFireAudio;
+    public AudioClip GrenadeExplode;
+    public AudioClip TriangleFire;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,6 +47,7 @@ public class GravityGunController : MonoBehaviour
             
             if (Input.GetMouseButtonDown(0) && liveOutGrenades.Count > 0) {
                 Trigger(0);
+                
             }
             else if(Input.GetMouseButtonDown(0) && outwardAmmo > 0 && cooldownOut <= 0){
                 Shoot(0);
@@ -53,6 +58,7 @@ public class GravityGunController : MonoBehaviour
             if(Input.GetMouseButtonDown(0) && outwardAmmo > 0 && cooldownOut <= 0)
             {
                 ShootTriangle();
+                GameObject.Find("Triangle Fire Audio").GetComponent<AudioSource>().PlayOneShot(TriangleFire);
             }
         }
         
@@ -73,6 +79,8 @@ public class GravityGunController : MonoBehaviour
     }
     void Shoot(int type)
     {
+        
+        GameObject.Find("Grenade Fire Audio").GetComponent<AudioSource>().PlayOneShot(GrenadeFireAudio);
         Debug.LogWarning("Shooting!");
         if(type == 0 && outwardAmmo == 1 || type == 1 && inwardAmmo == 1)
         {
@@ -102,6 +110,8 @@ public class GravityGunController : MonoBehaviour
     }
     protected void Trigger(int type)
     {
+        
+        GameObject.Find("Grenade Explode Audio").GetComponent<AudioSource>().PlayOneShot(GrenadeExplode);
         if(type == 0 && liveOutGrenades.Count <= 0 || type == 1 && liveInGrenades.Count <= 0) return;
         if(type == 0)
         {
