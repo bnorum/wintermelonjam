@@ -45,6 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 326d96e1761b51940ab7fa93c040fc8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circleRadius: 1
+  circleCenter: {fileID: 0}
+  magnet: {fileID: 0}
+  gravityGun: {fileID: 0}
 --- !u!212 &2447332743052590374
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -145,14 +149,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inProjectile: {fileID: 1381418215432091721, guid: 5232c1578701fe44380fe1bc75e47acc, type: 3}
-  outProjectile: {fileID: 1381418215432091721, guid: 147b7e387708455438d99d48c4e63906, type: 3}
   inwardMaxAmmo: 1
-  outwardMaxAmmo: 1
   trianglePrefab: {fileID: 0}
-  TriangleExperiment: 1
-  LaunchSpeed: 10
   liveInGrenades: []
-  liveOutGrenades: []
+  GrenadeFireAudio: {fileID: 0}
+  GrenadeExplode: {fileID: 0}
+  TriangleFire: {fileID: 0}
+  gravityGunBlueShot: {fileID: 0}
+  gravityGunRedShot: {fileID: 0}
+  gravityGunRegular: {fileID: 0}
+  shotDuration: 0.25
 --- !u!1 &4733759703464206915
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,6 +377,7 @@ MonoBehaviour:
   collectedUpgrades: []
   speed: 5
   dashTime: 0.5
+  dashSpeed: 0
   xpSuckRange: 2
   maxHealth: 100
   regeneration: 0
@@ -387,6 +394,9 @@ MonoBehaviour:
   ammo: 6
   returnSpeed: 10
   tempModifier: 2.3
+  grenadeCooldownDuration: 0
+  grenadeLaunchSpeed: 10
+  implodeRadiusModifier: 1
 --- !u!114 &1924827901051658983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,15 +410,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentExperience: 0
-  upgradesForTriangleGun:
-  - {fileID: 11400000, guid: f140442d04804f149b9d10d38dcb7975, type: 2}
-  - {fileID: 11400000, guid: 826c6628275534c45b0c52a4d669b163, type: 2}
-  - {fileID: 11400000, guid: 69cbe4695dab98d459807684d4bcfe8e, type: 2}
-  - {fileID: 11400000, guid: f63fdeca82b4ac94f9391ee2666af857, type: 2}
-  - {fileID: 11400000, guid: fd720d90d0257e140b013498545f3971, type: 2}
-  - {fileID: 11400000, guid: d95b763cd0b7a8b4b9e45be5caac6eec, type: 2}
-  - {fileID: 11400000, guid: 54711026737f87147918de3467ba4c69, type: 2}
-  - {fileID: 11400000, guid: e881c7b5a44a03440b78b1b15d679a7c, type: 2}
   upgradesForBoomerang:
   - {fileID: 11400000, guid: 9b5cd081c0e1d964492bb9716d22d9e7, type: 2}
   - {fileID: 11400000, guid: d67aaa57d75ca3a44a69f8618a579db8, type: 2}
@@ -542,7 +543,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 2271046836425912758, guid: 9d8ded6eaee6f9e4f9a3efcb435a4b43, type: 3}
   automatic: 1
+  maxAmmo: 0
   ammo: 6
   spikyDamage: 0
+  regular: {fileID: 0}
+  zap: {fileID: 0}
   shootSound: {fileID: 0}
   returnSound: {fileID: 0}
+  zapDuration: 0.3

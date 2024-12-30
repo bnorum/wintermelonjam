@@ -3951,7 +3951,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 36eed96c22da1734a9db19ef709217e2, type: 3}
     - target: {fileID: 1924827901051658983, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
       propertyPath: upgradesForGrenade.Array.size
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1924827901051658983, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
       propertyPath: upgradesForBoomerang.Array.size
@@ -3961,6 +3961,14 @@ PrefabInstance:
       propertyPath: 'upgradesForGrenade.Array.data[7]'
       value: 
       objectReference: {fileID: 11400000, guid: fd720d90d0257e140b013498545f3971, type: 2}
+    - target: {fileID: 1924827901051658983, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
+      propertyPath: 'upgradesForGrenade.Array.data[8]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0d5b9bf7c40a6dc4aa51b338c289bde2, type: 2}
+    - target: {fileID: 1924827901051658983, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
+      propertyPath: 'upgradesForGrenade.Array.data[9]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2170e409a6bf5204c9b39bfa8f9ec4b3, type: 2}
     - target: {fileID: 1924827901051658983, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
       propertyPath: 'upgradesForBoomerang.Array.data[0]'
       value: 
@@ -4045,6 +4053,10 @@ PrefabInstance:
       propertyPath: boomerangSpiky
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3111347690843950255, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
+      propertyPath: boomerangAmmoUI
+      value: 
+      objectReference: {fileID: 192954620}
     - target: {fileID: 4475171314094871284, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
       propertyPath: stepSounds.Array.size
       value: 3
