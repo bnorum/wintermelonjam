@@ -86,6 +86,9 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Dash() 
     {
+        int originalLayer = gameObject.layer;
+        gameObject.layer = LayerMask.NameToLayer("Dash");
+        
         GetComponent<PlayerHealth>().invincibilityTime = PlayerStats.Singleton.dashTime;
         float dashSpeed = PlayerStats.Singleton.speed * PlayerStats.Singleton.dashSpeed;
         float dashTime = PlayerStats.Singleton.dashTime;
@@ -99,6 +102,7 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
         isDashing = false;
+        gameObject.layer = originalLayer;
         rb.linearVelocity = Vector2.zero;
 
     }
