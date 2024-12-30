@@ -2,25 +2,30 @@ using UnityEngine;
 
 public class GunSpriteHolder : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public float circleRadius = 1.0f;
+    public Transform circleCenter;
 
-    // Update is called once per frame
     void Update()
     {
+        //mouse position
         Vector3 mousePos = Input.mousePosition;
-		mousePos.z = 5.23f;
+        mousePos.z = Camera.main.WorldToScreenPoint(circleCenter.position).z;
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
 
-		Vector3 objectPos = Camera.main.WorldToScreenPoint (transform.position);
-		mousePos.x = mousePos.x - objectPos.x;
-		mousePos.y = mousePos.y - objectPos.y;
+        //point on circle
+        Vector3 direction = mouseWorldPos - circleCenter.position;
+        direction = direction.normalized;
+        Vector3 closestPointOnCircle = circleCenter.position + direction * circleRadius;
 
-		float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
-		transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        //infront / behind
+        if (closestPointOnCircle.y < circleCenter.position.y)
+            closestPointOnCircle.z = -1;
+        else
+            closestPointOnCircle.z = 0;
+        transform.position = closestPointOnCircle;
+
+        //sprite face up
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle - 90);
     }
-
-    
 }

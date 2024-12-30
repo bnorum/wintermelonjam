@@ -74,9 +74,7 @@ public class GravityGunBehaviour : ProjectileBehaviour
                 hasLanded = true;
                 rb.linearVelocity = Vector2.zero;
                 rb.bodyType = RigidbodyType2D.Kinematic;
-                if(type == 0)
-                    FindFirstObjectByType<GravityGunController>().liveOutGrenades.Add(gameObject);
-                else
+                if(type == 1)
                     FindFirstObjectByType<GravityGunController>().liveInGrenades.Add(gameObject);
                 yield break;
             }
@@ -100,10 +98,8 @@ public class GravityGunBehaviour : ProjectileBehaviour
     }
     private void Impulse(int impulseType)
     {
-        if(impulseType == 0)
-            FindFirstObjectByType<GravityGunController>().liveOutGrenades.RemoveAt(0);
-        else
-            FindFirstObjectByType<GravityGunController>().liveInGrenades.RemoveAt(0);
+
+        FindFirstObjectByType<GravityGunController>().liveInGrenades.RemoveAt(0);
         if(impulseType == 0)
         {
             var child = Instantiate(push, transform.position, Quaternion.identity);

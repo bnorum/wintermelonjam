@@ -8,6 +8,7 @@ public class WeaponController : MonoBehaviour
     public GameObject prefab;
     private float cooldown;
     protected PlayerMovement pm;
+    protected GameObject gsh;
 
     public bool automatic = true;
 
@@ -16,6 +17,7 @@ public class WeaponController : MonoBehaviour
     {
         pm = FindFirstObjectByType<PlayerMovement>();
         cooldown = PlayerStats.Singleton.cooldownDuration;
+        gsh = FindFirstObjectByType<GunSpriteHolder>().gameObject;
 
     }
 

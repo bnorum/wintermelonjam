@@ -9,8 +9,14 @@ public class BoomerangGunController : WeaponController
     private float returnSpeed;
     public float spikyDamage = 0;
 
+    public Sprite regular;
+    public Sprite zap;
     public AudioClip shootSound;
     public AudioClip returnSound;
+
+    public float zapDuration = .3f;
+    private float zapCooldown = 0;
+    private bool zapping = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
@@ -26,6 +32,17 @@ public class BoomerangGunController : WeaponController
     {
         
         base.Update();
+        if (zapping)
+        {
+            zapCooldown -= Time.deltaTime;
+            if (zapCooldown <= 0)
+            {
+                zapping = false;
+                zapCooldown = zapDuration;
+                gsh.GetComponent<SpriteRenderer>().sprite = regular;
+
+            }
+        }
         if (Input.GetMouseButtonDown(1)) {
             GameObject.Find("Boomerang Return Audio").GetComponent<AudioSource>().pitch = 1;
             GameObject.Find("Boomerang Return Audio").GetComponent<AudioSource>().PlayOneShot(returnSound);
@@ -61,6 +78,9 @@ public class BoomerangGunController : WeaponController
     protected void ReturnBoomerangs() {
         foreach (GameObject proj in GameObject.FindGameObjectsWithTag("BoomerangBullet")) {
             proj.GetComponent<BoomerangGunBehaviour>().ReturnToPlayer();
+            gsh.GetComponent<SpriteRenderer>().sprite = zap;
+            zapCooldown = zapDuration;
+            zapping = true;
         }
     }
 }

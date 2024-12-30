@@ -9,20 +9,19 @@ public class GravityGunController : MonoBehaviour
     public GameObject outProjectile;
     public float inwardMaxAmmo = 1;
     private float inwardAmmo;
-    public float outwardMaxAmmo = 1;
-    private float outwardAmmo;
+    // public float outwardMaxAmmo = 1;
+    // private float outwardAmmo;
 
     private float cooldownIn;
     private float cooldownDurationIn;
-    private float cooldownOut;
-    private float cooldownDurationOut;
+    private float cooldownTriangle;
+    private float cooldownDurationTriangle;
 
     public GameObject trianglePrefab;
-    public bool TriangleExperiment = true;
 
     public float LaunchSpeed = 10f;
     public List<GameObject> liveInGrenades = new List<GameObject>();
-    public List<GameObject> liveOutGrenades = new List<GameObject>();
+    // public List<GameObject> liveOutGrenades = new List<GameObject>();
 
     public AudioClip GrenadeFireAudio;
     public AudioClip GrenadeExplode;
@@ -33,35 +32,16 @@ public class GravityGunController : MonoBehaviour
         pm = FindFirstObjectByType<PlayerMovement>();
 
         inwardAmmo = inwardMaxAmmo;
-        outwardAmmo = outwardMaxAmmo;
+        // outwardAmmo = outwardMaxAmmo;
 
         cooldownDurationIn = PlayerStats.Singleton.cooldownDuration;
         cooldownIn = cooldownDurationIn;
-        cooldownDurationOut = PlayerStats.Singleton.cooldownDuration;
-        cooldownOut = cooldownDurationOut;
+        // cooldownDurationOut = PlayerStats.Singleton.cooldownDuration;
+        cooldownTriangle = cooldownDurationTriangle;
         
     }
     void Update()
     {
-        if (!TriangleExperiment) {
-            
-            if (Input.GetMouseButtonDown(0) && liveOutGrenades.Count > 0) {
-                Trigger(0);
-                
-            }
-            else if(Input.GetMouseButtonDown(0) && outwardAmmo > 0 && cooldownOut <= 0){
-                Shoot(0);
-            }
-
-        }
-        else {
-            if(Input.GetMouseButtonDown(0) && outwardAmmo > 0 && cooldownOut <= 0)
-            {
-                ShootTriangle();
-                GameObject.Find("Triangle Fire Audio").GetComponent<AudioSource>().PlayOneShot(TriangleFire);
-            }
-        }
-        
         if(Input.GetMouseButtonDown(1) && liveInGrenades.Count > 0) {
             Trigger(1);
         }
@@ -71,18 +51,17 @@ public class GravityGunController : MonoBehaviour
         }
 
         //here so that it updates when we get upgrades
-        cooldownDurationIn = PlayerStats.Singleton.cooldownDuration;
-        cooldownDurationOut = PlayerStats.Singleton.cooldownDuration;
-        cooldownIn -= Time.deltaTime;
-        cooldownOut -= Time.deltaTime;
+        // cooldownDurationIn = PlayerStats.Singleton.cooldownDuration;
+        cooldownDurationTriangle = PlayerStats.Singleton.cooldownDuration;
+        // cooldownIn -= Time.deltaTime;
+        cooldownTriangle -= Time.deltaTime;
 
-    }
     void Shoot(int type)
     {
         
         GameObject.Find("Grenade Fire Audio").GetComponent<AudioSource>().PlayOneShot(GrenadeFireAudio);
         Debug.LogWarning("Shooting!");
-        if(type == 0 && outwardAmmo == 1 || type == 1 && inwardAmmo == 1)
+        if(type == 1 && inwardAmmo == 1)
         {
 
             Vector3 playerPosition = transform.position;
@@ -95,30 +74,16 @@ public class GravityGunController : MonoBehaviour
             Vector2 velocity = direction * LaunchSpeed;
             grenadeRb.linearVelocity = velocity;
             spawnedGrenade.GetComponent<GravityGunBehaviour>()?.Init(pm.mouseposition, type);
-            if(type == 0) {
-                outwardAmmo = 0;
-                cooldownOut = cooldownDurationOut;
-
-            }
-                
-            else {
                 inwardAmmo = 0;
-                cooldownIn = cooldownDurationIn;
+                cooldownIn = cooldownDurationIn;             
             }
-                
         }
     }
     protected void Trigger(int type)
     {
         
         GameObject.Find("Grenade Explode Audio").GetComponent<AudioSource>().PlayOneShot(GrenadeExplode);
-        if(type == 0 && liveOutGrenades.Count <= 0 || type == 1 && liveInGrenades.Count <= 0) return;
-        if(type == 0)
-        {
-            liveOutGrenades[0].GetComponent<GravityGunBehaviour>().Explode(); 
-            outwardAmmo = 1;
-        }
-        else
+        if(type == 1 && liveInGrenades.Count <= 0) return;
         {
             liveInGrenades[0].GetComponent<GravityGunBehaviour>().Implode();
             inwardAmmo = 1;
@@ -127,7 +92,7 @@ public class GravityGunController : MonoBehaviour
 
     void ShootTriangle() 
     {
-        cooldownOut = cooldownDurationOut;
+        cooldownTriangle = cooldownDurationTriangle;
         pm = FindFirstObjectByType<PlayerMovement>();
         Vector3 playerPosition = transform.position;
         Vector3 direction = (pm.mouseposition - playerPosition).normalized;

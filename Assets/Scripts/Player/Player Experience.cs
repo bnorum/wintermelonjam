@@ -10,8 +10,6 @@ public class PlayerExperience : MonoBehaviour
 {
     //assign these in prefab
     public float currentExperience;
-
-    public List<PlayerUpgrade> upgradesForTriangleGun = new List<PlayerUpgrade>();
     public List<PlayerUpgrade> upgradesForBoomerang = new List<PlayerUpgrade>();
     public List<PlayerUpgrade> upgradesForGrenade = new List<PlayerUpgrade>();
     private List<PlayerUpgrade> upgrades = new List<PlayerUpgrade>();
@@ -24,11 +22,7 @@ public class PlayerExperience : MonoBehaviour
     void Start()
     {
         currentExperience = 0;
-        if (PlayerStats.Singleton.usingTriangle)
-        {
-            upgrades = upgradesForTriangleGun;
-        }
-        else if (PlayerStats.Singleton.usingBoomberang)
+        if (PlayerStats.Singleton.usingBoomberang)
         {
             upgrades = upgradesForBoomerang;
         }
@@ -61,6 +55,7 @@ private void GiveUpgrades()
     {
         int choice = UnityEngine.Random.Range(0, localUpgrades.Count);
         PlayerUpgrade selectedUpgrade = localUpgrades[choice];
+        Debug.Log($"i:{i}, name:{ selectedUpgrade.upgradeName}, sprite: {selectedUpgrade.upgradeSprite}");
         upgradeMenu.SetUpgrade(i, selectedUpgrade.upgradeName, selectedUpgrade.upgradeSprite);
         Debug.Log($"Upgrade {i}: {selectedUpgrade.upgradeName}");
 

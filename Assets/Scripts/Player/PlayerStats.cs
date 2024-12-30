@@ -9,13 +9,13 @@ public class PlayerStats : MonoBehaviour
     [Header("Player Movement Related Stats")]
     public float speed;
     public float dashTime;
+    public float dashSpeed;
     public float xpSuckRange;
 
     [Header("Player Health Related Stats")]
     public float maxHealth;
     public float regeneration;
     public float invincibilityDuration;
-
     public float maxXp;
     [Header("Player Weapon Related Stats")]
     public bool usingBoomberang;
@@ -25,11 +25,9 @@ public class PlayerStats : MonoBehaviour
     public float damage;
     public float pierce;
     public float cooldownDuration;
-    float cooldown;
     public int maxAmmo = 6;
     public int ammo = 6;
     public float returnSpeed = 10f;
-
     public float tempModifier = 5f;
     private void Awake()
     {
@@ -37,9 +35,6 @@ public class PlayerStats : MonoBehaviour
             usingBoomberang = true;
         }
         else if (LoadingParameters.weaponAbility == 1) {
-            usingTriangle = true;
-        }
-        else if (LoadingParameters.weaponAbility == 2) {
             usingGrenade = true;
         }
         

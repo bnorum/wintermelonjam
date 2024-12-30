@@ -2595,7 +2595,6 @@ MonoBehaviour:
   bossArenaPrefab: {fileID: 4764399905874496231, guid: 1d81a4dfd343b944692220c2a9c592d5, type: 3}
   playerWeapons:
   - {fileID: 1850351370}
-  - {fileID: 634729553}
   - {fileID: 1768248339}
   timer: 0
   bossDefeated: 0
@@ -2755,11 +2754,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590625583}
   m_CullTransparentMesh: 1
---- !u!1 &634729553 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4733759703464206915, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
-  m_PrefabInstance: {fileID: 1137375738}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &764930321
 GameObject:
   m_ObjectHideFlags: 0
@@ -3335,6 +3329,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 928217212785447727, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
+      propertyPath: circleCenter
+      value: 
+      objectReference: {fileID: 774104707}
     - target: {fileID: 1924827901051658983, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
       propertyPath: upgradeMenu
       value: 
@@ -3354,31 +3352,11 @@ PrefabInstance:
     - target: {fileID: 1924827901051658983, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
       propertyPath: 'upgradesForBoomerang.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: d67aaa57d75ca3a44a69f8618a579db8, type: 2}
-    - target: {fileID: 1924827901051658983, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
-      propertyPath: 'upgradesForBoomerang.Array.data[1]'
+      objectReference: {fileID: 11400000, guid: e881c7b5a44a03440b78b1b15d679a7c, type: 2}
+    - target: {fileID: 2447332743052590374, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
+      propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 11400000, guid: f140442d04804f149b9d10d38dcb7975, type: 2}
-    - target: {fileID: 1924827901051658983, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
-      propertyPath: 'upgradesForBoomerang.Array.data[2]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 826c6628275534c45b0c52a4d669b163, type: 2}
-    - target: {fileID: 1924827901051658983, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
-      propertyPath: 'upgradesForBoomerang.Array.data[3]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 69cbe4695dab98d459807684d4bcfe8e, type: 2}
-    - target: {fileID: 1924827901051658983, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
-      propertyPath: 'upgradesForBoomerang.Array.data[4]'
-      value: 
-      objectReference: {fileID: 11400000, guid: f63fdeca82b4ac94f9391ee2666af857, type: 2}
-    - target: {fileID: 1924827901051658983, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
-      propertyPath: 'upgradesForBoomerang.Array.data[5]'
-      value: 
-      objectReference: {fileID: 11400000, guid: d95b763cd0b7a8b4b9e45be5caac6eec, type: 2}
-    - target: {fileID: 1924827901051658983, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
-      propertyPath: 'upgradesForBoomerang.Array.data[6]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 54711026737f87147918de3467ba4c69, type: 2}
+      objectReference: {fileID: -2784138193597300539, guid: da3acbcd137a1cb4fbce01c8c325127a, type: 3}
     - target: {fileID: 2660398274292474150, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
       propertyPath: TriangleFire
       value: 
@@ -3425,7 +3403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3111347690843950255, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
       propertyPath: dashSpeed
-      value: 20
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3111347690843950255, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
       propertyPath: xpSuckRange
@@ -3460,6 +3438,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 6772dcaa99741b747894a93195a3f079, type: 3}
     - target: {fileID: 4714712399061104847, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
+      propertyPath: zap
+      value: 
+      objectReference: {fileID: -2999979409240521807, guid: da3acbcd137a1cb4fbce01c8c325127a, type: 3}
+    - target: {fileID: 4714712399061104847, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
+      propertyPath: regular
+      value: 
+      objectReference: {fileID: -2784138193597300539, guid: da3acbcd137a1cb4fbce01c8c325127a, type: 3}
+    - target: {fileID: 4714712399061104847, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
       propertyPath: shootSound
       value: 
       objectReference: {fileID: 8300000, guid: 2c3b11becb2b25841ba05bed6007185e, type: 3}
@@ -3474,6 +3460,14 @@ PrefabInstance:
     - target: {fileID: 5362032968490654826, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308176172735185579, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308176172735185579, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8835794796353590863, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3516,7 +3510,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4733759703464206915, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
