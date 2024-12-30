@@ -9,6 +9,7 @@ public class xpOrb : MonoBehaviour
 
     public GameObject player;
 
+
     public void Init(float enemyValue)
     {
         value = enemyValue;

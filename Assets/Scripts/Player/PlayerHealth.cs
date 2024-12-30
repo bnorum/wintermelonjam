@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     public float invincibilityTime;
     public float invincibilityDuration;
 
+    public bool isDead = false;
 
     void Start()
     {
@@ -22,9 +23,11 @@ public class PlayerHealth : MonoBehaviour
     {
         if(invincibilityTime >= 0) invincibilityTime -= Time.deltaTime;
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !isDead)
         {
-            Destroy(gameObject);
+            isDead = true;
+            StartCoroutine(GameObject.Find("UIManager").GetComponent<UIManager>().GameOver());
+            DisablePlayer();
         }
         if (currentHealth > PlayerStats.Singleton.maxHealth) currentHealth = PlayerStats.Singleton.maxHealth;
         currentHealth += PlayerStats.Singleton.regeneration * Time.deltaTime;
@@ -46,6 +49,14 @@ public class PlayerHealth : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().color = Color.red;
         yield return new WaitForSeconds(0.1f);
         gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
+    public void DisablePlayer()
+    {
+        GetComponent<PlayerMovement>().enabled = false;
+        GameObject.Find("Boomerang Gun Controller")?.SetActive(false);
+        GameObject.Find("Grenade Gun Controller")?.SetActive(false);
+        GameObject.Find("GunSpriteHolder")?.SetActive(false);
     }
 
 }

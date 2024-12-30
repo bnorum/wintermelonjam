@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
+using System.Collections.Generic;
+using System;
 public class UIManager : MonoBehaviour
 {
     private PlayerHealth playerHealth;
@@ -21,6 +24,11 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI timerText;
 
     public UnityEngine.UI.Image dashIndicator;
+
+    public GameObject gameOverCanvas;
+    public UnityEngine.UI.Image fadeOutImage;
+    public GameObject gameOverStuff;
+    public TextMeshProUGUI gameOverText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -59,5 +67,45 @@ public class UIManager : MonoBehaviour
         int minutes = Mathf.FloorToInt(time / 60);
         int seconds = Mathf.FloorToInt(time % 60);
         return string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+
+    public IEnumerator GameOver() {
+        gameOverText.text = DisplayUpgrades();
+        Debug.Log("Game Over");
+        gameOverCanvas.SetActive(true);
+        yield return new WaitForSeconds(2);
+        for (float i = 0; i < 1; i+=Time.deltaTime)
+        {
+            fadeOutImage.color = new Color(0, 0, 0, i); 
+            yield return null;
+        }
+        gameOverStuff.SetActive(true);
+
+
+    }
+
+    public string DisplayUpgrades() {
+        
+        Dictionary<string, int> upgradeCounts = new Dictionary<string, int>();
+
+        foreach (var upgrade in PlayerStats.Singleton.collectedUpgrades) {
+            if (upgradeCounts.ContainsKey(upgrade.upgradeName)) {
+            upgradeCounts[upgrade.upgradeName]++;
+            } else {
+            upgradeCounts[upgrade.upgradeName] = 1;
+            }
+        }
+
+        string upgradeList = "";
+        foreach (var upgrade in upgradeCounts) {
+            if (upgrade.Value > 1) {
+            upgradeList += upgrade.Value + "x " + upgrade.Key + "\n";
+            } else {
+            upgradeList += upgrade.Key + "\n";
+            }
+        }
+
+        return ("Upgrades List:\n" + upgradeList);
     }
 }

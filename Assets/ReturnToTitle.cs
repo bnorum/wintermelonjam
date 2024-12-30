@@ -18,11 +18,19 @@ public class ReturnToTitle : MonoBehaviour
     {
         if (PlayerStats.Singleton.usingBoomberang)
         {
+            if (medalImage != null)
+            {
+                
             medalImage.sprite = medal1;
+            }
         }
         else
         {
-            medalImage.sprite = medal2;
+            if (medalImage != null)
+            {
+                
+            medalImage.sprite = medal1;
+            }
         }
     }
 
