@@ -33,9 +33,12 @@ public class PlayerStats : MonoBehaviour
     {
         if (LoadingParameters.weaponAbility == 0) {
             usingBoomberang = true;
+            FindFirstObjectByType<GunSpriteHolder>().SetSprite(true);
         }
         else if (LoadingParameters.weaponAbility == 1) {
             usingGrenade = true;
+            FindFirstObjectByType<GunSpriteHolder>().SetSprite(false);
+
         }
         
         if (Singleton == null)

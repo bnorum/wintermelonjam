@@ -5,6 +5,9 @@ public class GunSpriteHolder : MonoBehaviour
     public float circleRadius = 1.0f;
     public Transform circleCenter;
 
+    public Sprite magnet;
+    public Sprite gravityGun;
+
     void Update()
     {
         //mouse position
@@ -27,5 +30,19 @@ public class GunSpriteHolder : MonoBehaviour
         //sprite face up
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle - 90);
+    }
+
+    public void SetSprite(bool type)
+    {
+        if(type)
+            gameObject.GetComponent<SpriteRenderer>().sprite = magnet;
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = gravityGun;
+            gameObject.transform.localScale *= 2f;
+
+
+        }
+
     }
 }

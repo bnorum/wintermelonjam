@@ -29,6 +29,7 @@ public class GravityGunController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Debug.LogWarning("Gravity Gun On");
         pm = FindFirstObjectByType<PlayerMovement>();
 
         inwardAmmo = inwardMaxAmmo;
@@ -43,17 +44,17 @@ public class GravityGunController : MonoBehaviour
     void Update()
     {
         if(Input.GetMouseButtonDown(1) && liveInGrenades.Count > 0) {
+            Debug.LogWarning("Triggering");
             Trigger(1);
         }
         else if(Input.GetMouseButtonDown(1) && inwardAmmo > 0 && cooldownIn <= 0)
         {
+            Debug.LogWarning("Shooting");
+
             Shoot(1);
         }
 
-        //here so that it updates when we get upgrades
-        // cooldownDurationIn = PlayerStats.Singleton.cooldownDuration;
         cooldownDurationTriangle = PlayerStats.Singleton.cooldownDuration;
-        // cooldownIn -= Time.deltaTime;
         cooldownTriangle -= Time.deltaTime;
 
     void Shoot(int type)

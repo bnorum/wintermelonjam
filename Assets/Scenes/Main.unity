@@ -2987,7 +2987,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &974459997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3035,7 +3035,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 974459996}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -3329,6 +3329,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 928217212785447727, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
+      propertyPath: magnet
+      value: 
+      objectReference: {fileID: -2784138193597300539, guid: da3acbcd137a1cb4fbce01c8c325127a, type: 3}
+    - target: {fileID: 928217212785447727, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
+      propertyPath: gravityGun
+      value: 
+      objectReference: {fileID: -3699993553678438194, guid: c68ddbe637589d9408d3584e200a8f7f, type: 3}
     - target: {fileID: 928217212785447727, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
       propertyPath: circleCenter
       value: 
