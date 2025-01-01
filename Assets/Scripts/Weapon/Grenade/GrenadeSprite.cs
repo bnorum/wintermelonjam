@@ -26,6 +26,10 @@ public class GrenadeSprite : MonoBehaviour
 
     void OnDestroy()
     {
+        foreach(var enemy in damagedEnemies)
+        {
+            enemy.GetComponent<Collider2D>().isTrigger = false;
+        }
         damagedEnemies.Clear();
     }
 
@@ -45,7 +49,8 @@ public class GrenadeSprite : MonoBehaviour
                 {
                     if (Vector2.Distance(obj.transform.position, transform.position) > 0.5f)
                     {
-                        obj.GetComponent<EnemyMovement>().PullEnemy(gameObject.transform, magnitude / 10 / obj.GetComponent<EnemyMovement>().weight);
+                        obj.GetComponent<EnemyMovement>().PullEnemy(gameObject.transform, magnitude / obj.GetComponent<EnemyMovement>().weight);
+                        obj.GetComponent<Collider2D>().isTrigger = true;
                     }
                 }
             }
