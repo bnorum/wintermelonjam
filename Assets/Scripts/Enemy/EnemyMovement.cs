@@ -12,19 +12,13 @@ public class EnemyMovement : MonoBehaviour
     Rigidbody2D rb;
     private bool displaced = false;
     private bool pulled = false;
-    private bool pushed = false;
     float pushedTimer;
     Vector2 tempDirection;
     float tempSpeed;
     public bool isBoss = false;
-    float displacedTimerAmount = .2f;
-    public Animator animator;
-    public string frontAnimationName;
-    public string backAnimationName;
-
 
     //dirty hack to get displaced off cooldown
-    float displacedtimer;
+    float displacedtimer = .2f;
 
     public void Initialize(Transform playerTarget)
     {
@@ -35,8 +29,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        UpdateAnimation();
-
+        //dirty hack to get displaced off cooldown      
         if (displaced)
         {
             displacedtimer -= Time.deltaTime;
@@ -44,9 +37,9 @@ public class EnemyMovement : MonoBehaviour
             {
                 displaced = false;
                 pulled = false;
+                displacedtimer = .3f;
                 tempDirection = Vector2.zero;
-                tempSpeed = 0;
-                displacedtimer = displacedTimerAmount;
+                tempSpeed = 0f;
 
             }
         }
@@ -54,7 +47,9 @@ public class EnemyMovement : MonoBehaviour
         {
             rb.linearVelocity = tempDirection * tempSpeed;
         }
-        if (player != null && !displaced && !pushed)
+
+
+        if (player != null && !displaced)
         {
             // Move toward the player
             
@@ -71,26 +66,20 @@ public class EnemyMovement : MonoBehaviour
                     rb.linearVelocity = Vector2.zero;
                     GetComponent<EnemyRangedAttack>().AttemptRangedAttack();
                 } else {
-                    //rb.linearVelocity = Vector2.zero;
-                    Vector2 direction = (player.position - transform.position).normalized;
-                    rb.linearVelocity = direction * moveSpeed;
-                    int choice = UnityEngine.Random.Range(0, 3);
+                    rb.linearVelocity = Vector2.zero;
+                    int choice = UnityEngine.Random.Range(0, 2);
                     if (choice == 0)
                     {
                         GetComponent<BossAttacks>().AttemptRangedAttack();
-                    } else if (choice == 1){
-                        if (UnityEngine.Random.Range(0, 400) == 0)
-                        {
-                            GetComponent<BossAttacks>().TeleportRandomly();
-                        }
+                    } else {
                         GetComponent<BossAttacks>().SuperAttack();
-                    }  else if (choice == 2) {
-                        GetComponent<BossAttacks>().DoNothing();
                     }
 
                 }
             }
         }
+        tempDirection *= .99f;
+        tempSpeed *= .99f;
     }
 
     public IEnumerator Knockback(Vector2 direction, float strength, float duration, bool isDisplaced) {
@@ -101,31 +90,14 @@ public class EnemyMovement : MonoBehaviour
         displaced = false;
 
     }
-
-    public void PushEnemy(Vector2 direction, float strength)
-    {
-        displaced = true;
-        displacedtimer = displacedTimerAmount;
-        rb.AddForce(direction * strength, ForceMode2D.Impulse);
-    }
-    
     public void PullEnemy(Transform point, float strength)
     {
         displaced = true;
         pulled = true;
-        displacedtimer = displacedTimerAmount;
         tempDirection = (point.position - transform.position).normalized;
         tempSpeed = strength;
     }
 
-    void UpdateAnimation()
-    {
-        if(transform.position.y > player.position.y)
-        {
-            animator.Play(frontAnimationName);
-        }
-        else
-            animator.Play(backAnimationName);
-    }
+
     
 }
