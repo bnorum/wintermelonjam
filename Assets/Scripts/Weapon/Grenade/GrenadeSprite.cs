@@ -28,7 +28,11 @@ public class GrenadeSprite : MonoBehaviour
     {
         foreach(var enemy in damagedEnemies)
         {
-            enemy.GetComponent<Collider2D>().isTrigger = false;
+            if(enemy)
+            {
+                enemy.GetComponent<EnemyMovement>().pulled = false;
+                enemy.GetComponent<Collider2D>().isTrigger = false;
+            }
         }
         damagedEnemies.Clear();
     }
@@ -40,10 +44,11 @@ public class GrenadeSprite : MonoBehaviour
         ContactFilter2D filter = new ContactFilter2D();
         filter.SetLayerMask(LayerMask.GetMask("Enemies"));
         List<Collider2D> affectedObjects = new List<Collider2D>();
+
         Physics2D.OverlapCollider(myCollider, affectedObjects);
         foreach (Collider2D obj in affectedObjects)
         {
-            if (obj.gameObject.tag == "Enemy")
+            if (obj.gameObject.tag == "Enemy" && obj.GetComponent<EnemyMovement>().pulled == false)
             {
                 if(impulseType == 1)
                 {
@@ -51,6 +56,7 @@ public class GrenadeSprite : MonoBehaviour
                     {
                         obj.GetComponent<EnemyMovement>().PullEnemy(gameObject.transform, magnitude);
                         obj.GetComponent<Collider2D>().isTrigger = true;
+                        damagedEnemies.Add(obj.gameObject);
                     }
                 }
             }

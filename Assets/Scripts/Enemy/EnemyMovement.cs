@@ -11,9 +11,11 @@ public class EnemyMovement : MonoBehaviour
     public float range;
     Rigidbody2D rb;
     private bool displaced = false;
-    private bool pulled = false;
-    float pushedTimer;
+    public bool pulled = false;
+    private bool pushed = false;
+    float pulledTimer;
     Vector2 tempDirection;
+    Transform impulseDirection;
     float tempSpeed;
     public bool isBoss = false;
 
@@ -29,27 +31,28 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        //dirty hack to get displaced off cooldown      
+        //dirty hack to get displaced off cooldown
+        
         if (displaced)
         {
             displacedtimer -= Time.deltaTime;
             if (displacedtimer <= 0)
             {
-                displaced = false;
-                pulled = false;
+                displaced = false;;
                 displacedtimer = .3f;
                 tempDirection = Vector2.zero;
                 tempSpeed = 0f;
 
             }
         }
-        if(displaced && pulled)
+        if(pulled)
         {
+            if(impulseDirection)
+                tempDirection = (impulseDirection.position - transform.position).normalized;
             rb.linearVelocity = tempDirection * tempSpeed;
+        
         }
-
-
-        if (player != null && !displaced)
+        if (player != null && !displaced && !pulled)
         {
             // Move toward the player
             
@@ -78,7 +81,6 @@ public class EnemyMovement : MonoBehaviour
                 }
             }
         }
-        tempDirection *= .99f;
         tempSpeed *= .99f;
     }
 
@@ -90,11 +92,11 @@ public class EnemyMovement : MonoBehaviour
         displaced = false;
 
     }
+    
     public void PullEnemy(Transform point, float strength)
     {
-        displaced = true;
         pulled = true;
-        tempDirection = (point.position - transform.position).normalized;
+        impulseDirection = point;
         tempSpeed = strength;
     }
 

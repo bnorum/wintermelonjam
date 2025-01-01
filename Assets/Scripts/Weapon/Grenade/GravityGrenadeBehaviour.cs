@@ -14,7 +14,7 @@ public class GravityGunBehaviour : ProjectileBehaviour
     private Rigidbody2D rb;
     private Collider2D projectileCollider;
     public float magnitude = 5f;
-    public float damage;
+    private float damage;
     private bool hasLanded = false;
     private Transform projectileTransform;
     GravityGunController gc;
@@ -82,15 +82,6 @@ public class GravityGunBehaviour : ProjectileBehaviour
         }
     }
 
-    public void Explode()
-    {
-        if(hasLanded)
-        {
-            magnitude *= 1.5f;
-            Impulse(0);
-            magnitude /= 1.5f;
-        }
-    }
     public void Implode()
     {
         if(hasLanded)
@@ -100,12 +91,7 @@ public class GravityGunBehaviour : ProjectileBehaviour
     {
 
         FindFirstObjectByType<GravityGunController>().liveInGrenades.RemoveAt(0);
-        if(impulseType == 0)
-        {
-            var child = Instantiate(push, transform.position, Quaternion.identity);
-            child.GetComponent<GrenadeSprite>().Init(damage, magnitude, impulseType);
-        }
-        else
+        if(impulseType == 1)
         {
             var child = Instantiate(pull, transform.position, Quaternion.identity);
             child.GetComponent<GrenadeSprite>().Init(damage, magnitude, impulseType);

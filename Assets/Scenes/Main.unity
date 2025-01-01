@@ -3781,7 +3781,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3111347690843950255, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
       propertyPath: triangleSpeed
-      value: 15
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 3111347690843950255, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
       propertyPath: boomerangSpiky
