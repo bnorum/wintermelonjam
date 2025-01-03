@@ -12,6 +12,7 @@ public class EnemyMovement : MonoBehaviour
     Rigidbody2D rb;
     private bool displaced = false;
     public bool pulled = false;
+    public bool frozen = false;
     private bool pushed = false;
     float pulledTimer;
     Vector2 tempDirection;
@@ -45,10 +46,12 @@ public class EnemyMovement : MonoBehaviour
 
             }
         }
-        if(pulled)
+        if(pulled && !frozen)
         {
             if(impulseDirection)
                 tempDirection = (impulseDirection.position - transform.position).normalized;
+                if(tempDirection == Vector2.zero)
+                    frozen = true;
             rb.linearVelocity = tempDirection * tempSpeed;
         
         }
@@ -59,7 +62,7 @@ public class EnemyMovement : MonoBehaviour
             if (range <= 0)
             {
                 Vector2 direction = (player.position - transform.position).normalized;
-                rb.linearVelocity = (direction+tempDirection) * (moveSpeed+tempSpeed);
+                rb.linearVelocity = direction * moveSpeed;
             } else {
                 if (Vector2.Distance(player.position, transform.position) > range)
                 {

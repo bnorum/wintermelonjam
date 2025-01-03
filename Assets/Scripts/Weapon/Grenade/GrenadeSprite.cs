@@ -31,6 +31,7 @@ public class GrenadeSprite : MonoBehaviour
             if(enemy)
             {
                 enemy.GetComponent<EnemyMovement>().pulled = false;
+                enemy.GetComponent<EnemyMovement>().frozen = false;
                 enemy.GetComponent<Collider2D>().isTrigger = false;
             }
         }
