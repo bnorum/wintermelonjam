@@ -105,7 +105,7 @@ public class GravityGunController : MonoBehaviour
         spawnedGrenade.GetComponent<GravityGunBehaviour>().SetDirection(direction);
 
         var grenadeRb = spawnedGrenade.GetComponent<Rigidbody2D>();
-        grenadeRb.linearVelocity = direction * PlayerStats.Singleton.grenadeLaunchSpeed;
+        grenadeRb.linearVelocity = direction * PlayerStats.Singleton.grenadeLaunchSpeed*.25f;
         if(LoadingParameters.isUsingMobileControls)
             spawnedGrenade.GetComponent<GravityGunBehaviour>()?.Init(playerPosition + direction * 5f);
         else

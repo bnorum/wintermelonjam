@@ -14,6 +14,7 @@ public class GrenadeSprite : MonoBehaviour
     private List<GameObject> damagedEnemies = new List<GameObject>();
     public void Init(float inputDamage, float inputMagnitude, GameObject sentParent)
     {
+        transform.localScale *= PlayerStats.Singleton.implodeRadiusModifier;
         damage = inputDamage;
         magnitude = inputMagnitude;
         Destroy(sentParent);
