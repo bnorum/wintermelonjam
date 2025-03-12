@@ -4056,6 +4056,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -2784138193597300539, guid: da3acbcd137a1cb4fbce01c8c325127a, type: 3}
     - target: {fileID: 2660398274292474150, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
+      propertyPath: genadeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2c3b11becb2b25841ba05bed6007185e, type: 3}
+    - target: {fileID: 2660398274292474150, guid: 8d8b135fa13e6b4469aa1d1b3001eaff, type: 3}
       propertyPath: TriangleFire
       value: 
       objectReference: {fileID: 8300000, guid: 1de1b513494f8b64b8b05f445dfdd1de, type: 3}
