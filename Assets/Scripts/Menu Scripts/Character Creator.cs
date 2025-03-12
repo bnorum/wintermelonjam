@@ -8,6 +8,7 @@ public class CharacterSelect : MonoBehaviour
     // Assign these in the Unity Inspector
     public Button MagnetButton;
     public Button GravityGunButton;
+    public Button MobileControlToggle; // New button
     public GameObject customization;
     public GameObject mainMenu;
     public Button back;
@@ -15,6 +16,7 @@ public class CharacterSelect : MonoBehaviour
     public TMP_Text descriptionText;
     public TMP_Text weaponNameText;
     public TMP_Text TitleText;
+    public TMP_Text ctrlToggleText; // New text component
 
     // Descriptions for the buttons
     [TextArea]
@@ -37,6 +39,19 @@ public class CharacterSelect : MonoBehaviour
         GravityGunButton.onClick.AddListener(() => OnGravityGunClick());
         back.onClick.AddListener(() => OnBackClick());
         startButton.onClick.AddListener(() => OnStartClick());
+        MobileControlToggle.onClick.AddListener(() => OnMobileControlToggle());
+        UpdateMobileControlText();
+    }
+
+    void UpdateMobileControlText()
+    {
+        ctrlToggleText.text = LoadingParameters.isUsingMobileControls ? "On" : "Off";
+    }
+
+    void OnMobileControlToggle()
+    {
+        LoadingParameters.isUsingMobileControls = !LoadingParameters.isUsingMobileControls;
+        UpdateMobileControlText();
     }
 
     void AddHoverListeners(Button button, string description, string weaponName)

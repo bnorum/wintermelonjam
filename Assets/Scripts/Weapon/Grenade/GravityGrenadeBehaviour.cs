@@ -12,7 +12,6 @@ public class GravityGunBehaviour : ProjectileBehaviour
     private Vector2 targetPosition;
     private Vector2 startPosition;
     private Rigidbody2D rb;
-    private Collider2D projectileCollider;
     public float magnitude = 5f;
     private float damage;
     private bool hasLanded = false;
@@ -20,12 +19,11 @@ public class GravityGunBehaviour : ProjectileBehaviour
     GravityGunController gc;
     int type;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public void Init(Vector2 target, int inputType)
+    public void Init(Vector2 target)
     {
         startPosition = transform.position;
         targetPosition = target;
         projectileTransform = transform;
-        type = inputType;
         damage = PlayerStats.Singleton.damage;
     }
     protected override void Start()
@@ -85,18 +83,13 @@ public class GravityGunBehaviour : ProjectileBehaviour
     public void Implode()
     {
         if(hasLanded)
-            Impulse(1);
+            Impulse();
     }
-    private void Impulse(int impulseType)
+    private void Impulse()
     {
 
         FindFirstObjectByType<GravityGunController>().liveInGrenades.RemoveAt(0);
-        if(impulseType == 1)
-        {
-            var child = Instantiate(pull, transform.position, Quaternion.identity);
-            child.GetComponent<GrenadeSprite>().Init(damage, magnitude, impulseType);
-
-        }
-        Destroy(gameObject);
+        var child = Instantiate(pull, transform.position, Quaternion.identity);
+        child.GetComponent<GrenadeSprite>().Init(damage, magnitude, gameObject);
     }
 }

@@ -12,12 +12,12 @@ public class GrenadeSprite : MonoBehaviour
     [Tooltip("True if Push, false for pull")]
     public int impulseType;
     private List<GameObject> damagedEnemies = new List<GameObject>();
-    public void Init(float inputDamage, float inputMagnitude, int inputImpulseType)
+    public void Init(float inputDamage, float inputMagnitude, GameObject sentParent)
     {
         damage = inputDamage;
         magnitude = inputMagnitude;
+        Destroy(sentParent);
         Destroy(gameObject, destroyAfterSeconds);
-        impulseType = inputImpulseType;
     }
 
     void OnDestroy()
@@ -32,12 +32,13 @@ public class GrenadeSprite : MonoBehaviour
             }
         }
         damagedEnemies.Clear();
+        FindFirstObjectByType<GravityGunController>().liveInGrenades.Remove(gameObject);
+        FindFirstObjectByType<GravityGunController>().inwardAmmo = 1;
     }
 
 
     void Update()
     {
-        ContactFilter2D filter = new ContactFilter2D().NoFilter();
         List<Collider2D> affectedObjects = new List<Collider2D>();
 
         Physics2D.OverlapCollider(myCollider, affectedObjects);
@@ -54,15 +55,11 @@ public class GrenadeSprite : MonoBehaviour
                     damagedEnemies.Add(obj.gameObject);
                 }
 
-                Vector2 direction = (obj.transform.position - transform.position).normalized;
-                if(impulseType == 1)
+                if (Vector2.Distance(obj.transform.position, transform.position) > 0.5f)
                 {
-                    if (Vector2.Distance(obj.transform.position, transform.position) > 0.5f)
-                    {
-                        obj.GetComponent<EnemyMovement>().PullEnemy(gameObject.transform, magnitude);
-                        obj.GetComponent<Collider2D>().isTrigger = true;
-                        damagedEnemies.Add(obj.gameObject);
-                    }
+                    obj.GetComponent<EnemyMovement>().PullEnemy(gameObject.transform, magnitude);
+                    obj.GetComponent<Collider2D>().isTrigger = true;
+                    damagedEnemies.Add(obj.gameObject);
                 }
             }
         } 

@@ -154,9 +154,14 @@ public class MapController : MonoBehaviour
 
     void SpawnChunk()
     {
-        int rand = Random.Range(0,terrainChunks.Count);
-        latestChunk = Instantiate(terrainChunks[rand], noTerrainPosition, Quaternion.identity);
-        spawnedChunks.Add(latestChunk);   
+        // Check if there's already a chunk at this position
+        Collider2D existingChunk = Physics2D.OverlapCircle(noTerrainPosition, 0.1f, terrainMask);
+        if (existingChunk == null)
+        {
+            int rand = Random.Range(0,terrainChunks.Count);
+            latestChunk = Instantiate(terrainChunks[rand], noTerrainPosition, Quaternion.identity);
+            spawnedChunks.Add(latestChunk);   
+        }
     }
 
     void ChunkOptimizer()

@@ -1,8 +1,8 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BoomerangGunController : WeaponController
 {
-
     [Header("Boomerang Gun Settings")]
     public int maxAmmo;
     public int ammo;
@@ -14,14 +14,23 @@ public class BoomerangGunController : WeaponController
     public AudioClip shootSound;
     public AudioClip returnSound;
 
-    public float zapDuration = .3f;
+    public float zapDuration = 0.3f;
     private float zapCooldown = 0;
     private bool zapping = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    private PlayerInput playerInput;
+    private InputAction returnAction;
+
+    void Awake()
+    {
+        playerInput = FindFirstObjectByType<PlayerInput>();
+        string actionName = LoadingParameters.isUsingMobileControls ? "Primary_mcOn" : "Primary_mcOff";
+        returnAction = playerInput.actions[actionName];
+    }
+
     protected override void Start()
     {
         base.Start();
-        
         spikyDamage = PlayerStats.Singleton.boomerangSpiky;
         maxAmmo = PlayerStats.Singleton.maxAmmo;
         returnSpeed = PlayerStats.Singleton.returnSpeed;
@@ -30,8 +39,8 @@ public class BoomerangGunController : WeaponController
 
     protected override void Update()
     {
-        
         base.Update();
+
         if (zapping)
         {
             zapCooldown -= Time.deltaTime;
@@ -40,43 +49,49 @@ public class BoomerangGunController : WeaponController
                 zapping = false;
                 zapCooldown = zapDuration;
                 gsh.GetComponent<SpriteRenderer>().sprite = regular;
-
             }
         }
-        if (Input.GetMouseButtonDown(1)) {
+
+        if (returnAction.WasPressedThisFrame())
+        {
             GameObject.Find("Boomerang Return Audio").GetComponent<AudioSource>().pitch = 1;
             GameObject.Find("Boomerang Return Audio").GetComponent<AudioSource>().PlayOneShot(returnSound);
             ReturnBoomerangs();
         }
 
-        if (ammo > maxAmmo) {
+        if (ammo > maxAmmo)
+        {
             ammo = maxAmmo;
         }
 
-        
         spikyDamage = PlayerStats.Singleton.boomerangSpiky;
     }
-    
 
     protected override void Shoot()
     {
-        if (ammo > 0) {
+        if (ammo > 0)
+        {
+            GunSpriteHolder gunHolder = FindFirstObjectByType<GunSpriteHolder>();
             GameObject.Find("Boomerang Throw Audio").GetComponent<AudioSource>().pitch = UnityEngine.Random.Range(0.8f, 1.2f);
             GameObject.Find("Boomerang Throw Audio").GetComponent<AudioSource>().PlayOneShot(shootSound);
             ammo--;
+
             Debug.Log("Shooting from Boomerang");
             base.Shoot();
+
             Vector3 playerPosition = transform.position;
-            Vector3 direction = (pm.mouseposition - playerPosition).normalized;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; //Sets angle of projectile spawning aiming towards player's current mouse position.
+            Vector3 direction = gunHolder.direction;
+            float angle = gunHolder.transform.eulerAngles.z; 
+
             GameObject proj = Instantiate(prefab, playerPosition, Quaternion.Euler(0, 0, angle));
             proj.GetComponent<BoomerangGunBehaviour>().SetDirection(direction);
         }
-        
     }
 
-    protected void ReturnBoomerangs() {
-        foreach (GameObject proj in GameObject.FindGameObjectsWithTag("BoomerangBullet")) {
+    protected void ReturnBoomerangs()
+    {
+        foreach (GameObject proj in GameObject.FindGameObjectsWithTag("BoomerangBullet"))
+        {
             proj.GetComponent<BoomerangGunBehaviour>().ReturnToPlayer();
             gsh.GetComponent<SpriteRenderer>().sprite = zap;
             zapCooldown = zapDuration;

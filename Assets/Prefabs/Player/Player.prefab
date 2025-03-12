@@ -49,6 +49,7 @@ MonoBehaviour:
   circleCenter: {fileID: 0}
   magnet: {fileID: 0}
   gravityGun: {fileID: 0}
+  direction: {x: 0, y: 0, z: 0}
 --- !u!212 &2447332743052590374
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -150,15 +151,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inProjectile: {fileID: 1381418215432091721, guid: 5232c1578701fe44380fe1bc75e47acc, type: 3}
   inwardMaxAmmo: 1
-  trianglePrefab: {fileID: 0}
+  inwardAmmo: 0
+  trianglePrefab: {fileID: 8262753899718983031, guid: ad3b362be07dae843abd513159f1e0d2, type: 3}
   liveInGrenades: []
-  GrenadeFireAudio: {fileID: 0}
-  GrenadeExplode: {fileID: 0}
-  TriangleFire: {fileID: 0}
-  gravityGunBlueShot: {fileID: 0}
-  gravityGunRedShot: {fileID: 0}
-  gravityGunRegular: {fileID: 0}
+  gravityGunBlueShot: {fileID: 8096088696174269718, guid: c68ddbe637589d9408d3584e200a8f7f, type: 3}
+  gravityGunRedShot: {fileID: -8919153140613561117, guid: c68ddbe637589d9408d3584e200a8f7f, type: 3}
+  defaultSprite: {fileID: -3699993553678438194, guid: c68ddbe637589d9408d3584e200a8f7f, type: 3}
   shotDuration: 0.25
+  genadeSound: {fileID: 8300000, guid: b75c03c133486224c898b79ea6945e53, type: 3}
 --- !u!1 &4733759703464206915
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 1924827901051658983}
   - component: {fileID: 561981136553380478}
   - component: {fileID: 8495415819164764917}
+  - component: {fileID: 177891385800832014}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -344,7 +345,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {x: 0, y: 0}
   animator: {fileID: 8495415819164764917}
-  mouseposition: {x: 0, y: 0, z: 0}
   dashCooldown: 0
   stepSounds: []
 --- !u!114 &6858700391402683700
@@ -502,6 +502,36 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &177891385800832014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362032968490654826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &7136621798117872676
 GameObject:
   m_ObjectHideFlags: 0
